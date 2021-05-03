@@ -1,23 +1,21 @@
 <?php
 
-namespace Domains\Links\Models\Policies;
+namespace Domains\Links\Models\Observers;
 
 use Domains\Accounts\Enums\AccountTypeEnum;
-use Domains\Accounts\Models\User;
 use Domains\Links\Models\Link;
-use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Auth;
 
-class LinkPolicy
+class LinkObserver
 {
-    use HandlesAuthorization;
-
-    public function create(?User $user, string $authorEmail)
+    public function saving(Link $link): bool
     {
+        $user = Auth::user();
         if ($user && ($user->isTrusted() || $user->hasRole(AccountTypeEnum::EDITOR))) {
             return true;
         }
 
-        $pendingCount = Link::forAuthorWithEmail($authorEmail)
+        $pendingCount = Link::forAuthorWithEmail($link->author_email)
             ->unapproved()
             ->count();
 

@@ -9,8 +9,8 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class TagsIndexController extends Controller
 {
-    public function __invoke(Tag $tags): AnonymousResourceCollection
+    public function __invoke(): AnonymousResourceCollection
     {
-        return TagResource::collection($tags->all());
+        return TagResource::collection(Tag::all());
     }
 }

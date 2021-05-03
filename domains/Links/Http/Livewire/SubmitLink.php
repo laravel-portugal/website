@@ -2,10 +2,14 @@
 
 namespace Domains\Links\Http\Livewire;
 
-use App\Http\Clients\ApiClient;
-use App\Rules\UniqueLink;
+use Domains\Links\DTOs\LinksStoreDTO;
 use Domains\Links\Http\Crawlers\OpenGraphMetaCrawler;
+use Domains\Links\Http\Requests\LinksStoreRequest;
+use Domains\Links\LinksServiceProvider;
+use Domains\Links\Services\LinksStoreService;
+use Domains\Tags\Http\Controllers\TagsIndexController;
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\URL;
 use Livewire\Component;
@@ -44,12 +48,14 @@ class SubmitLink extends Component
     {
         parent::__construct($id);
 
+        $this->config = config('laravel-portugal.links');
         $this->crawler = new OpenGraphMetaCrawler();
     }
 
     public function mount(): void
     {
-        $this->availableTags = $this->client->getTags();
+        $this->availableTags = app(TagsIndexController::class)()
+            ->resolve();
     }
 
     public function updatedWebsite(): void
@@ -85,34 +91,28 @@ class SubmitLink extends Component
             $photo = Storage::path($this->generatedPhoto->store('cover_images_photo'));
         }
 
-        $this->response = $this->client->submitLink(
-            [
-                'title' => $this->title,
-                'author_name' => $this->name,
-                'author_email' => $this->email,
-                'link' => $this->website,
-                'description' => $this->description,
-                'tags' => $tags,
-            ],
-            $photo ?? $this->generatedPhoto
-        )->json();
+        $this->response = app(LinksStoreService::class)
+            ->__invoke(
+                new LinksStoreDTO([
+                    'title' => $this->title,
+                    'author_name' => $this->name,
+                    'author_email' => $this->email,
+                    'link' => $this->website,
+                    'description' => $this->description,
+                    'tags' => $tags,
+                    'cover_image' => $photo ?? $this->generatedPhoto,
+                ])
+            );
     }
 
-    public function render()
+    public function render(): View
     {
-        return view('livewire.submit-link');
+        return view(LinksServiceProvider::getName() . '::livewire.submit-link');
     }
 
-    protected function getRules()
+    protected function getRules(): array
     {
-        return [
-            'title' => 'required',
-            'name' => 'required',
-            'email' => 'required|email',
-            'website' => ['required', 'url', 'active_url', new UniqueLink()],
-            'description' => 'required',
-            'tags' => 'required',
-        ];
+        return (new LinksStoreRequest())->rules();
     }
 
     protected function getOGImage()
@@ -122,7 +122,7 @@ class SubmitLink extends Component
             ->getOGImage();
     }
 
-    protected function getBrowserShotImage()
+    protected function getBrowserShotImage(): ?string
     {
         $targetFile = $this->config['storage']['path'] . '/' . uniqid('', true) . '.' . $this->config['cover_image']['format'];
         $targetPath = Storage::disk('public')->path($targetFile);

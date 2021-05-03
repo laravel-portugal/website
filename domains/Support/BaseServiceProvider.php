@@ -10,7 +10,6 @@ use Livewire\Livewire;
 
 abstract class BaseServiceProvider extends ServiceProvider
 {
-    protected string $name;
     protected array $commands = [];
     protected array $bladeComponents = [];
     protected array $bladeComponentsNamespaces = [];
@@ -18,6 +17,8 @@ abstract class BaseServiceProvider extends ServiceProvider
     protected array $livewireComponents = [];
     protected ?string $kernel = null;
     private ?string $dir = null;
+
+    abstract public static function getName(): string;
 
     protected function registerCrons(Schedule $schedule): void
     {
@@ -101,6 +102,6 @@ abstract class BaseServiceProvider extends ServiceProvider
 
     private function getAlias(string $alias): string
     {
-        return $this->name . '::' . $alias;
+        return static::getName() . '::' . $alias;
     }
 }
