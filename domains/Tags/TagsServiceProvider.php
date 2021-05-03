@@ -2,6 +2,7 @@
 
 namespace Domains\Tags;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class TagsServiceProvider extends ServiceProvider
@@ -15,6 +16,12 @@ class TagsServiceProvider extends ServiceProvider
 
     private function bootRoutes(): void
     {
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        Route::group(
+            [
+                'prefix' => 'tags',
+                'as' => 'tags.',
+            ],
+            fn () => $this->loadRoutesFrom(__DIR__ . '/Http/routes.php')
+        );
     }
 }
