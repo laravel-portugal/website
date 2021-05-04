@@ -2,8 +2,8 @@
 
 namespace Domains\Discussions\Models\Policies;
 
+use App\Models\User;
 use Domains\Accounts\Enums\AccountTypeEnum;
-use Domains\Accounts\Models\User;
 use Domains\Discussions\Models\Question;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

@@ -3,7 +3,7 @@
 namespace Domains\Links\Http\Livewire;
 
 use Domains\Links\LinksServiceProvider;
-use Domains\Links\Services\LinksRecentService;
+use Domains\Links\Services\LinksIndexService;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
@@ -15,9 +15,7 @@ class RecentLinks extends Component
 
     public function mount(): void
     {
-        $this->links = app(LinksRecentService::class)
-            ->with(['tags'])
-            ->__invoke()
+        $this->links = (new LinksIndexService())()
             ->items();
     }
 

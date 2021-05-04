@@ -4,11 +4,12 @@ namespace Domains\Links\Http\Livewire;
 
 use Domains\Links\DTOs\LinksStoreDTO;
 use Domains\Links\Http\Crawlers\OpenGraphMetaCrawler;
-use Domains\Links\Http\Requests\LinksStoreRequest;
 use Domains\Links\LinksServiceProvider;
 use Domains\Links\Services\LinksStoreService;
 use Domains\Tags\Http\Controllers\TagsIndexController;
+use Domains\Tags\Services\TagsIndexService;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -52,8 +53,7 @@ class SubmitLink extends Component
 
     public function mount(): void
     {
-        $this->availableTags = app(TagsIndexController::class)()
-            ->resolve();
+        $this->availableTags = (new TagsIndexService())();
     }
 
     public function updatedWebsite(): void
@@ -83,7 +83,9 @@ class SubmitLink extends Component
             $photo = $this->photo->storePublicly('cover_images');
         }
 
-        app(LinksStoreService::class)(
+        // TODO: add try/catch around the block below and show error msg in the link limit has been reached.
+        // (see LinkObserver 'saving' method)
+        (new LinksStoreService)(
             new LinksStoreDTO([
                 'title' => $this->title,
                 'author_name' => $this->author_name,
@@ -103,9 +105,15 @@ class SubmitLink extends Component
 
     protected function getRules(): array
     {
-        return collect((new LinksStoreRequest())->rules())
-            ->except('cover_image')
-            ->toArray();
+        return [
+            'website' => ['required', 'string', 'url'],
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'author_name' => ['required', 'string'],
+            'author_email' => ['required', 'email', Auth::id() ? null : 'unique:users,email'],
+            'tags' => ['required', 'array'],
+            'tags.*' => ['required', 'integer', 'exists:tags,id'],
+        ];
     }
 
     protected function getOGImage(): ?string

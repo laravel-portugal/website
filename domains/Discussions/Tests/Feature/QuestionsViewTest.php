@@ -2,12 +2,12 @@
 
 namespace Domains\Discussions\Tests\Feature;
 
+use App\Models\User;
 use Domains\Accounts\Database\Factories\UserFactory;
-use Domains\Accounts\Models\User;
 use Domains\Discussions\Database\Factories\QuestionFactory;
 use Domains\Discussions\Models\Question;
-use Illuminate\Http\Response;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Http\Response;
 use Tests\TestCase;
 
 class QuestionsViewTest extends TestCase

@@ -2,11 +2,11 @@
 
 namespace Domains\Links;
 
+use App\Providers\BaseServiceProvider;
 use Domains\Links\Http\Livewire\RecentLinks;
 use Domains\Links\Http\Livewire\SubmitLink;
 use Domains\Links\Models\Link;
 use Domains\Links\Models\Observers\LinkObserver;
-use Domains\Support\BaseServiceProvider;
 
 class LinksServiceProvider extends BaseServiceProvider
 {

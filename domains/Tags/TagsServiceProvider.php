@@ -2,7 +2,7 @@
 
 namespace Domains\Tags;
 
-use Domains\Support\BaseServiceProvider;
+use App\Providers\BaseServiceProvider;
 
 class TagsServiceProvider extends BaseServiceProvider
 {

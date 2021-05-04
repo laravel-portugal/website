@@ -2,7 +2,7 @@
 
 namespace Domains\Accounts;
 
-use Domains\Support\BaseServiceProvider;
+use App\Providers\BaseServiceProvider;
 
 class AccountsServiceProvider extends BaseServiceProvider
 {

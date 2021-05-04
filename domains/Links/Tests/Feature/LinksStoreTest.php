@@ -75,7 +75,10 @@ class LinksStoreTest extends TestCase
     {
         Livewire::test(SubmitLink::class)
             ->call('submit')
-            ->assertHasErrors();
+            ->assertHasErrors([
+                'website',
+                'author_name',
+            ]);
     }
 
     /** @test */

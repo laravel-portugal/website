@@ -2,7 +2,6 @@
 
 namespace Domains\Discussions\Models;
 
-use Domains\Accounts\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,7 +18,7 @@ class Question extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class)
+        return $this->belongsTo(\App\Models\User::class)
             ->withTrashed();
     }
 
@@ -27,7 +26,7 @@ class Question extends Model
     {
         return $this->hasMany(Answer::class);
     }
-  
+
     public function scopeFindByAuthorId(Builder $query, int $term): Builder
     {
         return $query->where('author_id', $term);

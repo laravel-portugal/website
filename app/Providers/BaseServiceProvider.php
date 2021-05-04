@@ -1,6 +1,6 @@
 <?php
 
-namespace Domains\Support;
+namespace App\Providers;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Blade;
@@ -15,7 +15,6 @@ abstract class BaseServiceProvider extends ServiceProvider
     protected array $bladeComponentsNamespaces = [];
     protected array $observers = [];
     protected array $livewireComponents = [];
-    protected ?string $kernel = null;
     private ?string $dir = null;
 
     abstract public static function getName(): string;

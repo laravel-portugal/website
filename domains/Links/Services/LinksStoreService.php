@@ -8,18 +8,11 @@ use Illuminate\Support\Facades\Auth;
 
 class LinksStoreService
 {
-    protected Link $link;
-
-    public function __construct(Link $link)
-    {
-        $this->link = $link;
-    }
-
     public function __invoke(LinksStoreDTO $data)
     {
         $user = Auth::user();
 
-        $link = $this->link->create([
+        $link = Link::create([
             'link' => $data->website,
             'title' => $data->title,
             'description' => $data->description,

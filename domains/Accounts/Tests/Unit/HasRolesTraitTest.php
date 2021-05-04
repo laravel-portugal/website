@@ -2,9 +2,9 @@
 
 namespace Domains\Accounts\Tests\Unit;
 
+use App\Models\User;
 use Domains\Accounts\Database\Factories\UserFactory;
 use Domains\Accounts\Enums\AccountTypeEnum;
-use Domains\Accounts\Models\User;
 use Tests\TestCase;
 
 class HasRolesTraitTest extends TestCase

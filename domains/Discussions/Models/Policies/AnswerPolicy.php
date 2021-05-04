@@ -4,7 +4,7 @@
 namespace Domains\Discussions\Models\Policies;
 
 
-use Domains\Accounts\Models\User;
+use App\Models\User;
 use Domains\Discussions\Models\Answer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
