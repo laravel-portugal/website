@@ -47,6 +47,7 @@ abstract class BaseServiceProvider extends ServiceProvider
         $web = $this->getDir() . '/Http/web.php';
         if (file_exists($web)) {
             Route::middleware('web')
+                ->as(static::getName() . '::')
                 ->group($web);
         }
 
@@ -54,6 +55,7 @@ abstract class BaseServiceProvider extends ServiceProvider
         if (file_exists($api)) {
             Route::prefix('api')
                 ->middleware(['api'])
+                ->as(static::getName() . '::')
                 ->group($api);
         }
     }
@@ -81,7 +83,7 @@ abstract class BaseServiceProvider extends ServiceProvider
 
     protected function bootViews(): void
     {
-        $this->loadViewsFrom($this->getDir() . '/Resources/Views', $this->name);
+        $this->loadViewsFrom($this->getDir() . '/Resources/Views', static::getName());
     }
 
     protected function registerBladeComponents(): void

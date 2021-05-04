@@ -2,12 +2,12 @@
 
 namespace Domains\Accounts;
 
-use Illuminate\Support\ServiceProvider;
+use Domains\Support\BaseServiceProvider;
 
-class AccountsServiceProvider extends ServiceProvider
+class AccountsServiceProvider extends BaseServiceProvider
 {
-    public function boot(): void
+    public static function getName(): string
     {
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
+        return 'accounts';
     }
 }

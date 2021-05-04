@@ -9,7 +9,7 @@ class AddTitleColumnToLinksTable extends Migration
     public function up(): void
     {
         Schema::table('links', function (Blueprint $table) {
-            $table->string('title')->nullable()->index();
+            $table->string('title')->after('link')->nullable()->index();
         });
     }
 }

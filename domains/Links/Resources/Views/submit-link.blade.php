@@ -4,7 +4,7 @@
         <x-hero></x-hero>
         <div class="text-center">
             <div class="max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-12 md:text-xl md:max-w-3xl">
-                <livewire:links::submit-link></livewire:links::submit-link>
+                <livewire:links::submit-link />
             </div>
         </div>
     </main>

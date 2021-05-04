@@ -43,7 +43,7 @@
                                 @elseif ($generatedPhoto)
                                     <div
                                             class="absolute inset-0 bg-cover bg-no-repeat bg-center flex items-center justify-center rounded-md shadow-inner"
-                                            style="background-image: url('{{ $generatedPhoto }}');">
+                                            style="background-image: url('{{ URL::to($generatedPhoto) }}');">
                                         <div wire:loading wire:target="photo" wire:key="loading">
                                             <div
                                                     class="flex items-center justify-center absolute inset-0 block bg-white bg-opacity-75 p-8">
@@ -86,16 +86,14 @@
                     >
                 </x-form-field>
 
-                <x-form-field label="Nome" id="name">
-                    <input id="name"
-                           class="form-input block w-full transition duration-150 ease-in-out text-xl"
-                           wire:model.defer="name">
+                <x-form-field label="Nome" id="author_name">
+                    <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                           wire:model.defer="author_name">
                 </x-form-field>
 
-                <x-form-field label="e-mail" id="email">
-                    <input id="email"
-                           class="form-input block w-full transition duration-150 ease-in-out text-xl"
-                           wire:model.defer="email">
+                <x-form-field label="e-mail" id="author_email">
+                    <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                           wire:model.defer="author_email">
                 </x-form-field>
 
                 <x-form-field label="Descrição" id="description">

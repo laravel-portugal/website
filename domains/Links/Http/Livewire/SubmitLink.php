@@ -8,10 +8,8 @@ use Domains\Links\Http\Requests\LinksStoreRequest;
 use Domains\Links\LinksServiceProvider;
 use Domains\Links\Services\LinksStoreService;
 use Domains\Tags\Http\Controllers\TagsIndexController;
-use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\URL;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\Browsershot\Browsershot;
@@ -21,8 +19,8 @@ class SubmitLink extends Component
     use WithFileUploads;
 
     public $title;
-    public $name;
-    public $email;
+    public $author_name;
+    public $author_email;
     public $website;
     public $description;
     public $tags;
@@ -80,29 +78,22 @@ class SubmitLink extends Component
     {
         $this->validate($this->getRules());
 
-        $tags = collect($this->tags)
-            ->filter()
-            ->map(fn ($tag) => ['id' => $tag])
-            ->all();
-
         if ($this->photo) {
-            $photo = Storage::path($this->photo->store('cover_images_photo'));
-        } else if ($this->generatedPhoto) {
-            $photo = Storage::path($this->generatedPhoto->store('cover_images_photo'));
+            // if it is a user-uploaded photo
+            $photo = $this->photo->storePublicly('cover_images');
         }
 
-        $this->response = app(LinksStoreService::class)
-            ->__invoke(
-                new LinksStoreDTO([
-                    'title' => $this->title,
-                    'author_name' => $this->name,
-                    'author_email' => $this->email,
-                    'link' => $this->website,
-                    'description' => $this->description,
-                    'tags' => $tags,
-                    'cover_image' => $photo ?? $this->generatedPhoto,
-                ])
-            );
+        app(LinksStoreService::class)(
+            new LinksStoreDTO([
+                'title' => $this->title,
+                'author_name' => $this->author_name,
+                'author_email' => $this->author_email,
+                'website' => $this->website,
+                'description' => $this->description,
+                'tags' => $this->tags,
+                'cover_image' => $photo ?? $this->generatedPhoto,
+            ])
+        );
     }
 
     public function render(): View
@@ -112,14 +103,31 @@ class SubmitLink extends Component
 
     protected function getRules(): array
     {
-        return (new LinksStoreRequest())->rules();
+        return collect((new LinksStoreRequest())->rules())
+            ->except('cover_image')
+            ->toArray();
     }
 
-    protected function getOGImage()
+    protected function getOGImage(): ?string
     {
-        return $this->crawler
+        $img = $this->crawler
             ->crawl($this->website)
             ->getOGImage();
+
+        if (!$img) {
+            return null;
+        }
+
+        $targetFile = $this->config['storage']['path'] . '/' . uniqid('', true) . '.' . $this->config['cover_image']['format'];
+        $targetPath = Storage::disk('public')->path($targetFile);
+        try {
+            Storage::disk('public')->makeDirectory($this->config['storage']['path']);
+            Storage::disk('public')->put($targetPath, file_get_contents($img));
+
+            return $targetFile;
+        } catch (\Exception) {
+            return null;
+        }
     }
 
     protected function getBrowserShotImage(): ?string
@@ -127,7 +135,6 @@ class SubmitLink extends Component
         $targetFile = $this->config['storage']['path'] . '/' . uniqid('', true) . '.' . $this->config['cover_image']['format'];
         $targetPath = Storage::disk('public')->path($targetFile);
 
-        $img = null;
         try {
             Storage::disk('public')
                 ->makeDirectory($this->config['storage']['path']);
@@ -145,8 +152,8 @@ class SubmitLink extends Component
                 )
                 ->save($targetPath);
 
-            return URL::to($targetFile);
-        } catch (Exception $exception) {
+            return $targetFile;
+        } catch (\Exception) {
             return null;
         }
     }

@@ -2,33 +2,24 @@
 
 namespace Domains\Links\Http\Livewire;
 
-use App\Http\Clients\ApiClient;
+use Domains\Links\LinksServiceProvider;
+use Domains\Links\Services\LinksRecentService;
+use Illuminate\Contracts\View\View;
 use Livewire\Component;
 
 class RecentLinks extends Component
 {
     public array $links;
-    // Protected
-    protected string $title = 'Links recentes.';
-    protected string $description = 'Todos juntos criamos diariamente um base de conhecimento.';
-    protected ApiClient $client;
+    public string $title = 'Links recentes.';
+    public string $description = 'Todos juntos criamos diariamente uma base de conhecimento.';
 
-    public function __construct()
+    public function mount(): void
     {
-        parent::__construct();
-        $this->client = resolve(ApiClient::class);
+        $this->links = app(LinksRecentService::class)()->items() ?? [];
     }
 
-    public function mount()
+    public function render(): View
     {
-        $this->links = $this->client->getRecentLinks()['data'];
-    }
-
-    public function render()
-    {
-        return view('livewire.recent-links', [
-            'title' => $this->title,
-            'description' => $this->description,
-        ]);
+        return view(LinksServiceProvider::getName() . '::livewire.recent-links');
     }
 }

@@ -10,10 +10,9 @@ use Domains\Support\BaseServiceProvider;
 
 class LinksServiceProvider extends BaseServiceProvider
 {
-    protected string $name = 'links';
     protected array $livewireComponents = [
         'link' => Link::class,
-        'recent-link' => RecentLinks::class,
+        'recent-links' => RecentLinks::class,
         'submit-link' => SubmitLink::class,
     ];
     protected array $observers = [

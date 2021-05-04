@@ -1,12 +1,10 @@
 <?php
 
-use Domains\Links\Http\Controllers\LinksStoreController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/links', 'links::submit-link')
-    ->name('links');
+Route::view('/links', 'links::recent-links')
+    ->name('index');
 
-Route::post('/links', [
-    'as' => 'store',
-    'uses' => LinksStoreController::class,
-]);
+Route::view('/submit-link', 'links::submit-link')
+    ->name('submit-link');
+

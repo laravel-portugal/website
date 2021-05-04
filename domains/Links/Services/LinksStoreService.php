@@ -20,7 +20,7 @@ class LinksStoreService
         $user = Auth::user();
 
         $link = $this->link->create([
-            'link' => $data->link,
+            'link' => $data->website,
             'title' => $data->title,
             'description' => $data->description,
             'author_name' => $user->name ?? $data->author_name,
@@ -28,6 +28,6 @@ class LinksStoreService
             'cover_image' => $data->cover_image,
         ]);
 
-        $link->tags()->attach(collect($data->tags)->pluck('id'));
+        $link->tags()->attach($data->tags);
     }
 }

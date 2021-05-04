@@ -3,45 +3,30 @@
 namespace Domains\Links\Tests\Feature;
 
 use Domains\Links\Database\Factories\LinkFactory;
+use Domains\Links\Http\Livewire\RecentLinks;
+use Domains\Links\Models\Link;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class LinksIndexTest extends TestCase
 {
     use DatabaseMigrations;
 
+    const DUMMY_LINKS = 20;
+
     protected function setUp(): void
     {
         parent::setUp();
 
-        LinkFactory::times(20)->approved()->create();
+        LinkFactory::times(self::DUMMY_LINKS)->approved()->create();
     }
 
     /** @test */
     public function it_lists_resources(): void
     {
-        $this->get('/links')
-            ->assertJsonStructure([
-                'data' => [
-                    [
-                        'id',
-                        'link',
-                        'title',
-                        'description',
-                        'cover_image',
-                        'author_name',
-                        'author_email',
-                        'created_at',
-                    ],
-                ],
-                'links' => [
-                    'first',
-                    'last',
-                    'prev',
-                    'next',
-                ],
-            ])
-            ->assertOk();
+        Livewire::test(RecentLinks::class)
+            ->assertSee(Link::all()[rand(0,self::DUMMY_LINKS)]->title);
     }
 
     /** @test */
