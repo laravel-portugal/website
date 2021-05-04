@@ -26,43 +26,15 @@ class LinksIndexTest extends TestCase
     public function it_lists_resources(): void
     {
         Livewire::test(RecentLinks::class)
-            ->assertSee(Link::all()[rand(0,self::DUMMY_LINKS)]->title);
+            ->assertCount('links', min((new Link())->getPerPage(), self::DUMMY_LINKS));
     }
 
     /** @test */
     public function it_includes_tags_relation(): void
     {
-        $response = $this->get('/links?include=tags')
-            ->assertJsonStructure([
-                'data' => [
-                    [
-                        'tags',
-                    ],
-                ],
-            ]);
+        $links = Livewire::test(RecentLinks::class)
+            ->get('links');
 
-        $response->assertOk();
-
-        self::assertCount(1, $response->json()['data'][0]['tags']);
-    }
-
-    /** @test */
-    public function it_doesnt_include_relations_if_not_required(): void
-    {
-        $response = $this->get('/links');
-
-        $response->assertOk();
-
-        self::assertArrayNotHasKey('tags', $response->json()['data'][0]);
-    }
-
-    /** @test */
-    public function it_supports_pagination_navigation(): void
-    {
-        $response = $this->get('/links?page=2');
-
-        $response->assertOk();
-
-        self::assertEquals(2, $response->json()['meta']['current_page']);
+        self::assertCount(1, $links[0]['tags']);
     }
 }

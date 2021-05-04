@@ -15,7 +15,10 @@ class RecentLinks extends Component
 
     public function mount(): void
     {
-        $this->links = app(LinksRecentService::class)()->items() ?? [];
+        $this->links = app(LinksRecentService::class)
+            ->with(['tags'])
+            ->__invoke()
+            ->items();
     }
 
     public function render(): View
