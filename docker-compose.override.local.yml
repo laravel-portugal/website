@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  website:
+    build:
+      context: .
+    labels:
+      - traefik.http.routers.website.rule=Host(`website.laravel.pt.test`)
+      - traefik.http.routers.website.tls=true
+    volumes:
+      - ./:/var/www/html
