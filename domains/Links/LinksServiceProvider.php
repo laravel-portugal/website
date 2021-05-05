@@ -2,30 +2,25 @@
 
 namespace Domains\Links;
 
+use App\Providers\BaseServiceProvider;
+use Domains\Links\Http\Livewire\RecentLinks;
+use Domains\Links\Http\Livewire\SubmitLink;
 use Domains\Links\Models\Link;
-use Domains\Links\Observers\LinkObserver;
-use Domains\Links\Policies\LinkPolicy;
-use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\ServiceProvider;
+use Domains\Links\Models\Observers\LinkObserver;
 
-class LinksServiceProvider extends ServiceProvider
+class LinksServiceProvider extends BaseServiceProvider
 {
-    public function boot(): void
-    {
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
-        $this->bootRoutes();
-        $this->bootPolicies();
-    }
+    protected array $livewireComponents = [
+        'link' => Link::class,
+        'recent-links' => RecentLinks::class,
+        'submit-link' => SubmitLink::class,
+    ];
+    protected array $observers = [
+        Link::class => LinkObserver::class,
+    ];
 
-    private function bootRoutes(): void
+    public static function getName(): string
     {
-        Route::middleware('api')
-            ->group(__DIR__ . '/routes.php');
-    }
-
-    private function bootPolicies(): void
-    {
-        Gate::policy(Link::class, LinkPolicy::class);
+        return 'links';
     }
 }

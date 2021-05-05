@@ -5,15 +5,15 @@ namespace Domains\Links\Tests\Feature;
 use Domains\Accounts\Database\Factories\UserFactory;
 use Domains\Accounts\Enums\AccountTypeEnum;
 use Domains\Links\Database\Factories\LinkFactory;
-use Domains\Links\Models\Link;
+use Domains\Links\Http\Livewire\SubmitLink;
 use Domains\Tags\Database\Factories\TagFactory;
 use Domains\Tags\Models\Tag;
 use Faker\Factory;
 use Faker\Generator;
-use Illuminate\Http\Response;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Livewire\Livewire;
 use Tests\TestCase;
 
 class LinksStoreLimitTest extends TestCase
@@ -55,29 +55,29 @@ class LinksStoreLimitTest extends TestCase
             ->create();
 
         // prepare the requests' payload and files
+        $this->files = [
+            'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
+        ];
         $this->payload = [
-            'link' => $this->faker->url,
+            'website' => $this->faker->url,
             'title' => $this->faker->title,
             'description' => $this->faker->paragraph,
             'author_name' => $this->faker->name,
             'author_email' => $this->authorEmail,
-            'tags' => [
-                ['id' => $this->tag->id],
-            ],
-        ];
-
-        $this->files = [
-            'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
+            'tags' => [$this->tag->id],
+            'photo' => $this->files['cover_image'],
         ];
     }
 
     /** @test */
     public function it_fails_to_store_links_when_exceeding_unapproved_limit(): void
     {
-        $response = $this->call('POST', route('links.store'), $this->payload, [], $this->files);
+        Livewire::test(SubmitLink::class)
+            ->set($this->payload)
+            ->call('submit');
 
-        self::assertEquals(Response::HTTP_TOO_MANY_REQUESTS, $response->getStatusCode());
-        self::assertEquals($this->limit, Link::count());
+        // no new Link was created.
+        $this->assertDatabaseCount('links', $this->limit);
     }
 
     /** @test */
@@ -86,20 +86,24 @@ class LinksStoreLimitTest extends TestCase
         // use another author_email
         $this->payload['author_email'] = $this->faker->safeEmail;
 
-        $response = $this->call('POST', route('links.store'), $this->payload, [], $this->files);
+        Livewire::test(SubmitLink::class)
+            ->set($this->payload)
+            ->call('submit');
 
-        self::assertEquals(Response::HTTP_NO_CONTENT, $response->getStatusCode());
-        self::assertEquals($this->limit + 1, Link::count());
+        // 1 new Link was created.
+        $this->assertDatabaseCount('links', $this->limit + 1);
     }
 
     /** @test */
     public function it_stores_links_above_unapproved_limit_when_user_is_trusted(): void
     {
-        $response = $this->actingAs(UserFactory::new()->trusted()->make())
-            ->call('POST', route('links.store'), $this->payload, [], $this->files);
+        $this->actingAs(UserFactory::new()->trusted()->make());
 
-        self::assertEquals(Response::HTTP_NO_CONTENT, $response->getStatusCode());
-        self::assertEquals($this->limit + 1, Link::count());
+        Livewire::test(SubmitLink::class)
+            ->set($this->payload)
+            ->call('submit');
+
+        $this->assertDatabaseCount('links', $this->limit + 1);
     }
 
     /**
@@ -110,11 +114,12 @@ class LinksStoreLimitTest extends TestCase
      */
     public function it_stores_links_above_unapproved_limit_when_user_has_unrestricted_role(string $role): void
     {
-        $response = $this->actingAs(UserFactory::new()->withRole($role)->make())
-            ->call('POST', route('links.store'), $this->payload, [], $this->files);
+        $this->actingAs(UserFactory::new()->withRole($role)->make());
 
-        self::assertEquals(Response::HTTP_NO_CONTENT, $response->getStatusCode());
+        Livewire::test(SubmitLink::class)
+            ->set($this->payload)
+            ->call('submit');
 
-        self::assertEquals($this->limit + 1, Link::count());
+        $this->assertDatabaseCount('links', $this->limit + 1);
     }
 }

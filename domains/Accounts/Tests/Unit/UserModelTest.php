@@ -2,10 +2,10 @@
 
 namespace Domains\Accounts\Tests\Unit;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Domains\Accounts\Database\Factories\UserFactory;
 use Domains\Accounts\Enums\AccountTypeEnum;
-use Domains\Accounts\Models\User;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Tests\TestCase;
 

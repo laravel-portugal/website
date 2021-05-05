@@ -166,8 +166,8 @@ return [
          * Package Service Providers...
          */
         Domains\Accounts\AccountsServiceProvider::class,
-//        Domains\Discussions\DiscussionsServiceProvider::class,
-//        Domains\Links\LinksServiceProvider::class,
+        Domains\Discussions\DiscussionsServiceProvider::class,
+        Domains\Links\LinksServiceProvider::class,
         Domains\Tags\TagsServiceProvider::class,
 
         /*
@@ -178,6 +178,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        App\Providers\JetstreamServiceProvider::class,
 
     ],
 

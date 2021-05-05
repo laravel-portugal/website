@@ -2,8 +2,8 @@
 
 namespace Domains\Discussions\Tests\Unit;
 
+use App\Models\User;
 use Carbon\Carbon;
-use Domains\Accounts\Models\User;
 use Domains\Discussions\Database\Factories\QuestionFactory;
 use Domains\Discussions\Models\Question;
 use Illuminate\Database\Eloquent\SoftDeletingScope;

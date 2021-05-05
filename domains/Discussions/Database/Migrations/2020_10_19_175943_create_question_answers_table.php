@@ -1,6 +1,6 @@
 <?php
 
-use Domains\Accounts\Models\User;
+use App\Models\User;
 use Domains\Discussions\Models\Question;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

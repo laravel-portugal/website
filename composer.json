@@ -12,8 +12,14 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.12",
-        "tymon/jwt-auth": "^1.0",
-        "laravel/tinker": "^2.5"
+        "laravel/jetstream": "^2.3",
+        "laravel/sanctum": "^2.6",
+        "laravel/tinker": "^2.5",
+        "laravolt/avatar": "^4.1",
+        "livewire/livewire": "^2.0",
+        "spatie/browsershot": "^3.45",
+        "spatie/data-transfer-object": "^3.1",
+        "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

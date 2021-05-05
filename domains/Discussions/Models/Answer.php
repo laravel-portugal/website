@@ -2,7 +2,6 @@
 
 namespace Domains\Discussions\Models;
 
-use Domains\Accounts\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -17,7 +16,7 @@ class Answer extends Model
 
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class)
+        return $this->belongsTo(\App\Models\User::class)
             ->withTrashed();
     }
 

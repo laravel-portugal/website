@@ -2,19 +2,12 @@
 
 namespace Domains\Tags;
 
-use Illuminate\Support\ServiceProvider;
+use App\Providers\BaseServiceProvider;
 
-class TagsServiceProvider extends ServiceProvider
+class TagsServiceProvider extends BaseServiceProvider
 {
-    public function boot(): void
+    public static function getName(): string
     {
-        $this->loadMigrationsFrom(__DIR__ . '/Database/Migrations');
-
-        $this->bootRoutes();
-    }
-
-    private function bootRoutes(): void
-    {
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
+        return 'tags';
     }
 }

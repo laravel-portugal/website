@@ -2,13 +2,13 @@
 
 namespace Domains\Discussions\Tests\Feature;
 
+use App\Models\User;
 use Domains\Accounts\Database\Factories\UserFactory;
-use Domains\Accounts\Models\User;
 use Faker\Factory;
 use Faker\Generator;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
 use Illuminate\Support\Str;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class QuestionsStoreTest extends TestCase

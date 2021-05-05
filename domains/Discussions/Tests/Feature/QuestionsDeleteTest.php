@@ -2,16 +2,16 @@
 
 namespace Domains\Discussions\Tests\Feature;
 
+use App\Models\User;
 use Domains\Accounts\Database\Factories\UserFactory;
 use Domains\Accounts\Enums\AccountTypeEnum;
-use Domains\Accounts\Models\User;
 use Domains\Discussions\Database\Factories\QuestionFactory;
 use Domains\Discussions\Models\Question;
 use Faker\Factory;
 use Faker\Generator;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class QuestionsDeleteTest extends TestCase

@@ -2,16 +2,16 @@
 
 namespace Domains\Discussions\Tests\Feature;
 
+use App\Models\User;
 use Domains\Accounts\Database\Factories\UserFactory;
 use Domains\Discussions\Database\Factories\AnswerFactory;
-use Domains\Accounts\Models\User;
 use Domains\Discussions\Models\Answer;
 use Domains\Discussions\Models\Question;
 use Faker\Factory;
 use Faker\Generator;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
 
 class AnswersUpdateTest extends TestCase
