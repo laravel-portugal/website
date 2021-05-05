@@ -5,9 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-logo/>
-                    </a>
+                    <x-logo/>
                 </div>
 
                 <!-- Navigation Links -->

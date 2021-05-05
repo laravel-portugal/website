@@ -32,7 +32,7 @@
         </header>
 @endif
 
-<!-- Page Content -->
+    <!-- Page Content -->
     <main class="py-4 sm:py-8">
         {{ $slot }}
     </main>
