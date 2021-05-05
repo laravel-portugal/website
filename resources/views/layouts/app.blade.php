@@ -18,13 +18,10 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    <body class="font-sans antialiased min-h-screen bg-gray-100">
+        <div class="">
 
-        <div class="min-h-screen bg-gray-100">
-            @auth
-                @livewire('navigation-menu')
-            @endauth
+            @livewire('navigation-menu')
 
             <!-- Page Heading -->
             @if (isset($header))
