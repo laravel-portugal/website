@@ -31,7 +31,10 @@
                 @endif
             @endif
 
-            <div class="text-md text-gray-700">{{ $question->author->name }}</div>
+            <div class="ml-auto text-md text-gray-700 {{
+                $question->author->is(Auth::user()) ? 'font-bold' : '' }}">
+                {{ $question->author->name }}
+            </div>
             <div class="text-sm mt-1 text-gray-700">{{ trans_choice(':count answer|:count answers', $question->answers_count) }}</div>
         </div>
         <div>
