@@ -86,15 +86,17 @@
                     >
                 </x-form-field>
 
-                <x-form-field label="Nome" id="author_name">
-                    <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
-                           wire:model.defer="author_name">
-                </x-form-field>
+                @guest
+                    <x-form-field label="Nome" id="author_name">
+                        <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                               wire:model.defer="author_name">
+                    </x-form-field>
 
-                <x-form-field label="e-mail" id="author_email">
-                    <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
-                           wire:model.defer="author_email">
-                </x-form-field>
+                    <x-form-field label="e-mail" id="author_email">
+                        <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                               wire:model.defer="author_email">
+                    </x-form-field>
+                @endguest
 
                 <x-form-field label="Descrição" id="description">
                     <textarea id="description" rows="3"
