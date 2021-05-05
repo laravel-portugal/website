@@ -9,8 +9,12 @@ use Livewire\Component;
 
 class Question extends Component
 {
-    public ?QuestionModel $question;
+    public QuestionModel $question;
     public ?bool $editMode = false;
+    protected $rules = [
+        'question.title' => 'required|string|min:6',
+        'question.description' => 'required|string|max:500',
+    ];
 
     public function mount(QuestionModel $question): void
     {
@@ -27,8 +31,16 @@ class Question extends Component
         $this->editMode = !$this->editMode;
     }
 
+    public function cancelEdit(): void
+    {
+        $this->editMode = !$this->editMode;
+        $this->question->refresh();
+    }
+
     public function save(): void
     {
-        $this->question->save();
+        if ($this->question->save()) {
+            $this->editMode = false;
+        }
     }
 }
