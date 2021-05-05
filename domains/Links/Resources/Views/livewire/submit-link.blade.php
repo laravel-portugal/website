@@ -86,15 +86,17 @@
                     >
                 </x-form-field>
 
-                <x-form-field label="Nome" id="author_name">
-                    <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
-                           wire:model.defer="author_name">
-                </x-form-field>
+                @guest
+                    <x-form-field label="Nome" id="author_name">
+                        <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                               wire:model.defer="author_name">
+                    </x-form-field>
 
-                <x-form-field label="e-mail" id="author_email">
-                    <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
-                           wire:model.defer="author_email">
-                </x-form-field>
+                    <x-form-field label="e-mail" id="author_email">
+                        <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                               wire:model.defer="author_email">
+                    </x-form-field>
+                @endguest
 
                 <x-form-field label="Descrição" id="description">
                     <textarea id="description" rows="3"
@@ -130,41 +132,22 @@
                 @error('tags')
                 <div class="mx-0.5 my-1 text-red-600"> {{ $message }} </div> @enderror
 
-                <div class="border-t border-gray-200 mt-10 py-5 mx-auto">
-                    <div class="flex justify-start">
-                        <span class="inline-flex rounded-md shadow-sm">
-                            <button
-                                    type="button"
-                                    class="py-2 px-4 border border-gray-300 rounded-md text-sm leading-5
-                                       font-medium text-gray-700 hover:text-gray-500 focus:outline-none
-                                       focus:border-blue-300 focus:shadow-outline-blue active:bg-gray-50
-                                       active:text-gray-800 transition duration-150 ease-in-out"
-                            >
-                                Cancel
-                            </button>
-                        </span>
+                <div class="border-t border-gray-200 mt-10 pt-5 mx-auto">
+                    <div class="flex justify-end">
                         <span class="ml-3 inline-flex rounded-md shadow-sm">
-                            <button wire:loading.attr="disabled"
-                                    type="submit"
-                                    id="submit"
-                                    class="inline-flex justify-center py-2 px-4 border border-transparent
-                                        text-sm leading-5 font-medium rounded-md text-white bg-red-600
-                                        hover:bg-red-500 focus:outline-none focus:border-red-700
-                                        focus:shadow-outline-red active:bg-indigo-700 transition duration-150
-                                         ease-in-out disabled:bg-red-300 disabled:cursor-not-allowed"
-                            >
+                            <x-button wire:loading.attr="disabled"
+                                      type="submit"
+                                      id="submit">
                                 Save
-                            </button>
+                            </x-button>
                         </span>
                     </div>
                 </div>
                 <div wire:loading>
                     Em submissão
                 </div>
-                <pre>
-                    @isset($response['status']) {{ $response['status'] }} @endisset
-                    @isset($response['message']) {{ $response['message'] }} @endisset
-                </pre>
+                <pre>@isset($response['status']) {{ $response['status'] }} @endisset</pre>
+                <pre>@isset($response['message']) {{ $response['message'] }} @endisset</pre>
             </div>
         </div>
     </form>

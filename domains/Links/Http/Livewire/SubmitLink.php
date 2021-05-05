@@ -54,6 +54,8 @@ class SubmitLink extends Component
     public function mount(): void
     {
         $this->availableTags = (new TagsIndexService())();
+        $this->author_email = Auth::user()?->email;
+        $this->author_name = Auth::user()?->name;
     }
 
     public function updatedWebsite(): void
