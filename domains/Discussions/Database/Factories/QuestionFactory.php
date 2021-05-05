@@ -15,7 +15,7 @@ class QuestionFactory extends Factory
     {
         return [
             'author_id' => UserFactory::new(),
-            'title' => $this->faker->title,
+            'title' => $this->faker->catchPhrase,
             'description' => $this->faker->paragraph,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

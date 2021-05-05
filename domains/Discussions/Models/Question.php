@@ -47,7 +47,7 @@ class Question extends Model
         return $query->whereNotNull('resolved_at');
     }
 
-    public function scopeNonResolved(Builder $query): Builder
+    public function scopeUnResolved(Builder $query): Builder
     {
         return $query->whereNull('resolved_at');
     }
