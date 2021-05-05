@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-app-layout>
 
     <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
         <x-hero></x-hero>
@@ -9,4 +9,4 @@
         </div>
     </main>
 
-</x-guest-layout>
+</x-app-layout>
