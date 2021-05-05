@@ -13,8 +13,8 @@ class Question extends Model
     use SoftDeletes;
 
     protected $fillable = ['title', 'description'];
-
     protected $dates = ['resolved_at'];
+    protected $withCount = ['answers'];
 
     public function author(): BelongsTo
     {
@@ -34,7 +34,7 @@ class Question extends Model
 
     public function scopeFindByTitle(Builder $query, string $term): Builder
     {
-        return $query->where('title', 'like', '%'.strtoupper($term).'%');
+        return $query->where('title', 'like', '%' . strtoupper($term) . '%');
     }
 
     public function scopeFindByCreatedDate(Builder $query, array $term): Builder
