@@ -18,7 +18,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="font-sans antialiased min-h-screen bg-gray-100">
+<body class="font-sans antialiased min-h-screen bg-gray-50">
 <div class="">
 
     @livewire('navigation-menu')
@@ -35,7 +35,7 @@
         </header>
 @endif
 
-    <!-- Page Content -->
+<!-- Page Content -->
     <main>
         {{ $slot }}
     </main>
