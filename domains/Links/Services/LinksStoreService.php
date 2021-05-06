@@ -9,7 +9,7 @@ use Illuminate\Validation\ValidationException;
 
 class LinksStoreService
 {
-    public array $inputs;
+    protected array $inputs;
 
     public function withInputs(
         string $link,
@@ -30,6 +30,23 @@ class LinksStoreService
         return $this;
     }
 
+    /**
+     * @throws ValidationException
+     */
+    public function __invoke(): ?Link
+    {
+        $this->validate();
+
+        $link = Link::create($this->inputs);
+        if (!$link) {
+            return null;
+        }
+
+        $link->tags()->attach($this->inputs['tags']);
+
+        return $link;
+    }
+
     public function getRules(): array
     {
         return [
@@ -43,15 +60,19 @@ class LinksStoreService
         ];
     }
 
-    /**
-     * @throws ValidationException
-     */
-    public function __invoke()
+    public function getMessages(): array
     {
-        $this->validate();
-
-        $link = Link::create($this->inputs);
-        $link->tags()->attach($this->inputs['tags']);
+        return [
+            'link.required' => 'É necessário indicar um endereço URL.',
+            'link.url' => 'O endereço URL tem de ter a forma <protocolo>://<host><uri>, por exemplo https://www.google.com',
+            'link.active_url' => 'O servidor/hostname indicado no endereço URL não existe.',
+            'title.required' => 'É necessário indicar um título para o registo.',
+            'name.required' => 'É necessário indicar um nome para associar ao registo.',
+            'email.required' => 'É necessário indicar um e-mail para associar ao registo.',
+            'email.email' => 'O e-mail tem de ser válido.',
+            'description.required' => 'Coloque uma descrição no registo.',
+            'tags.required' => 'Classifique o registo com uma etiqueta.',
+        ];
     }
 
     /**
@@ -59,7 +80,7 @@ class LinksStoreService
      */
     protected function validate(): void
     {
-        Validator::make($this->inputs, $this->getRules())
+        Validator::make($this->inputs, $this->getRules(), $this->getMessages())
             ->validated();
     }
 }

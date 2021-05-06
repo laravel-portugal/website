@@ -23,6 +23,9 @@
 
     @livewire('navigation-menu')
 
+    <!-- Flash Messages -->
+    <x-messages/>
+
     <!-- Page Heading -->
     @if (isset($header))
         <header class="bg-white shadow">
@@ -33,7 +36,7 @@
 @endif
 
     <!-- Page Content -->
-    <main class="py-4 sm:py-8">
+    <main>
         {{ $slot }}
     </main>
 </div>
