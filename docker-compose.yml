@@ -1,0 +1,18 @@
+version: "3.7"
+
+networks:
+  web:
+    external: true
+
+services:
+  website:
+    image: ${REGISTRY_HOST}/website:${TAG:-latest}
+    networks: [web]
+    ports: ["8000:80"]
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.website.rule=Host(`${TRAEFIK_HOST}`)"
+      - "traefik.http.routers.website.tls=true"
+      - "traefik.http.routers.website.entrypoints=https"
+      - "traefik.http.routers.website.service=website"
+      - "traefik.http.services.website.loadbalancer.server.port=80"
