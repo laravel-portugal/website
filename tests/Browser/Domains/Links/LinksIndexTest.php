@@ -17,7 +17,7 @@ class LinksIndexTest extends DuskTestCase
 
         $this->browse(function ($browser) use ($links) {
             $browser->visit('/links')
-                ->assertSee('Links recentes');
+                ->assertSee('Links Recentes');
 
             foreach ($links as $link) {
                 $browser->assertSee($link->title);

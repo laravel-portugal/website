@@ -38,7 +38,7 @@ class SubmitLink extends Component
     /**
      * @throws ValidationException
      */
-    public function updatedWebsite(): void
+    public function updatedLink(): void
     {
         $this->validateOnly('link');
     }
