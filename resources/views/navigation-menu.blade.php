@@ -19,6 +19,10 @@
                     <x-jet-nav-link href="{{ route('links::submit') }}" :active="request()->routeIs('links::submit')">
                         {{ __('Submit link') }}
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('discussions::index') }}"
+                                    :active="request()->routeIs('discussions::index')">
+                        {{ __('Discussions') }}
+                    </x-jet-nav-link>
                 </div>
             </div>
 

@@ -1,0 +1,14 @@
+{
+  "name": "vendor_name/Discussions",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "tiago",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  }
+}
