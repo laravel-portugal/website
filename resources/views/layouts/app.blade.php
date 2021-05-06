@@ -33,12 +33,17 @@
                 {{ $header }}
             </div>
         </header>
-@endif
+    @endif
 
-<!-- Page Content -->
+    <!-- Page Content -->
     <main>
         {{ $slot }}
     </main>
+
+    <!-- Page Footer -->
+    <footer class="max-w-screen-xl p-4">
+
+    </footer>
 </div>
 
 @stack('modals')

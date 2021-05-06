@@ -1,12 +1,17 @@
 <x-app-layout>
+    <x-hero>
+        <x-slot name="title">
+            Submeter
+            <br class="xl:hidden">
+            <span class="text-red-600">
+                    Link
+                </span>
+        </x-slot>
+        Partilha a tua "dica" com a comunidade. A tua informação é importante para todos. Constrói a
+        comunidade LaravelPT enviando as tuas dicas mais inovadoras.
+    </x-hero>
 
-    <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
-        <x-hero></x-hero>
-        <div class="text-center">
-            <div class="max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-12 md:text-xl md:max-w-3xl">
-                <livewire:links::submit-link />
-            </div>
-        </div>
-    </main>
-
+    <div class="relative text-center mt-10 sm:mt-12 md:mt-24 lg:mt-32">
+        <livewire:links::submit-link/>
+    </div>
 </x-app-layout>
