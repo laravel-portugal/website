@@ -59,7 +59,7 @@ class LinksStoreLimitTest extends TestCase
             'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
         ];
         $this->payload = [
-            'website' => $this->faker->url,
+            'link' => $this->faker->url,
             'title' => $this->faker->title,
             'description' => $this->faker->paragraph,
             'author_name' => $this->faker->name,
