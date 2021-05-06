@@ -34,7 +34,7 @@ class LinksStoreTest extends TestCase
             'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
         ];
         $this->payload = [
-            'website' => $this->faker->url,
+            'link' => $this->faker->url,
             'title' => $this->faker->title,
             'description' => $this->faker->paragraph,
             'author_name' => $this->faker->name,
@@ -54,7 +54,7 @@ class LinksStoreTest extends TestCase
             ->call('submit');
 
         $this->assertDatabaseHas('links', [
-            'link' => $this->payload['website'],
+            'link' => $this->payload['link'],
             'title' => $this->payload['title'],
             'description' => $this->payload['description'],
             'author_name' => $this->payload['author_name'],
@@ -76,7 +76,7 @@ class LinksStoreTest extends TestCase
         Livewire::test(SubmitLink::class)
             ->call('submit')
             ->assertHasErrors([
-                'website',
+                'link',
                 'author_name',
             ]);
     }
@@ -84,18 +84,18 @@ class LinksStoreTest extends TestCase
     /** @test */
     public function it_fails_to_store_resources_with_invalid_link(): void
     {
-        $this->payload['website'] = 'some_invalid_url';
+        $this->payload['link'] = 'some_invalid_url';
 
         Livewire::test(SubmitLink::class)
             ->set($this->payload)
             ->call('submit')
-            ->assertHasErrors(['website']);
+            ->assertHasErrors(['link']);
     }
 
     /** @test */
     public function it_stores_resources_with_unregistered_link_domain(): void
     {
-        $this->payload['website'] = 'http://unregistered.laravel.pt';
+        $this->payload['link'] = 'http://unregistered.laravel.pt';
 
         Livewire::test(SubmitLink::class)
             ->set($this->payload)

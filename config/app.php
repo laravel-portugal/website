@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
         Domains\Accounts\AccountsServiceProvider::class,
-        Domains\Discussions\DiscussionsServiceProvider::class,
         Domains\Links\LinksServiceProvider::class,
         Domains\Tags\TagsServiceProvider::class,
 
