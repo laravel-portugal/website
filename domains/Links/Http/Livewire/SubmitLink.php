@@ -2,7 +2,7 @@
 
 namespace Domains\Links\Http\Livewire;
 
-use Domains\Links\DTOs\LinksStoreDTO;
+use Domains\Links\Exceptions\UnapprovedLinkLimitReachedException;
 use Domains\Links\Http\Crawlers\OpenGraphMetaCrawler;
 use Domains\Links\LinksServiceProvider;
 use Domains\Links\Services\LinksStoreService;
@@ -22,7 +22,7 @@ class SubmitLink extends Component
     public $title;
     public $author_name;
     public $author_email;
-    public $website;
+    public $link;
     public $description;
     public $tags;
     public $availableTags;
@@ -32,9 +32,9 @@ class SubmitLink extends Component
     protected OpenGraphMetaCrawler $crawler;
     protected array $config;
     protected array $messages = [
-        'website.required' => 'É necessário indicar um endereço URL.',
-        'website.url' => 'O endereço URL tem de ter a forma <protocolo>://<host><uri>, por exemplo https://www.google.com',
-        'website.active_url' => 'O servidor/hostname indicado no endereço URL não existe.',
+        'link.required' => 'É necessário indicar um endereço URL.',
+        'link.url' => 'O endereço URL tem de ter a forma <protocolo>://<host><uri>, por exemplo https://www.google.com',
+        'link.active_url' => 'O servidor/hostname indicado no endereço URL não existe.',
         'title.required' => 'É necessário indicar um título para o registo.',
         'name.required' => 'É necessário indicar um nome para associar ao registo.',
         'email.required' => 'É necessário indicar um e-mail para associar ao registo.',
@@ -61,7 +61,7 @@ class SubmitLink extends Component
     public function updatedWebsite(): void
     {
         $this->validate([
-            'website' => $this->getRules()['website'],
+            'link' => $this->getRules()['link'],
         ]);
     }
 
@@ -85,19 +85,20 @@ class SubmitLink extends Component
             $photo = $this->photo->storePublicly('cover_images');
         }
 
-        // TODO: add try/catch around the block below and show error msg in the link limit has been reached.
-        // (see LinkObserver 'saving' method)
-        (new LinksStoreService)(
-            new LinksStoreDTO([
-                'title' => $this->title,
-                'author_name' => $this->author_name,
-                'author_email' => $this->author_email,
-                'website' => $this->website,
-                'description' => $this->description,
-                'tags' => $this->tags,
-                'cover_image' => $photo ?? $this->generatedPhoto,
-            ])
-        );
+        try {
+            (new LinksStoreService)
+                ->withInputs(
+                    link: $this->link,
+                    title: $this->title,
+                    description: $this->description,
+                    author_name: $this->author_name,
+                    author_email: $this->author_email,
+                    cover_image: $photo ?? $this->generatedPhoto,
+                    tags: $this->tags,
+                )
+                ->__invoke();
+        } catch (UnapprovedLinkLimitReachedException) {
+        }
     }
 
     public function render(): View
@@ -107,21 +108,13 @@ class SubmitLink extends Component
 
     protected function getRules(): array
     {
-        return [
-            'website' => ['required', 'string', 'url'],
-            'title' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'author_name' => ['required', 'string'],
-            'author_email' => ['required', 'email', Auth::id() ? null : 'unique:users,email'],
-            'tags' => ['required', 'array'],
-            'tags.*' => ['required', 'integer', 'exists:tags,id'],
-        ];
+        return (new LinksStoreService)->getRules();
     }
 
     protected function getOGImage(): ?string
     {
         $img = $this->crawler
-            ->crawl($this->website)
+            ->crawl($this->link)
             ->getOGImage();
 
         if (!$img) {
@@ -149,7 +142,7 @@ class SubmitLink extends Component
             Storage::disk('public')
                 ->makeDirectory($this->config['storage']['path']);
 
-            Browsershot::url($this->website)
+            Browsershot::url($this->link)
                 ->dismissDialogs()
                 ->ignoreHttpsErrors()
                 ->setScreenshotType(

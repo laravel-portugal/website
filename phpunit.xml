@@ -12,9 +12,6 @@
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
 
-<!--        <testsuite name="Discussions">-->
-        <!--            <directory suffix="Test.php">./domains/Discussions/Tests</directory>-->
-        <!--        </testsuite>-->
         <testsuite name="Links">
             <directory suffix="Test.php">./domains/Links/Tests</directory>
         </testsuite>

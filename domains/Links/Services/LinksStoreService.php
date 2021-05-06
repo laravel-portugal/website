@@ -2,25 +2,64 @@
 
 namespace Domains\Links\Services;
 
-use Domains\Links\DTOs\LinksStoreDTO;
 use Domains\Links\Models\Link;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class LinksStoreService
 {
-    public function __invoke(LinksStoreDTO $data)
+    public array $inputs;
+
+    public function withInputs(
+        string $link,
+        string $title,
+        string $description,
+        ?string $author_name = null,
+        ?string $author_email = null,
+        string $cover_image,
+        array $tags,
+    ): self
     {
+        $this->inputs = get_defined_vars();
+
         $user = Auth::user();
+        $this->inputs['author_name'] = $user?->name ?? $this->inputs['author_name'];
+        $this->inputs['author_email'] = $user?->email ?? $this->inputs['author_email'];
 
-        $link = Link::create([
-            'link' => $data->website,
-            'title' => $data->title,
-            'description' => $data->description,
-            'author_name' => $user->name ?? $data->author_name,
-            'author_email' => $user->email ?? $data->author_email,
-            'cover_image' => $data->cover_image,
-        ]);
+        return $this;
+    }
 
-        $link->tags()->attach($data->tags);
+    public function getRules(): array
+    {
+        return [
+            'link' => ['required', 'string', 'url'],
+            'title' => ['required', 'string'],
+            'description' => ['required', 'string'],
+            'author_name' => ['required', 'string'],
+            'author_email' => ['required', 'email', Auth::id() ? null : 'unique:users,email'],
+            'tags' => ['required', 'array'],
+            'tags.*' => ['required', 'integer', 'exists:tags,id'],
+        ];
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function __invoke()
+    {
+        $this->validate();
+
+        $link = Link::create($this->inputs);
+        $link->tags()->attach($this->inputs['tags']);
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    protected function validate(): void
+    {
+        Validator::make($this->inputs, $this->getRules())
+            ->validated();
     }
 }
