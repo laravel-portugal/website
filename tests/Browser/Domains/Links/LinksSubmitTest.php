@@ -4,6 +4,7 @@ namespace Tests\Browser\Domains\Links;
 
 use App\Models\User;
 use Database\Factories\UserFactory;
+use Domains\Links\LinksServiceProvider;
 use Domains\Tags\Database\Factories\TagFactory;
 use Illuminate\Database\Eloquent\Collection;
 use Tests\DuskTestCase;
@@ -69,12 +70,10 @@ class LinksSubmitTest extends DuskTestCase
                 ->check('tags[' . random_int(1, $this->tags->count()) . ']')
                 ->type('#link', 'https://www.google.com')
                 ->keys('#link', '{tab}')
-                ->pause(3000)
-                ->screenshot('x1')
-                ->click('#submit')
+                ->waitForText('upload another cover image', 30)
+                ->press('#submit')
                 ->waitUntilMissing('#submit')
-                ->screenshot('x2');
-//                ->assertPathIs(route(name: LinksServiceProvider::getName() . '::index', absolute: false))
+                ->assertPathIs(route(name: LinksServiceProvider::getName() . '::index', absolute: false));
         });
     }
 }
