@@ -1,4 +1,4 @@
-name: Laravel
+name: Website testing and deployment
 
 on:
   push:
@@ -7,10 +7,8 @@ on:
     branches: [ master ]
 
 jobs:
-  laravel-tests:
-
+  testing:
     runs-on: ubuntu-latest
-
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
       with:
@@ -33,3 +31,10 @@ jobs:
         DB_CONNECTION: sqlite
         DB_DATABASE: database/database.sqlite
       run: vendor/bin/phpunit
+
+  building:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Building docker image
+        run: |
+          docker build -t pkg.laravel.pt/website
