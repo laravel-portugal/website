@@ -5,6 +5,7 @@ namespace Domains\Links\Http\Crawlers;
 use DOMDocument;
 use DOMXPath;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;
 
 class OpenGraphMetaCrawler
 {
@@ -14,7 +15,7 @@ class OpenGraphMetaCrawler
 
     public function crawl($link)
     {
-        $this->content = @file_get_contents($link);
+        $this->content = Http::get($link)->body();
 
         if (!$this->content) {
             return $this;

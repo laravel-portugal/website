@@ -1,6 +1,7 @@
 <div class="text-left" xmlns:wire="http://www.w3.org/1999/xhtml">
     <form
             x-data="{ adding: false, removing: false }"
+            x-on:link-updated.window="$wire.generateCoverImage()"
             wire:submit.prevent="submit"
             autocomplete="off"
     >
@@ -19,12 +20,6 @@
                             <div class="relative mt-2 flex justify-center items-center w-full h-64 rounded-md shadow-inner border border-gray-200">
                                 <input id="file" type="file" class="hidden" accept="image/*" x-ref="photo"
                                        wire:model="photo">
-
-                                <div wire:init="generateCoverImage" wire:loading wire:target="generateCoverImage">
-                                    <div class="flex items-center justify-center absolute inset-0 bg-white bg-opacity-75 m-8 p-8">
-                                        <span class="text-center">Generating the cover image...</span>
-                                    </div>
-                                </div>
 
                                 @if ($photo)
                                     <div wire:key="photo"
@@ -70,6 +65,12 @@
                                         </div>
                                     </div>
                                 @endif
+
+                                <div wire:loading wire:target="generateCoverImage">
+                                    <div class="flex items-center justify-center absolute inset-0 bg-white bg-opacity-75 m-8 p-8">
+                                        <span class="text-center">Generating the cover image...</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </x-form-field>
