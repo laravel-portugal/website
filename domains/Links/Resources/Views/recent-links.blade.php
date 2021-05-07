@@ -1,9 +1,14 @@
 <x-app-layout>
-    <div class="relative bg-gray-50 pt-16 pb-20 px-4 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
-        <div class="absolute inset-0">
-            <div class="bg-white h-1/3 sm:h-2/3"></div>
-        </div>
+    <x-hero>
+        <x-slot name="title">
+            <span class="text-red-600">Links</span>
+            <br class="xl:hidden">
+            Recentes
+        </x-slot>
+        As dicas mais inovadoras, criadas pela comunidade, para a comunidade.
+    </x-hero>
 
+    <div class="relative mx-auto max-w-screen-2xl mt-10 px-2 sm:mt-12 sm:px-4 md:mt-24 md:px-8 lg:mt-32">
         <livewire:links::recent-links/>
     </div>
 </x-app-layout>

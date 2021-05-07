@@ -38,9 +38,10 @@ class SubmitLink extends Component
     /**
      * @throws ValidationException
      */
-    public function updatedWebsite(): void
+    public function updatedLink(): void
     {
         $this->validateOnly('link');
+        $this->dispatchBrowserEvent('link-updated');
     }
 
     public function generateCoverImage(): void
@@ -48,8 +49,6 @@ class SubmitLink extends Component
         $this->generatedPhoto = (new LinksCoverImageService())
             ->forLink($this->link)
             ->__invoke();
-
-        $this->emit('photo:update');
     }
 
     public function clearPhoto(): void
@@ -63,7 +62,7 @@ class SubmitLink extends Component
 
         if ($this->photo) {
             // if it is a user-uploaded photo, we store it at this point.
-            $photo = $this->photo->storePublicly('cover_images');
+            $photo = $this->photo->storePublicly(config('laravel-portugal.links.storage.path'));
         }
 
         try {

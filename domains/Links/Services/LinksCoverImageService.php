@@ -3,6 +3,7 @@
 namespace Domains\Links\Services;
 
 use Domains\Links\Http\Crawlers\OpenGraphMetaCrawler;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Browsershot\Browsershot;
 
@@ -41,10 +42,9 @@ class LinksCoverImageService
         }
 
         $targetFile = $this->config['storage']['path'] . '/' . uniqid('', true) . '.' . $this->config['cover_image']['format'];
-        $targetPath = Storage::disk('public')->path($targetFile);
         try {
             Storage::disk('public')->makeDirectory($this->config['storage']['path']);
-            Storage::disk('public')->put($targetPath, file_get_contents($img));
+            Storage::disk('public')->put($targetFile, file_get_contents($img));
 
             return $targetFile;
         } catch (\Exception) {

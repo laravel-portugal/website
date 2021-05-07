@@ -9,11 +9,13 @@
     <div class="flex-1 bg-white p-6 flex flex-col justify-between">
         <div class="flex-1">
             <p class="text-sm leading-5 font-medium text-red-600">
-                <a href="{{ route('tags::tag.links', [ 'tag' => 'blog']) }}" class="hover:underline">
-                    Blog
-                </a>
+                @foreach($link->tags as $tag)
+                    <a href="{{ route('tags::tag.links', [ 'tag' => $tag->id]) }}" class="hover:underline">
+                        {{ $tag->name }}
+                    </a>
+                @endforeach
             </p>
-            <a href="#" class="block">
+            <a target="_blank" href="{{ $link->link }}" class="block">
                 <h3 class="mt-2 text-xl leading-7 font-semibold text-gray-900">
                     {{ $link['title'] }}
                 </h3>
@@ -24,7 +26,7 @@
         </div>
         <div class="mt-6 flex items-center">
             <div class="flex-shrink-0">
-                <a href="#">
+                <a href="{{ route('accounts::user.links', [ 'username' => urlencode($link->author_email)]) }}">
                     <img
                             class="h-10 w-10 rounded-full"
                             src="{{ ($gravatar) ?? Avatar::create( $link['author_name'] )->toBase64() }}"
@@ -33,7 +35,7 @@
             </div>
             <div class="ml-3">
                 <p class="text-sm leading-5 font-medium text-gray-900">
-                    <a href="{{ route('accounts::user.links', [ 'username' => 'my_username']) }}"
+                    <a href="{{ route('accounts::user.links', [ 'username' => urlencode($link->author_email)]) }}"
                        class="hover:underline">
                         {{ $link['author_name']}}
                     </a>

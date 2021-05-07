@@ -2,7 +2,7 @@
 
 namespace Domains\Links\Tests\Feature;
 
-use Domains\Accounts\Database\Factories\UserFactory;
+use Database\Factories\UserFactory;
 use Domains\Links\Http\Livewire\SubmitLink;
 use Domains\Tags\Database\Factories\TagFactory;
 use Domains\Tags\Models\Tag;

@@ -2,7 +2,7 @@
 
 namespace Domains\Links\Tests\Feature;
 
-use Domains\Accounts\Database\Factories\UserFactory;
+use Database\Factories\UserFactory;
 use Domains\Accounts\Enums\AccountTypeEnum;
 use Domains\Links\Database\Factories\LinkFactory;
 use Domains\Links\Http\Livewire\SubmitLink;

@@ -18,7 +18,7 @@
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
-<body class="font-sans antialiased min-h-screen bg-gray-100">
+<body class="font-sans antialiased min-h-screen bg-gray-50">
 <div class="">
 
     @livewire('navigation-menu')
@@ -33,12 +33,17 @@
                 {{ $header }}
             </div>
         </header>
-@endif
+    @endif
 
     <!-- Page Content -->
     <main>
         {{ $slot }}
     </main>
+
+    <!-- Page Footer -->
+    <footer class="max-w-screen-xl p-4">
+
+    </footer>
 </div>
 
 @stack('modals')

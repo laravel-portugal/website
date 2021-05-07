@@ -1,42 +1,33 @@
 <div class="text-left" xmlns:wire="http://www.w3.org/1999/xhtml">
     <form
             x-data="{ adding: false, removing: false }"
-            x-init="Livewire.on('photo:update', () => window.App.Events.photoGenerated = true)"
+            x-on:link-updated.window="$wire.generateCoverImage()"
             wire:submit.prevent="submit"
             autocomplete="off"
     >
         <div class="sm:mx-auto sm:w-full sm:max-w-2xl">
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-base">
                 <x-form-field id="link" label="Endereço URL">
-                    <input
-                            id="link"
-                            class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out text-xl"
-                            placeholder="http://www.host.tld"
-                            wire:model.lazy="link"
+                    <input id="link"
+                           class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out text-xl"
+                           placeholder="http://www.host.tld"
+                           wire:model.lazy="link"
                     >
                 </x-form-field>
                 @if ($link && !$errors->get('link'))
                     <x-form-field label="Image Preview">
                         <div class="mt-1 flex-col rounded-md">
-                            <div
-                                    class="relative mt-2 flex justify-center items-center w-full h-64 rounded-md shadow-inner border border-gray-200">
-                                <input type="file" class="hidden" accept="image/*" x-ref="photo" wire:model="photo">
-
-                                <div wire:init="generateCoverImage" wire:loading wire:target="generateCoverImage">
-                                    <div
-                                            class="flex items-center justify-center absolute inset-0 bg-white bg-opacity-75 m-8 p-8">
-                                        <span class="text-center">Generating the cover image...</span>
-                                    </div>
-                                </div>
+                            <div class="relative mt-2 flex justify-center items-center w-full h-64 rounded-md shadow-inner border border-gray-200">
+                                <input id="file" type="file" class="hidden" accept="image/*" x-ref="photo"
+                                       wire:model="photo">
 
                                 @if ($photo)
                                     <div wire:key="photo"
                                          class="absolute inset-0 block bg-cover bg-no-repeat bg-center group">
                                         <img class="rounded-md h-full w-full object-cover"
                                              src="{{ $photo->temporaryUrl() }}"/>
-                                        <div
-                                                class="opacity-0 group-hover:opacity-100 flex items-center justify-center absolute top-0 right-0 rounded-full bg-red-700 shadow-lg leading-none w-8 h-8 mr-2 mt-2 cursor-pointer transition-opacity duration-300"
-                                                wire:click.stop="clearPhoto()">
+                                        <div class="opacity-0 group-hover:opacity-100 flex items-center justify-center absolute top-0 right-0 rounded-full bg-red-700 shadow-lg leading-none w-8 h-8 mr-2 mt-2 cursor-pointer transition-opacity duration-300"
+                                             wire:click.stop="clearPhoto()">
                                             <span class="font-black text-white">X</span>
                                         </div>
                                     </div>
@@ -74,12 +65,18 @@
                                         </div>
                                     </div>
                                 @endif
+
+                                <div wire:loading wire:target="generateCoverImage">
+                                    <div class="flex items-center justify-center absolute inset-0 bg-white bg-opacity-75 m-8 p-8">
+                                        <span class="text-center">Generating the cover image...</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </x-form-field>
                 @endif
 
-                <x-form-field label="Titulo" id="title">
+                <x-form-field label="Título" id="title">
                     <input id="title"
                            class="form-input block w-full transition duration-150 ease-in-out text-xl"
                            wire:model.defer="title"
@@ -88,12 +85,14 @@
 
                 @guest
                     <x-form-field label="Nome" id="author_name">
-                        <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                        <input id="author_name"
+                               class="form-input block w-full transition duration-150 ease-in-out text-xl"
                                wire:model.defer="author_name">
                     </x-form-field>
 
                     <x-form-field label="e-mail" id="author_email">
-                        <input class="form-input block w-full transition duration-150 ease-in-out text-xl"
+                        <input id="author_email"
+                               class="form-input block w-full transition duration-150 ease-in-out text-xl"
                                wire:model.defer="author_email">
                     </x-form-field>
                 @endguest
