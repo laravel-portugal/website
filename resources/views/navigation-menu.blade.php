@@ -19,16 +19,12 @@
                     <x-jet-nav-link href="{{ route('links::submit') }}" :active="request()->routeIs('links::submit')">
                         {{ __('Submit link') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('discussions::index') }}"
-                                    :active="request()->routeIs('discussions::index')">
-                        {{ __('Discussions') }}
-                    </x-jet-nav-link>
                 </div>
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
-                @auth
-                    <!-- Teams Dropdown -->
+            @auth
+                <!-- Teams Dropdown -->
                     @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                         <div class="ml-3 relative">
                             <x-jet-dropdown align="right" width="60">
