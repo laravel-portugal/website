@@ -1,4 +1,6 @@
-<div class="pb-6">
+<div {{ $attributes->merge([
+    'class' => 'pb-6'
+]) }}>
     <label @isset($id) for="{{ $id }}" @endisset class="block m-0.5 text-gray-700 uppercase">
         {{ $label }}
     </label>
