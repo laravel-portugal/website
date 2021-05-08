@@ -14,7 +14,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome-pre-2021');
+});
+
+Route::get('/welcome', function () {
+    return view('welcome-2021');
 })->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
