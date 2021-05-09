@@ -35,10 +35,9 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            echo "${{ env.website_tag }}"
-            pwd
-            ls -alh
-            echo WEBSITE_TAG
+            cd apps/website
+            mv docker-compose.override.production.yml  docker-compose.override.yml
+            TAG="${{ env.website_tag }}" docker-compose up -d --remove-orphans
           host: ${{ secrets.DEPLOY_HOST }}
           user: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_USER_PRIVATE_KEY }}
