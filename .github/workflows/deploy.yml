@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [ master ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ master ]
 
@@ -17,9 +19,9 @@ jobs:
         run: |
           TAG=`date "+%Y%m%d-%H%M%S"`
           echo "website_tag=$TAG" >> $GITHUB_ENV
-#          docker build -t hub.laravel.pt/website:$TAG .
-#          docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
-#          docker push hub.laravel.pt/website:$TAG
+          docker build -t hub.laravel.pt/website:$TAG .
+          docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
+          docker push hub.laravel.pt/website:$TAG
 
       - name: Deploy on remote server
         uses: fifsky/ssh-action@master
