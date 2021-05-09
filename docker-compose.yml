@@ -4,6 +4,9 @@ networks:
   web:
     external: true
 
+volumes:
+  lpt_website_mysql:
+
 services:
   website:
     image: hub.laravel.pt/website:${TAG:-latest}
@@ -16,3 +19,14 @@ services:
       - "traefik.http.routers.website.entrypoints=websecure"
       - "traefik.http.routers.website.service=website"
       - "traefik.http.services.website.loadbalancer.server.port=80"
+  mysql:
+    image: 'mysql:8.0'
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+    volumes:
+      - 'lpt_website_mysql:/var/lib/mysql'
+    networks:
+      - web
