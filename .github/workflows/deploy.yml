@@ -13,6 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: some experiments
+        with:
+          command: |
+            node --version
       - name: ls -a via ssh
         uses: fifsky/ssh-action@master
         with:
