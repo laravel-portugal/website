@@ -26,11 +26,11 @@ jobs:
           user: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_USER_PRIVATE_KEY }}
       - name: Publish to Registry
-          uses: HurricanKai/Publish-Docker-Github-Action@master
-          with:
-            name: hub.laravel.pt/website
-            username: ${{ secrets.DEPLOY_USER }}
-            password: ${{ secrets.DEPLOY_USER_PASSWORD }}
+        uses: HurricanKai/Publish-Docker-Github-Action@master
+        with:
+          name: hub.laravel.pt/website
+          username: ${{ secrets.DEPLOY_USER }}
+          password: ${{ secrets.DEPLOY_USER_PASSWORD }}
 
 #  building:
 #    runs-on: ubuntu-latest
