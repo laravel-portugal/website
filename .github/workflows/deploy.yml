@@ -16,7 +16,9 @@ jobs:
       - name: some experiments
         run: |
           TAG=`date "+%Y%m%d-%H%M%S"`
-          ::set-env name=WEBSITE_TAG::0.0.21-preview
+          echo $GITHUB_ENV
+          echo "website_action_state=yellow" >> $GITHUB_ENV
+          echo $GITHUB_ENV
 #          docker build -t hub.laravel.pt/website:$TAG .
 #          docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
 #          docker push hub.laravel.pt/website:$TAG
