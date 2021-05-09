@@ -39,11 +39,11 @@ jobs:
             mv docker-compose.override.production.yml  docker-compose.override.yml
             docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
             TAG="${{ env.website_tag }}" docker-compose up -d --remove-orphans
-            docker-compose exec website php artisan storage:link
-            docker-compose exec website php artisan config:cache
-            docker-compose exec website php artisan view:cache
-            docker-compose exec website php artisan route:cache
-            docker-compose exec website php artisan migrate
+            docker-compose exec -T website php artisan storage:link
+            docker-compose exec -T website php artisan config:cache
+            docker-compose exec -T website php artisan view:cache
+            docker-compose exec -T website php artisan route:cache
+            docker-compose exec -T website php artisan migrate
           host: ${{ secrets.DEPLOY_HOST }}
           user: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_USER_PRIVATE_KEY }}
