@@ -1,7 +1,10 @@
 FROM ubuntu:20.04
 
 WORKDIR /var/www/html
-USER www-data
+
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
@@ -43,6 +46,10 @@ COPY ./docker/nginx_default.conf /etc/nginx/sites-available/default
 COPY ./docker/php-fpm.conf /etc/php/8.0/fpm/php-fpm.conf
 COPY ./docker/add_to_cron /temp/add_to_cron
 RUN crontab /temp/add_to_cron && rm /temp/add_to_cron
+
+RUN addgroup --gid $GROUP_ID artisanpt
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID artisanpt
+USER artisanpt
 
 ADD . /var/www/html
 RUN chown -R www-data: /tmp /var/www/html/bootstrap /var/www/html/storage
