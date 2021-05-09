@@ -24,8 +24,10 @@ RUN apt-get install -y php8.0-fpm php8.0-cli php8.0-dev \
        php8.0-xml php8.0-zip php8.0-bcmath php8.0-soap \
        php8.0-intl php8.0-readline \
        php8.0-msgpack php8.0-igbinary php8.0-ldap \
-       php8.0-redis \
-       nodejs npm
+       php8.0-redis
+
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+RUN sudo apt -y install nodejs
 
 RUN apt-get -y autoremove \
         && apt-get clean \
