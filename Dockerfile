@@ -1,6 +1,7 @@
 FROM ubuntu:20.04
 
 WORKDIR /var/www/html
+USER www-data
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
