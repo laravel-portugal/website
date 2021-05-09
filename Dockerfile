@@ -47,15 +47,15 @@ COPY ./docker/php-fpm.conf /etc/php/8.0/fpm/php-fpm.conf
 COPY ./docker/add_to_cron /temp/add_to_cron
 RUN crontab /temp/add_to_cron && rm /temp/add_to_cron
 
-RUN addgroup --gid $GROUP_ID artisanpt
-RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID artisanpt
-USER artisanpt
-
 ADD . /var/www/html
 RUN chown -R www-data: /tmp /var/www/html/bootstrap /var/www/html/storage
 RUN composer install --no-dev
 RUN npm install
 RUN npm run production
+
+RUN addgroup --gid $GROUP_ID artisanpt
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID artisanpt
+USER artisanpt
 
 EXPOSE 80
 
