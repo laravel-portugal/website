@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: some experiments
         run: |
-          WEBSITE_TAG=`date "+%Y%m%d-%H%M%S"`
+          TAG=`date "+%Y%m%d-%H%M%S"`
           ::set-env name=WEBSITE_TAG::0.0.21-preview
 #          docker build -t hub.laravel.pt/website:$TAG .
 #          docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
