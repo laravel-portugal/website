@@ -16,9 +16,7 @@ jobs:
       - name: some experiments
         run: |
           TAG=`date "+%Y%m%d-%H%M%S"`
-          echo $GITHUB_ENV
-          echo "WEBSITE_ACTION_STATE=yellow" >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          echo "action_state=yellow" >> $GITHUB_ENV
 #          docker build -t hub.laravel.pt/website:$TAG .
 #          docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
 #          docker push hub.laravel.pt/website:$TAG
@@ -27,7 +25,7 @@ jobs:
         uses: fifsky/ssh-action@master
         with:
           command: |
-            echo ${{ github.WEBSITE_ACTION_STATE }}
+            echo "${{ env.action_state }}" # This will output 'yellow'
             pwd
             ls -alh
             echo WEBSITE_TAG
