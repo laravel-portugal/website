@@ -28,8 +28,8 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           port: 22
           username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.KEY }}
-          source: "tests/a.txt,tests/b.txt"
+          key: ${{ secrets.DEPLOY_USER_PRIVATE_KEY }}
+          source: "docker-compose.yml,docker-compose.override.production.yml"
           target: "~/apps/website"
       - name: Deploy on remote server
         uses: fifsky/ssh-action@master
