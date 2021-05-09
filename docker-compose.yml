@@ -6,7 +6,7 @@ networks:
 
 services:
   website:
-    image: ${REGISTRY_HOST}/website:${TAG:-latest}
+    image: hub.laravel.pt/website:${TAG:-latest}
     networks: [web]
     ports: ["8000:80"]
     labels:

@@ -4,8 +4,8 @@ services:
   website:
     restart: always
     volumes:
-      - ~/apps/website/.env:/var/www/html/.env
-      - ~/apps/website/storage:/var/www/html/storage
+      - ./.env:/var/www/html/.env
+      - ./storage/app/public:/var/www/html/storage/app/public
     labels:
       - traefik.http.routers.website.rule=Host(`laravel.pt`)
       - traefik.http.routers.website.tls.certresolver=leresolver
