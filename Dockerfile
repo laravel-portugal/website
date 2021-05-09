@@ -24,7 +24,8 @@ RUN apt-get install -y php8.0-fpm php8.0-cli php8.0-dev \
        php8.0-xml php8.0-zip php8.0-bcmath php8.0-soap \
        php8.0-intl php8.0-readline \
        php8.0-msgpack php8.0-igbinary php8.0-ldap \
-       php8.0-redis
+       php8.0-redis \
+       nodejs npm
 
 RUN apt-get -y autoremove \
         && apt-get clean \
@@ -41,8 +42,10 @@ COPY ./docker/add_to_cron /temp/add_to_cron
 RUN crontab /temp/add_to_cron && rm /temp/add_to_cron
 
 ADD . /var/www/html
-RUN chown -R www-data: /tmp /var/www/html/bootstrap /var/www/html/storage /tmp
+RUN chown -R www-data: /tmp /var/www/html/bootstrap /var/www/html/storage
 RUN composer install --no-dev
+RUN npm install
+RUN npm run production
 
 EXPOSE 80
 
