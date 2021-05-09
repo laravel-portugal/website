@@ -2,10 +2,6 @@ FROM ubuntu:20.04
 
 WORKDIR /var/www/html
 
-ARG USER_ID=1000
-ARG GROUP_ID=1000
-
-
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=UTC
 
@@ -52,10 +48,6 @@ RUN chown -R www-data: /tmp /var/www/html/bootstrap /var/www/html/storage
 RUN composer install --no-dev
 RUN npm install
 RUN npm run production
-
-RUN addgroup --gid $GROUP_ID artisanpt
-RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID artisanpt
-USER artisanpt
 
 EXPOSE 80
 
