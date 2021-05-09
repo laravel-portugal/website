@@ -21,7 +21,7 @@ jobs:
 #          chmod -R 777 storage bootstrap/cache
 #          npm install
 #          npm run production
-#          TAG=`date "+%Y%m%d-%H%M%S"`
+          TAG=`date "+%Y%m%d-%H%M%S"`
           docker build -t hub.laravel.pt/website:$TAG .
           docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
           docker push hub.laravel.pt/website:$TAG
