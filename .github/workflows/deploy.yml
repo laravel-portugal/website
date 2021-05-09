@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: some experiments
+      - name: Build image
         run: |
           TAG=`date "+%Y%m%d-%H%M%S"`
           echo "website_tag=$TAG" >> $GITHUB_ENV
