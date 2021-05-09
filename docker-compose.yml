@@ -13,6 +13,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.website.rule=Host(`${TRAEFIK_HOST}`)"
       - "traefik.http.routers.website.tls=true"
-      - "traefik.http.routers.website.entrypoints=https"
+      - "traefik.http.routers.website.entrypoints=websecure"
       - "traefik.http.routers.website.service=website"
       - "traefik.http.services.website.loadbalancer.server.port=80"
