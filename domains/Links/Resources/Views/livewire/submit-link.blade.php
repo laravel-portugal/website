@@ -98,9 +98,13 @@
                 @endguest
 
                 <x-form-field label="Descrição" id="description">
-                    <textarea id="description" rows="3"
-                              class="form-textarea block w-full transition duration-150 ease-in-out text-xl"
-                              wire:model.defer="description"></textarea>
+                
+                <textarea id="description" name="message" rows="4" 
+                    class="py-3 px-4 block w-full shadow-sm focus:ring-black text-xl
+                    focus:border-black border-gray-100 rounded-md"
+                    wire:model.defer="description"
+                ></textarea>
+          
                 </x-form-field>
 
                 <div>
