@@ -1,4 +1,4 @@
-<div class="text-left" xmlns:wire="http://www.w3.org/1999/xhtml">
+<div class="text-left">
     <form
             x-data="{ adding: false, removing: false }"
             x-on:link-updated.window="$wire.generateCoverImage()"
