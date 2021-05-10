@@ -1,6 +1,8 @@
-<div class="mt-12 grid gap-5 max-w-lg mx-auto lg:grid-cols-3 lg:max-w-none">
+<div class="mt-12 flex flex-wrap justify-around items-top max-w-lg mx-auto lg:max-w-none">
     @foreach($links ?? [] as $link)
-        <x-links::link :key="$link['id']" :link="$link"/>
+        <div class="p-4">
+            <x-links::link :key="$link['id']" :link="$link"/>
+        </div>
     @endforeach
 </div>
 

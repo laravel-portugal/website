@@ -2,7 +2,7 @@
     <div class="flex-shrink-0">
         <img
                 class="h-48 w-full object-cover"
-                src="{{ $link['cover_image'] }}"
+                src="{{ Storage::url($link['cover_image']) }}"
                 alt=""
         >
     </div>
