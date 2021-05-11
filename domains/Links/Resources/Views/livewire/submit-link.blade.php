@@ -34,7 +34,7 @@
                                 @elseif ($generatedPhoto)
                                     <div
                                             class="absolute inset-0 bg-cover bg-no-repeat bg-center flex items-center justify-center rounded-md shadow-inner"
-                                            style="background-image: url('{{ URL::to($generatedPhoto) }}');">
+                                            style="background-image: url('{{ Storage::url($generatedPhoto) }}');">
                                         <div wire:loading wire:target="photo" wire:key="loading">
                                             <div
                                                     class="flex items-center justify-center absolute inset-0 block bg-white bg-opacity-75 p-8">
