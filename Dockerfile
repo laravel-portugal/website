@@ -47,6 +47,7 @@ ADD . /var/www/html
 RUN chown -R www-data: /tmp /var/www/html/bootstrap /var/www/html/storage
 RUN composer install --no-dev
 RUN npm install
+RUN npm install puppeteer
 RUN npm run production
 
 EXPOSE 80
