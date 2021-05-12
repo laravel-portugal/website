@@ -10,7 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update \
     && apt-get install -y wget gnupg gosu curl ca-certificates zip unzip git nano cron net-tools lsof \
             sudo supervisor nginx sqlite3 libcap2-bin \
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && mkdir -p ~/.gnupg \
     && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
