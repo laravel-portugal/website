@@ -29,8 +29,7 @@ RUN apt-get install -y php8.0-fpm php8.0-cli php8.0-dev \
        php8.0-redis
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
-RUN sudo apt -y install nodejs
-RUN sudo apt -y install vim google-chrome-stable
+RUN sudo apt -y install nodejs vim google-chrome-stable
 
 RUN apt-get -y autoremove \
         && apt-get clean \
