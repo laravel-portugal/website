@@ -8,8 +8,10 @@ ENV TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update \
-    && apt-get install -y gnupg gosu curl ca-certificates zip unzip git nano cron net-tools lsof \
+    && apt-get install -y wget gnupg gosu curl ca-certificates zip unzip git nano cron net-tools lsof \
             sudo supervisor nginx sqlite3 libcap2-bin \
+    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && mkdir -p ~/.gnupg \
     && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf \
     && apt-key adv --homedir ~/.gnupg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E5267A6C \
@@ -28,6 +30,7 @@ RUN apt-get install -y php8.0-fpm php8.0-cli php8.0-dev \
 
 RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
 RUN sudo apt -y install nodejs
+RUN sudo apt -y install vim google-chrome-stable
 
 RUN apt-get -y autoremove \
         && apt-get clean \

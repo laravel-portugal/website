@@ -10,8 +10,10 @@ volumes:
 services:
   website:
     image: hub.laravel.pt/website:${TAG:-latest}
-    networks: [web]
-    ports: ["8000:80"]
+    networks: [ web ]
+    ports: [ "8000:80" ]
+    sysctl:
+      kernel.unprivileged_userns_clone: 1
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.website.rule=Host(`${TRAEFIK_HOST}`)"
