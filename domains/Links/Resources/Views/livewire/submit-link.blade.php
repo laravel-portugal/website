@@ -7,7 +7,7 @@
     >
         <div class="sm:mx-auto sm:w-full sm:max-w-2xl">
             <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 text-base">
-                <x-form-field id="link" label="Endereço URL">
+                <x-form-field label="Endereço URL">
                     <input id="link"
                            class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out text-xl"
                            placeholder="http://www.host.tld"
@@ -76,7 +76,7 @@
                     </x-form-field>
                 @endif
 
-                <x-form-field label="Título" id="title">
+                <x-form-field label="Título">
                     <input id="title"
                            class="form-input block w-full transition duration-150 ease-in-out text-xl"
                            wire:model.defer="title"
@@ -84,20 +84,20 @@
                 </x-form-field>
 
                 @guest
-                    <x-form-field label="Nome" id="author_name">
+                    <x-form-field label="Nome">
                         <input id="author_name"
                                class="form-input block w-full transition duration-150 ease-in-out text-xl"
                                wire:model.defer="author_name">
                     </x-form-field>
 
-                    <x-form-field label="e-mail" id="author_email">
+                    <x-form-field label="e-mail">
                         <input id="author_email"
                                class="form-input block w-full transition duration-150 ease-in-out text-xl"
                                wire:model.defer="author_email">
                     </x-form-field>
                 @endguest
 
-                <x-form-field label="Descrição" id="description">
+                <x-form-field label="Descrição">
                     <textarea id="description" rows="3"
                               class="form-textarea block w-full transition duration-150 ease-in-out text-xl"
                               wire:model.defer="description"></textarea>

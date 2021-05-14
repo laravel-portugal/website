@@ -47,7 +47,6 @@ class LinksSubmitTest extends DuskTestCase
         $this->browse(function ($browser) {
             $browser->loginAs($this->user)
                 ->visit('/submit-link')
-                ->screenshot('submitllink')
                 ->assertSee('TÍTULO')
                 ->assertDontSee('NOME')
                 ->assertDontSee('E-MAIL')
@@ -63,6 +62,7 @@ class LinksSubmitTest extends DuskTestCase
     {
         $this->browse(function ($browser) {
             $browser->visit('/submit-link')
+                ->waitFor('#title')
                 ->type('#title', 'Title')
                 ->type('#author_name', 'Say my name')
                 ->type('#author_email', 'say.my@name.now')
