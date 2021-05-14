@@ -28,5 +28,9 @@ services:
       MYSQL_PASSWORD: '${DB_PASSWORD}'
     volumes:
       - 'lpt_website_mysql:/var/lib/mysql'
-    networks:
-      - web
+    networks: [ web ]
+  chromium-nextools:
+    image: nextools/chromium:87
+    networks: [ web ]
+    ports: [ "9222:9222" ]
+

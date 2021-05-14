@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Spatie\Browsershot\Browsershot;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,16 @@ Route::get('/', function () {
 Route::get('/welcome', function () {
     return view('welcome-2021');
 })->name('home');
+
+Route::get('/bs', function () {
+    $foo = Browsershot::url('https://sapo.pt')
+        ->noSandbox()
+        ->format('a4')
+        ->pdf();
+    return response()->stream(function () use ($foo) {
+        echo $foo;
+    }, 200, ['Content-Type' => 'application/pdf']);
+})->name('bs');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
