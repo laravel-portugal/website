@@ -62,7 +62,7 @@ class SubmitLink extends Component
 
         if ($this->photo) {
             // if it is a user-uploaded photo, we store it at this point.
-            $photo = $this->photo->storePublicly(config('laravel-portugal.links.storage.path'));
+            $photo = $this->photo->storePublicly(config('laravel-portugal.links.storage.path'), 'public');
         }
 
         try {
