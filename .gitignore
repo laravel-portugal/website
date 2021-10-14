@@ -3,7 +3,6 @@
 /public/storage
 /storage/*.key
 /vendor
-.idea/
 .env
 .env.backup
 .phpunit.result.cache
@@ -12,4 +11,11 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-.env.dusk.local
+/.idea
+/.vscode
+.phpstorm.meta.php
+_ide_helper.php
+_ide_helper_models.php
+public/js/*.js
+public/css/*.css
+.php-cs-fixer.cache

@@ -9,3 +9,19 @@ services:
       - traefik.http.routers.website.tls=true
     volumes:
       - ./:/var/www/html
+
+  mysql:
+    image: mariadb:10.5.8-focal
+    networks: [ web ]
+    ports:
+      - ${FORWARD_DB_PORT:-33060}:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+
+  redis:
+    image: redis
+    networks: [ web ]

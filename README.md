@@ -1,21 +1,13 @@
-# website
+## Laravel Portugal
 
-## Credits
-This project is a merge of a previous [Api project](https://github.com/laravel-portugal/api) 
-and [Frontend project](https://github.com/laravel-portugal/frontend-2020), that then were 
-merged to the current repo. Many thanks to all contributors!
-- [adevr](https://github.com/adevr)
 
-- [ana-lisboa](https://github.com/ana-lisboa)
+## Wip Notes
+- https://github.com/kirschbaum-development/laravel-translations-loader#useful-packages-to-use-with-laravel-translations-loader
+- https://laravel-news.com/laravel-translations-loader
+- https://github.com/kirschbaum-development/laravel-translations-loader-demo
+- https://github.com/kirschbaum-development/laravel-translations-loader
+- https://www.npmjs.com/package/open-graph-scraper
 
-- [dleicam](https://github.com/dleicam)
-
-- [ijpatricio](https://github.com/ijpatricio)
-
-- [jorgercosta](https://github.com/jorgercosta)
-
-- [josepostiga](https://github.com/josepostiga)
-
-- [pedro-vasconcelos](https://github.com/pedro-vasconcelos)
-
-- [tiagof](https://github.com/tiagof)
+## Things to note
+- Guideline for List of Available tags should be cached
+- Options for Status on admin should be taken has "guidelines"

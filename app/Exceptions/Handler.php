@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
 
@@ -13,7 +14,6 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        //
     ];
 
     /**
@@ -27,6 +27,19 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    public function render($request, Throwable $e)
+    {
+        $response = parent::render($request, $e);
+        if ($e instanceof AuthorizationException) {
+            // Redirect to previous URL with a message for authorization
+            return redirect()
+                ->to(url()->previous())
+                ->with(['authorization' => 'You are not authorize to perform this action.']);
+        }
+
+        return $response;
+    }
+
     /**
      * Register the exception handling callbacks for the application.
      *
@@ -35,7 +48,6 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
-            //
         });
     }
 }

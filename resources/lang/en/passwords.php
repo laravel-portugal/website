@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -19,4 +18,25 @@ return [
     'token' => 'This password reset token is invalid.',
     'user' => "We can't find a user with that email address.",
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Auth Translations
+    |--------------------------------------------------------------------------
+    */
+
+    'update-title' => 'Update Password',
+    'update-subtitle' => 'Ensure your account is using a long, random password to stay secure.',
+
+    'confirm-password-title' => 'Confirm Password',
+    'confirm-password-text' => 'For your security, please confirm your password to continue.',
+    'confirm-password-ok' => 'Confirm',
+    'confirm-password-cancel' => 'Nevermind',
+
+    'fields' => [
+        'password' => 'Password',
+        'password-confirm' => 'Confirm Password',
+        'current-password' => 'Current Password',
+        'new-password' => 'New password',
+        'new-password-confirm' => 'Confirm new password',
+    ],
 ];

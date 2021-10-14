@@ -1,0 +1,45 @@
+@layer components{
+
+    .card{
+        @apply relative;
+        @apply bg-white shadow-lg rounded-lg;
+        @apply sm:rounded-lg;
+       /* @apply overflow-hidden;*/
+    }
+
+    .card-header{
+        @apply px-4 py-5 border-b border-gray-200;
+        @apply sm:px-6;
+    }
+
+    .card-header-inner{
+        @apply -ml-4 -mt-4 flex justify-between items-center flex-wrap;
+        @apply sm:flex-nowrap;
+    }
+
+    .card-title-holder{
+        @apply ml-4 mt-4 flex items-center;
+    }
+
+    .card-title{
+        @apply text-lg leading-6 font-medium text-gray-800;
+    }
+
+    .card-subtitle{
+        @apply mt-1 max-w-2xl text-sm leading-5 text-gray-500;
+    }
+
+    .card-actions{
+        @apply ml-4 mt-4 flex-shrink flex;
+    }
+
+    .card-footer{
+        @apply px-4 py-3 flex items-center justify-end text-right;
+        @apply sm:px-6;
+        @apply border-t border-gray-200;
+    }
+
+    .card-empty-icon{
+        @apply text-gray-200;
+    }
+}
