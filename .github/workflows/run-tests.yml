@@ -59,7 +59,7 @@ jobs:
 
       # Copy the Enviorment file
       - name: Copy .env.testing to .env
-        run: php -r "file_exists('.env') || copy('.env.testing-github-actions', '.env');"
+        run: php -r "file_exists('.env') || copy('.env.github-actions', '.env');"
 
       # Cache Composer Dependencies
       - name: Cache Composer Dependencies
