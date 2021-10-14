@@ -3,7 +3,10 @@
 namespace App\Http\Middleware;
 
 use App\Types\LinkStatusType;
+use Breadcrumbs;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -40,12 +43,47 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'user' => optional($request->user())->toInertiaShare(),
-            'authorization' => session()->get('authorization') ?? null,
-            'guidelines' => [
-                'links' => [
-                    'status' => LinkStatusType::toGuideLine(),
-                ],
-            ],
+            'authorization' => $this->shareAuthorizationErrors(),
+            'guidelines' => $this->shareGuideLines(),
+            'breadcrumbs' => $this->sharesPageBreadcrumbs(),
         ]);
+    }
+
+    /**
+     * Share Authorization Errors
+     *
+     * @return array
+     */
+    protected function shareGuideLines(): array
+    {
+        return [
+            'links' => [
+                'status' => LinkStatusType::toGuideLine(),
+            ],
+        ];
+    }
+
+    /**
+     * Share Authorization Errors
+     *
+     * @return string|null
+     */
+    protected function shareAuthorizationErrors(): ?string
+    {
+        return session()->get('authorization') ?? null;
+    }
+
+    /**
+     * Shares breadcrumbs.
+     *
+     * @return array|Collection
+     */
+    protected function sharesPageBreadcrumbs(): array|Collection
+    {
+        try {
+            return Breadcrumbs::generate();
+        } catch (Exception $e) {
+            return [];
+        }
     }
 }

@@ -14,18 +14,24 @@ return [
 
     'menu' => [
         'dashboard' => 'Dashboard',
+
         'links' => 'Your Links',
+        'links-create' => 'Create',
+        'links-edit' => 'Edit :identifier',
+
         'profile' => 'Profile',
         'useful-links' => 'Useful Links',
         'logout' => 'Logout',
         'api-tokens' => 'API Tokens',
         'user-account' => 'Your Account',
         'user-profile' => 'Profile',
-        'admin' => 'Administration',
-        'admin-links' => 'Manage Links',
+
         'laravel-docs' => 'Laravel Documentation',
         'laravel-news' => 'Laravel News',
         'laravel-pt-discord' => 'Laravel PT Discord',
+
+        'admin' => 'Administration',
+        'admin-links' => 'Manage Links',
     ],
 
     'link_status' => [

@@ -22602,17 +22602,19 @@ module.exports = {
       "menu": {
         "dashboard": "Dashboard",
         "links": "Your Links",
+        "links-create": "Create",
+        "links-edit": "Edit {identifier}",
         "profile": "Profile",
         "useful-links": "Useful Links",
         "logout": "Logout",
         "api-tokens": "API Tokens",
         "user-account": "Your Account",
         "user-profile": "Profile",
-        "admin": "Administration",
-        "admin-links": "Manage Links",
         "laravel-docs": "Laravel Documentation",
         "laravel-news": "Laravel News",
-        "laravel-pt-discord": "Laravel PT Discord"
+        "laravel-pt-discord": "Laravel PT Discord",
+        "admin": "Administration",
+        "admin-links": "Manage Links"
       },
       "link_status": {
         "published": "Published",
@@ -32430,7 +32432,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Auth_ConfirmPassword_vue":"8926717d3a86a527a51c","resources_js_Pages_Auth_ForgotPassword_vue":"ea8260b64b12673caa61","resources_js_Pages_Auth_Login_vue":"97d8681ff4e0da1e0437","resources_js_Pages_Auth_Register_vue":"90f121f9a05b8c6960fe","resources_js_Pages_Auth_ResetPassword_vue":"78c7e4c7d0cb66ca1ad6","resources_js_Pages_Auth_TwoFactorChallenge_vue":"22fa0130054a770ef8f7","resources_js_Pages_Auth_VerifyEmail_vue":"6b62f373548cca7c84f1","resources_js_Pages_Backend_Links_Edit_vue":"d8e60190658084ac23f5","resources_js_Pages_Backend_Links_Index_vue":"1504bcac0a2ae0e5c314","resources_js_Pages_Backend_Links_Partials_LinkListItemActions_vue":"0255046136a5ab164c52","resources_js_Pages_Backend_Links_Partials_LinksList_vue":"5c6c4a47af48f155d002","resources_js_Pages_Backend_Links_Partials_LinksListItem_vue":"64f35d0ae84b0d4fe7ca","resources_js_Pages_Backend_Links_Partials_LinksSearch_vue":"0d7395a6e28d34943c6f","resources_js_Pages_Dashboard_vue":"077123845f0065c5c1b4","resources_js_Pages_Links_Create_vue":"e72205f582ae9363461c","resources_js_Pages_Links_Edit_vue":"9ac27dddc4a768e715f5","resources_js_Pages_Links_Index_vue":"58baede362cecfb7a42d","resources_js_Pages_Links_Link_vue":"2e5242ce3144b9176784","resources_js_Pages_Links_Partials_LinkCardCreate_vue":"18ca62fe10ec7454e7c6","resources_js_Pages_Links_Partials_LinkCardForUser_vue":"3a26d76d3de2fdd83747","resources_js_Pages_Links_Partials_LinkCardSkeleton_vue":"6288c1de47825a894373","resources_js_Pages_Links_Partials_LinkStatusBadge_vue":"7075c719f94b715acec4","resources_js_Pages_Links_Partials_LinkTag_vue":"4db479629aab16b4b8ab","resources_js_Pages_Links_Partials_ListEmptyState_vue":"357d9bd60ad4aeb093f2","resources_js_Pages_Links_Partials_ListWithCards_vue":"e586aa0e71d401d8b1ca","resources_js_Pages_PrivacyPolicy_vue":"6355c9e921037e37944a","resources_js_Pages_Profile_DeleteUserForm_vue":"0265b3ac6beca7e5eb47","resources_js_Pages_Profile_LogoutOtherBrowserSessionsForm_vue":"a829d332eaf6269dcafa","resources_js_Pages_Profile_Show_vue":"39d3fb4076c302259e50","resources_js_Pages_Profile_TwoFactorAuthenticationForm_vue":"5bf5ef4a47cad36b850f","resources_js_Pages_Profile_UpdatePasswordForm_vue":"badede9f621ec123c88e","resources_js_Pages_Profile_UpdateProfileInformationForm_vue":"5aac50ddede6fddb70b0","resources_js_Pages_TermsOfService_vue":"47eb85b69ce1a3b2f614","resources_js_Pages_Welcome_vue":"1c170ed2415cc6437ea5"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_Pages_Auth_ConfirmPassword_vue":"8926717d3a86a527a51c","resources_js_Pages_Auth_ForgotPassword_vue":"ea8260b64b12673caa61","resources_js_Pages_Auth_Login_vue":"97d8681ff4e0da1e0437","resources_js_Pages_Auth_Register_vue":"90f121f9a05b8c6960fe","resources_js_Pages_Auth_ResetPassword_vue":"78c7e4c7d0cb66ca1ad6","resources_js_Pages_Auth_TwoFactorChallenge_vue":"22fa0130054a770ef8f7","resources_js_Pages_Auth_VerifyEmail_vue":"6b62f373548cca7c84f1","resources_js_Pages_Backend_Links_Edit_vue":"638635fb7177f5b7987f","resources_js_Pages_Backend_Links_Index_vue":"e29cdbe4c10380845210","resources_js_Pages_Backend_Links_Partials_LinkListItemActions_vue":"0255046136a5ab164c52","resources_js_Pages_Backend_Links_Partials_LinksList_vue":"5c6c4a47af48f155d002","resources_js_Pages_Backend_Links_Partials_LinksListItem_vue":"64f35d0ae84b0d4fe7ca","resources_js_Pages_Backend_Links_Partials_LinksSearch_vue":"0d7395a6e28d34943c6f","resources_js_Pages_Dashboard_vue":"33cfae4db8eafcc36719","resources_js_Pages_Links_Create_vue":"961e17a72a684f2ae466","resources_js_Pages_Links_Edit_vue":"2580ff96855aa99173e4","resources_js_Pages_Links_Index_vue":"47ecb16130f0a1d76cb3","resources_js_Pages_Links_Link_vue":"2e5242ce3144b9176784","resources_js_Pages_Links_Partials_LinkCardCreate_vue":"18ca62fe10ec7454e7c6","resources_js_Pages_Links_Partials_LinkCardForUser_vue":"3a26d76d3de2fdd83747","resources_js_Pages_Links_Partials_LinkCardSkeleton_vue":"6288c1de47825a894373","resources_js_Pages_Links_Partials_LinkStatusBadge_vue":"7075c719f94b715acec4","resources_js_Pages_Links_Partials_LinkTag_vue":"4db479629aab16b4b8ab","resources_js_Pages_Links_Partials_ListEmptyState_vue":"357d9bd60ad4aeb093f2","resources_js_Pages_Links_Partials_ListWithCards_vue":"e586aa0e71d401d8b1ca","resources_js_Pages_PrivacyPolicy_vue":"6355c9e921037e37944a","resources_js_Pages_Profile_DeleteUserForm_vue":"0265b3ac6beca7e5eb47","resources_js_Pages_Profile_LogoutOtherBrowserSessionsForm_vue":"a829d332eaf6269dcafa","resources_js_Pages_Profile_Show_vue":"fee83fae831515011834","resources_js_Pages_Profile_TwoFactorAuthenticationForm_vue":"5bf5ef4a47cad36b850f","resources_js_Pages_Profile_UpdatePasswordForm_vue":"badede9f621ec123c88e","resources_js_Pages_Profile_UpdateProfileInformationForm_vue":"5aac50ddede6fddb70b0","resources_js_Pages_TermsOfService_vue":"47eb85b69ce1a3b2f614","resources_js_Pages_Welcome_vue":"1c170ed2415cc6437ea5"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	

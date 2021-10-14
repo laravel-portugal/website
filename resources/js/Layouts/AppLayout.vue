@@ -80,11 +80,14 @@
             :class="{'xl:col-span-6': $slots['right-column']}"
             class="lg:col-span-10"
           >
-            <!--            <app-breadcrumbs />-->
+            <!-- Breadcrumbs -->
+            <app-breadcrumbs />
+            <!-- Portal to Flash Notifications -->
             <portal-target
               name="flash"
               multiple
             />
+            <!-- Main Content goes here -->
             <slot />
           </main>
 
@@ -111,9 +114,11 @@ import AppHeaderLogo from "@/Layouts/Partials/AppHeaderLogo";
 import AppHead from "@/Layouts/Partials/AppHead";
 import XSlideOver from "@/Components/Menus/SlideOver";
 import AuthorizationFailed from "@/Components/Modals/AuthorizationFailed";
+import AppBreadcrumbs from "@/Layouts/Partials/AppBreadcrumbs";
 
 export default {
     components: {
+        AppBreadcrumbs,
         AuthorizationFailed,
         XSlideOver,
         AppHead,

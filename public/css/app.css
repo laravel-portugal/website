@@ -2700,9 +2700,15 @@ input {
 .overflow-y-hidden {
 	overflow-y: hidden;
 }
+.overflow-x-scroll {
+	overflow-x: scroll;
+}
 .truncate {
 	overflow: hidden;
 	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.whitespace-nowrap {
 	white-space: nowrap;
 }
 .rounded-md {
@@ -3131,6 +3137,9 @@ input {
 .pl-10 {
 	padding-left: 2.5rem;
 }
+.pb-5 {
+	padding-bottom: 1.25rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -3485,6 +3494,13 @@ input {
 .ease-in {
 	transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+.no-scroll-bar{
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+.no-scroll-bar::-webkit-scrollbar{
+        display: none;
+    }
 .text-xxs{
         font-size: 0.6rem
     }

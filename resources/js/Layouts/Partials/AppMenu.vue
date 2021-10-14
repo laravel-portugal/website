@@ -18,7 +18,7 @@
       </app-menu-link>
 
       <app-menu-link
-        :active="isActive('links.index','links.create','links.edit')"
+        :active="isActiveIfStartsWith('links.')"
         :href="route('links.index')"
       >
         <link-icon class="h-4 w-4 text-gray-400 mr-1" />
@@ -28,7 +28,7 @@
       <!-- Admin Menu -->
       <app-menu-collapse
         v-if="$hasRole('admin')"
-        :active="false"
+        :active="isActiveIfStartsWith('admin.')"
       >
         <template #trigger>
           <finger-print-icon class="h-4 w-4 text-gray-400 mr-1" />
@@ -36,7 +36,7 @@
         </template>
 
         <app-menu-link-sub
-          :active="false"
+          :active="isActiveIfStartsWith('admin.links.')"
           :href="route('admin.links.index')"
         >
           <link-icon class="h-4 w-4 text-gray-400 mr-1" />
@@ -119,15 +119,12 @@ export default {
         }
     },
     methods: {
-        isUrl(...urls) {
-            if (urls[0] === '') {
-                return this.url === ''
-            }
-            return urls.filter(url => this.url.startsWith(url)).length
-        },
         isActive(...routes) {
             return routes.some(route => this.route().current(route));
         },
+        isActiveIfStartsWith(keyword){
+            return this.route().current().startsWith(keyword);
+        }
     }
 }
 </script>

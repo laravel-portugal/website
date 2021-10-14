@@ -1,5 +1,5 @@
 <template>
-  <div class="py-5 mx-auto">
+  <div class="mx-auto">
     <div class="bg-white shadow-lg rounded-lg sm:rounded-lg dark:bg-gray-750 dark:text-white dark:shadow-dark-xl">
       <div class="px-4 py-5 sm:p-6">
         <h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-white">

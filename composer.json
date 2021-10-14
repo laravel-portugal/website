@@ -8,6 +8,7 @@
         "php": "^8.0|^8.1",
         "ext-dom": "*",
         "ext-libxml": "*",
+        "diglactic/laravel-breadcrumbs": "^7.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "hashids/hashids": "^4.1.0",
