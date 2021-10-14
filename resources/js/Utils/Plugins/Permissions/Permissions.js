@@ -16,7 +16,6 @@ export default {
          * @returns boolean
          */
         const hasRole = (role) => {
-            console.log(usePage().props.value?.user,role);
             return !(!usePage().props.value?.user?.roles || usePage().props.value?.user?.roles?.indexOf(role) < 0)
         }
 

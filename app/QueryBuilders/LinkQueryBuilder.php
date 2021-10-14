@@ -67,12 +67,12 @@ class LinkQueryBuilder  extends Builder
 
         // Published with oldest
         if ('updated-desc' === $name) {
-            return $this->oldest('updated_at');
+            return $this->latest('updated_at');
         }
 
         // Published with oldest
         if ('created-desc' === $name) {
-            return $this->oldest('created_at');
+            return $this->latest('created_at');
         }
 
         return $this;

@@ -179,7 +179,6 @@ export default {
         'photoPreviewUrl': {
             immediate: true,
             handler: function (value) {
-                console.log(value);
                 if(value !== null){
                     this.preview = value;
                 }

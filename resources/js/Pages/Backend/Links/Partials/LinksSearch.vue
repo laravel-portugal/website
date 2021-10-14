@@ -117,7 +117,6 @@ export default {
         'searchQuery': {
             immediate: false,
             handler(query) {
-                console.log('Trigger',query)
                 this.search(query);
             }
         }

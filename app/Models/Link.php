@@ -27,6 +27,8 @@ final class Link extends Model
 
     protected $casts = [
         'status' => LinkStatusType::class,
+        'approved_at' => 'date',
+        'rejected_at' => 'date'
     ];
 
     protected $fillable = [

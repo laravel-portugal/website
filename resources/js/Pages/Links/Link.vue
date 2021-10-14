@@ -231,7 +231,6 @@ export default {
                         this.reset();
                     },
                     onFinish: () => {
-                        console.log(this.form.errors)
                     }
                 });
             }

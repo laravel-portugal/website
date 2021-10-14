@@ -24,6 +24,7 @@
         >
           <span>Visit Link</span>
         </a>
+        <!-- Edit -->
         <inertia-link
           href="#"
           class="dropdown-item cursor-pointer"
@@ -31,33 +32,35 @@
         >
           <span>Edit</span>
         </inertia-link>
+        <!-- Actual Actions to move status -->
         <inertia-link
           :href="route('admin.links.status',{ link: link, status: $page.props.guidelines.links.status.published })"
           class="dropdown-item cursor-pointer"
           role="menuitem"
+          preserve-scroll
         >
           <span>Mark as Published</span>
         </inertia-link>
         <inertia-link
-          href="#"
+          :href="route('admin.links.status',{ link: link, status: $page.props.guidelines.links.status.waiting_approval })"
           class="dropdown-item cursor-pointer"
-          method="post"
           role="menuitem"
+          preserve-scroll
         >
           <span>Mark as Waiting Approval</span>
         </inertia-link>
         <inertia-link
-          href="#"
+          :href="route('admin.links.status',{ link: link, status: $page.props.guidelines.links.status.rejected })"
           class="dropdown-item cursor-pointer"
-          method="post"
           role="menuitem"
+          preserve-scroll
         >
           <span>Mark as Rejected</span>
         </inertia-link>
+        <!-- Delete -->
         <inertia-link
           href="#"
           class="dropdown-item cursor-pointer truncate"
-          method="delete"
           role="menuitem"
         >
           <span>Delete</span>

@@ -42,6 +42,9 @@ class LinkUpdateAction
             });
         }
 
-        $link->syncTags($data->tags);
+        // Tags are present, sync & save otherwise just save
+        null === $data->tags ?
+            $link->save() :
+            $link->syncTags($data->tags);
     }
 }

@@ -5,15 +5,11 @@ namespace App\Http\Controllers\Backend;
 use App\Actions\LinkUpdateAction;
 use App\DataTransferObjects\LinkUpdateDataDTO;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UpdateLinkRequest;
 use App\Models\Link;
-use App\Models\Tag;
-use App\Types\LinkStatusType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use function redirect;
 
 class AdminLinksController extends Controller
 {
@@ -28,18 +24,14 @@ class AdminLinksController extends Controller
             'links' => Link::query()
                 ->with('author', 'tags')
                 ->applySearchAndSmartFilter($request)
-                ->latest()
+                ->latest('updated_at')
                 ->paginate(10),
         ]);
     }
 
     public function markAs(Request $request, Link $link, $status): RedirectResponse
     {
-        LinkUpdateAction::execute(
-            $link,
-            LinkUpdateDataDTO::updateStatus($status,$link)
-        );
-        // Flash Something
+        LinkUpdateAction::execute($link, LinkUpdateDataDTO::fromStatus($link,$status));
         return back();
     }
 

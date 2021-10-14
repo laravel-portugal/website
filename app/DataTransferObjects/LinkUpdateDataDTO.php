@@ -12,54 +12,55 @@ use Spatie\DataTransferObject\Exceptions\UnknownProperties;
 
 class LinkUpdateDataDTO extends DataTransferObject
 {
-    public ?string $url;
-    public ?string $title;
-    public ?string $description;
+    public string $url;
+    public string $title;
+    public string $description;
     public ?UploadedFile $cover_image;
     public ?array $tags;
     public LinkStatusType $status;
 
     /**
+     * From a Request to DTO
+     *
      * @throws UnknownProperties
      */
     public static function fromRequest(Request $request): LinkUpdateDataDTO
     {
-        return new static(
-            array_merge(
-                $request->safe([
-                    'url',
-                    'title',
-                    'description',
-                    'cover_image',
-                    'tags',
-                ]),
-                [
-                    'status' => LinkStatusType::attemptFrom($request->input('status', LinkStatusType::waiting_approval())),
-                ]
-            )
-        );
+        return static::fromArray($request->all());
     }
 
     /**
+     * From Array to DTO
+     *
      * @param array $data
      * @param Link|null $link
      * @return static
      * @throws UnknownProperties
      */
-    public static function fromArray(array $data, ?Link $link): static
+    public static function fromArray(array $data, ?Link $link = null): static
     {
-        return new static(array_merge($data,$link ? $link->toArray() : 0));
+        $data = collect($link?->toArray() ?? [])->merge($data);
+
+        return new static([
+            'url' => $data->get('url'),
+            'title' => $data->get('title'),
+            'description' => $data->get('description'),
+            'cover_image' => $data->get('cover_image'),
+            'tags' => $data->get('tags'),
+            'status' => LinkStatusType::attemptFrom($data->get('status', LinkStatusType::waiting_approval()))
+        ]);
     }
 
     /**
-     * Update the status of a link given the DTO
-     * @param $status
-     * @param Link|null $link
+     * Shortcut to update a single attribute
+     *
+     * @param Link $link
+     * @param string|int|LinkStatusType $status
      * @return static
      * @throws UnknownProperties
      */
-    public static function updateStatus($status, ?Link $link): static
+    public static function fromStatus(Link $link, string|int|LinkStatusType $status): static
     {
-        return self::fromArray(['status' => $status, 'cover_image' => null],$link);
+        return static::fromArray(['status' => $status], $link);
     }
 }

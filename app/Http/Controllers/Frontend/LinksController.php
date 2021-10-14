@@ -46,10 +46,7 @@ class LinksController extends Controller
 
     public function store(StoreLinkRequest $request): RedirectResponse
     {
-        LinkStoreAction::execute(
-            $request->user(),
-            LinkStoreDataDTO::fromRequest($request)
-        );
+        LinkStoreAction::execute($request->user(), LinkStoreDataDTO::fromRequest($request));
 
         return redirect()->route('links.index');
     }
@@ -64,10 +61,7 @@ class LinksController extends Controller
 
     public function update(UpdateLinkRequest $request, Link $link): RedirectResponse
     {
-        LinkUpdateAction::execute(
-            $link,
-            LinkUpdateDataDTO::fromRequest($request)
-        );
+        LinkUpdateAction::execute($link, LinkUpdateDataDTO::fromRequest($request));
 
         return redirect()->route('links.index');
     }
