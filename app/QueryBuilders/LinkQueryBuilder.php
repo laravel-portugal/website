@@ -7,18 +7,19 @@ use App\Types\LinkStatusType;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
-class LinkQueryBuilder  extends Builder
+class LinkQueryBuilder extends Builder
 {
     public function applySearchAndSmartFilter(Request $request): LinkQueryBuilder
     {
         return $this
-            ->applySearch($request->get('q',''))
+            ->applySearch($request->get('q', ''))
             ->applySmartFilters($request->get('smart_filter', ''));
     }
 
     public function applySearch(string $searchQuery = ''): LinkQueryBuilder
     {
         $shouldSearch = null !== $searchQuery && strlen($searchQuery) > 1;
+
         return $this->when($shouldSearch, function ($query) use ($searchQuery) {
             /* @var Builder|Link $query */
             return $query->search($searchQuery, null, true, true);
@@ -47,21 +48,21 @@ class LinkQueryBuilder  extends Builder
         // Published with oldest
         if ('status-published' === $name) {
             return $this
-                ->where('status',LinkStatusType::published()->value)
+                ->where('status', LinkStatusType::published()->value)
                 ->latest();
         }
 
         // Rejected with oldest
         if ('status-rejected' === $name) {
             return $this
-                ->where('status',LinkStatusType::rejected()->value)
+                ->where('status', LinkStatusType::rejected()->value)
                 ->latest();
         }
 
         // Published with oldest
         if ('status-waiting-approval' === $name) {
             return $this
-                ->where('status',LinkStatusType::waiting_approval()->value)
+                ->where('status', LinkStatusType::waiting_approval()->value)
                 ->oldest();
         }
 
@@ -77,5 +78,4 @@ class LinkQueryBuilder  extends Builder
 
         return $this;
     }
-
 }

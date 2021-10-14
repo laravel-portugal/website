@@ -50,9 +50,7 @@ class HandleInertiaRequests extends Middleware
     }
 
     /**
-     * Share Authorization Errors
-     *
-     * @return array
+     * Share Authorization Errors.
      */
     protected function shareGuideLines(): array
     {
@@ -64,9 +62,7 @@ class HandleInertiaRequests extends Middleware
     }
 
     /**
-     * Share Authorization Errors
-     *
-     * @return string|null
+     * Share Authorization Errors.
      */
     protected function shareAuthorizationErrors(): ?string
     {
@@ -75,8 +71,6 @@ class HandleInertiaRequests extends Middleware
 
     /**
      * Shares breadcrumbs.
-     *
-     * @return array|Collection
      */
     protected function sharesPageBreadcrumbs(): array|Collection
     {

@@ -6,7 +6,6 @@ use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\LinksController;
 use App\Http\Controllers\Frontend\LinksRedirectController;
 use App\Http\Controllers\Frontend\SocialLoginController;
-use App\Types\PermissionsType;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -64,5 +63,5 @@ Route::prefix('admin')
     ->group(function () {
         Route::get('/', function () { dd('im admin'); })->name('dashboard');
         Route::resource('links', AdminLinksController::class);
-        Route::get('links/{link}/status/{status}', [AdminLinksController::class,'markAs'])->name('links.status');
+        Route::get('links/{link}/status/{status}', [AdminLinksController::class, 'markAs'])->name('links.status');
     });

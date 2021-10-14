@@ -77,7 +77,7 @@ trait HasSearch
 
         // Default the threshold if no value was passed.
         $columns = $this->getColumns();
-        if (is_null($threshold) && !empty($columns)) {
+        if (is_null($threshold) && ! empty($columns)) {
             $threshold = $relevance_count / count($columns);
         }
 

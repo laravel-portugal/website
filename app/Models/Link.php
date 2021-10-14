@@ -28,7 +28,7 @@ final class Link extends Model
     protected $casts = [
         'status' => LinkStatusType::class,
         'approved_at' => 'date',
-        'rejected_at' => 'date'
+        'rejected_at' => 'date',
     ];
 
     protected $fillable = [
@@ -57,7 +57,7 @@ final class Link extends Model
             'users.email' => 5,
         ],
         'joins' => [
-            'users' => ['users.id','links.user_id']
+            'users' => ['users.id', 'links.user_id'],
         ],
     ];
 

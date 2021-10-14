@@ -1,9 +1,8 @@
 <?php
 
+use App\Models\Link;
 use Diglactic\Breadcrumbs\Breadcrumbs;
 use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
-use App\Models\Link;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +31,8 @@ Breadcrumbs::for('links.create', function (BreadcrumbTrail $trail) {
 Breadcrumbs::for('links.edit', function (BreadcrumbTrail $trail, Link $link) {
     $trail->parent('links.index');
     $trail->push(
-        trans('app.menu.links-edit', ['identifier' => Str::limit($link->title,10)]),
-        route('links.edit',$link)
+        trans('app.menu.links-edit', ['identifier' => Str::limit($link->title, 10)]),
+        route('links.edit', $link)
     );
 });
 

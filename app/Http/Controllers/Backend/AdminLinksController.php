@@ -31,7 +31,8 @@ class AdminLinksController extends Controller
 
     public function markAs(Request $request, Link $link, $status): RedirectResponse
     {
-        LinkUpdateAction::execute($link, LinkUpdateDataDTO::fromStatus($link,$status));
+        LinkUpdateAction::execute($link, LinkUpdateDataDTO::fromStatus($link, $status));
+
         return back();
     }
 

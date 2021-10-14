@@ -2,7 +2,6 @@
 
 namespace App\DataTransferObjects;
 
-use App\Http\Requests\UpdateLinkRequest;
 use App\Models\Link;
 use App\Types\LinkStatusType;
 use Illuminate\Http\Request;
@@ -20,7 +19,7 @@ class LinkUpdateDataDTO extends DataTransferObject
     public LinkStatusType $status;
 
     /**
-     * From a Request to DTO
+     * From a Request to DTO.
      *
      * @throws UnknownProperties
      */
@@ -30,11 +29,8 @@ class LinkUpdateDataDTO extends DataTransferObject
     }
 
     /**
-     * From Array to DTO
+     * From Array to DTO.
      *
-     * @param array $data
-     * @param Link|null $link
-     * @return static
      * @throws UnknownProperties
      */
     public static function fromArray(array $data, ?Link $link = null): static
@@ -47,16 +43,13 @@ class LinkUpdateDataDTO extends DataTransferObject
             'description' => $data->get('description'),
             'cover_image' => $data->get('cover_image'),
             'tags' => $data->get('tags'),
-            'status' => LinkStatusType::attemptFrom($data->get('status', LinkStatusType::waiting_approval()))
+            'status' => LinkStatusType::attemptFrom($data->get('status', LinkStatusType::waiting_approval())),
         ]);
     }
 
     /**
-     * Shortcut to update a single attribute
+     * Shortcut to update a single attribute.
      *
-     * @param Link $link
-     * @param string|int|LinkStatusType $status
-     * @return static
      * @throws UnknownProperties
      */
     public static function fromStatus(Link $link, string|int|LinkStatusType $status): static
