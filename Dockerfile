@@ -41,7 +41,11 @@ RUN apt-get -y autoremove \
 
 # Project and PHP dependencies
 COPY . .
+RUN chown -R www-data: /var/www/html/bootstrap /var/www/html/storage /tmp
 RUN composer install
+
+# Javascript project
+RUN npm run production
 
 # CRON
 COPY ./docker/add_to_cron /tmp/add_to_cron
