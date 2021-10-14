@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use App\Helpers\HasAuthor;
-use App\Helpers\HasLikes;
-use App\Helpers\HasSearch;
-use App\Helpers\HasTags;
+use App\Concerns\HasAuthor;
+use App\Concerns\HasLikes;
+use App\Concerns\HasSearch;
+use App\Concerns\HasTags;
 use App\QueryBuilders\LinkQueryBuilder;
 use App\Types\LinkStatusType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

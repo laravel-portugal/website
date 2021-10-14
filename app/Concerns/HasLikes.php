@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Concerns;
 
 use App\Models\Like;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use function optional;
 
 trait HasLikes
 {

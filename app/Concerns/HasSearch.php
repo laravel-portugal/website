@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Helpers;
+namespace App\Concerns;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use function mb_strtolower;
 
 /**
  * Trait SearchableTrait.

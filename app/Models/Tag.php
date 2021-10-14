@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\HasSlug;
+use App\Concerns\HasSlug;
 use App\Types\TagColorType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

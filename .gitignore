@@ -19,3 +19,4 @@ _ide_helper_models.php
 public/js/*.js
 public/css/*.css
 .php-cs-fixer.cache
+.DS_Store
