@@ -11,7 +11,6 @@ it('render links create screen', function () {
 });
 
 it('can create new links', function () {
-
     $this->actingAs($user = User::factory()->create());
 
     $response = $this->post(route('links.store'), [
@@ -19,10 +18,10 @@ it('can create new links', function () {
         'title' => 'This is a test link',
         'description' => 'This is a test description of something with a minimum of the size',
         'cover_image' => UploadedFile::fake()->image('cover_image.jpg'),
-        'tags' => Tag::factory()->count(2)->create()->pluck('id')->toArray()
+        'tags' => Tag::factory()->count(2)->create()->pluck('id')->toArray(),
     ]);
 
-    $this->assertDatabaseHas('links',[
+    $this->assertDatabaseHas('links', [
         'url' => 'https://laravel.com',
         'title' => 'This is a test link',
     ]);
