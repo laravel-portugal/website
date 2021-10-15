@@ -1,8 +1,5 @@
 FROM ubuntu:21.04
 
-ARG WWWGROUP=50
-ARG WWWUSER=50
-
 WORKDIR /var/www/html
 
 ENV DEBIAN_FRONTEND noninteractive
@@ -34,18 +31,15 @@ RUN apt-get update \
     && curl -sL https://deb.nodesource.com/setup_16.x | bash - \
     && apt-get install -y nodejs
 
+# SETUP PUPPETEER FOR BROWSERSHOT
+RUN apt-get install -y nodejs gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget libgbm-dev libxshmfence-dev \
+    && npm install --global --unsafe-perm puppeteer \
+    && chmod -R o+rx /usr/lib/node_modules/puppeteer/.local-chromium
+
 # CLEANING LAYER
 RUN apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Project and PHP dependencies
-COPY . .
-RUN chown -R www-data: /var/www/html/bootstrap /var/www/html/storage /tmp
-RUN composer install
-
-# Javascript project
-RUN npm install ; npm run production
 
 # CRON
 COPY ./docker/add_to_cron /tmp/add_to_cron
@@ -61,6 +55,16 @@ COPY ./docker/php.ini /etc/php/8.0/cli/conf.d/99-php.ini
 # SERVICES
 COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-EXPOSE 8000
+# Project folder
+RUN chown -R www-data: /var/www/html
 
+# Project and dependencies
+USER www-data
+COPY --chown=www-data:www-data . .
+RUN composer install
+#RUN npm install ; npm run production
+RUN php artisan lasso:pull
+
+USER root
+EXPOSE 8000
 CMD ["/usr/bin/supervisord"]

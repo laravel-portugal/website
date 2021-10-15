@@ -11,7 +11,6 @@ services:
   website:
     image: hub.laravel.pt/website:${TAG:-latest}
     networks: [ web ]
-    ports: [ "8000:80" ]
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.website.rule=Host(`${TRAEFIK_HOST}`)"
