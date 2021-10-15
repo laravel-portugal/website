@@ -17,6 +17,11 @@ use Inertia\Inertia;
 */
 
 Route::view('/', 'welcome-pre-2021');
+
+Route::get('/lander', function(){
+    return Inertia::render('Landing/Index');
+});
+
 Route::get('landing', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),

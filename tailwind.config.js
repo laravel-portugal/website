@@ -16,6 +16,8 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                roboto: ['RobotoBold',...defaultTheme.fontFamily.sans],
+                robotoMono: ['RobotoMono', ...defaultTheme.fontFamily.mono],
             },
             blur: {
                 xs: '2px',

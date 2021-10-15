@@ -46,7 +46,20 @@ class HandleInertiaRequests extends Middleware
             'authorization' => $this->shareAuthorizationErrors(),
             'guidelines' => $this->shareGuideLines(),
             'breadcrumbs' => $this->sharesPageBreadcrumbs(),
+            'meta' => $this->shareMeta(),
         ]);
+    }
+
+    /**
+     * Share Authorization Errors.
+     */
+    protected function shareMeta(): array
+    {
+        return [
+            'site_name' => config('app.name'),
+            'site_url' => config('app.url'),
+            'locale' => config('app.locale'),
+        ];
     }
 
     /**
