@@ -8,7 +8,13 @@ import VueAxios from 'vue-axios'
 import Permissions from "@/Utils/Plugins/Permissions/Permissions";
 import PortalVue from 'portal-vue'
 
-const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
+// Register fa Icons
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faInstagram, faFacebook, faTwitter, faDiscord, faMeetup, faGithub } from '@fortawesome/free-brands-svg-icons'
+library.add(faInstagram, faFacebook, faTwitter, faDiscord, faMeetup, faGithub)
+
+const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel Portugal';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -24,6 +30,7 @@ createInertiaApp({
             messages: languageBundle,
         });
 
+
         app.use(i18n);
         app.use(plugin); // Inertia Plugin
         app.use(VueAxios, axios)
@@ -32,6 +39,7 @@ createInertiaApp({
 
         // Components
         app.component('InertiaLink',Link);
+        app.component('FontAwesomeIcon', FontAwesomeIcon)
 
         app.mount(el);
         el.removeAttribute('data-page');

@@ -59,6 +59,12 @@ class HandleInertiaRequests extends Middleware
             'site_name' => config('app.name'),
             'site_url' => config('app.url'),
             'locale' => config('app.locale'),
+            'social' => [
+                'twitter' => config('laravel-portugal.social.twitter'),
+                'github' => config('laravel-portugal.social.github'),
+                'meetup' => config('laravel-portugal.social.meetup'),
+                'discord' => config('laravel-portugal.social.discord'),
+            ]
         ];
     }
 

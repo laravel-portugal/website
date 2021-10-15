@@ -4,10 +4,10 @@
       v-slot="{ open }"
       class="relative bg-transparent z-50"
     >
-      <!-- Desktop -->
+      <!-- Mobile -->
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center px-4 py-6 sm:px-6">
-          <!-- Desktop Logo -->
+          <!-- Mobile Logo -->
           <div class="flex justify-start lg:w-0 lg:flex-1">
             <a href="/">
               <span
@@ -15,14 +15,9 @@
                 v-html="$page.props.meta.site_name"
               />
               <app-logo-white class="h-20 w-auto" />
-              <!--              <img-->
-              <!--                class="h-20 w-auto"-->
-              <!--                src="img/logo-compressed.png"-->
-              <!--                :alt="$page.props.meta.site_name"-->
-              <!--              >-->
             </a>
           </div>
-          <!-- Desktop Hamburger Menu -->
+          <!-- Mobile Hamburger Menu -->
           <div class="flex justify-end -mr-2 -my-2 xl:hidden">
             <PopoverButton class="bg-transparent rounded-md p-2 inline-flex items-center justify-center text-gray-300 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
               <span class="sr-only">Open menu</span>
@@ -77,7 +72,7 @@
                     class="text-gray-300 text-base font-medium hover:underline"
                   >
                     <inertia-link href="/">
-                      {{ $t('generic.menu.home') }}
+                      {{ $t('app.menu_landing.home') }}
                     </inertia-link>
                   </PopoverButton>
 
@@ -86,7 +81,7 @@
                     class="text-gray-300 text-base font-medium hover:underline"
                   >
                     <inertia-link href="/#about">
-                      {{ $t('generic.menu.about') }}
+                      {{ $t('app.menu_landing.about') }}
                     </inertia-link>
                   </PopoverButton>
 
@@ -94,8 +89,8 @@
                     as="div"
                     class="text-gray-300 text-base font-medium hover:underline"
                   >
-                    <inertia-link href="/#collection">
-                      {{ $t('generic.menu.collection') }}
+                    <inertia-link href="/#links">
+                      {{ $t('app.menu_landing.links') }}
                     </inertia-link>
                   </PopoverButton>
 
@@ -103,19 +98,10 @@
                     as="div"
                     class="text-gray-300 text-base font-medium hover:underline"
                   >
-                    <inertia-link href="/#roadmap">
-                      {{ $t('generic.menu.roadmap') }}
+                    <inertia-link href="/#community">
+                      {{ $t('app.menu_landing.community') }}
                     </inertia-link>
                   </PopoverButton>
-
-                  <PopoverButton
-                    as="div"
-                    class="text-gray-300 text-base font-medium hover:underline"
-                  >
-                    <inertia-link href="/#faqs">
-                      {{ $t('generic.menu.faqs') }}
-                    </inertia-link>
-                  </popoverbutton>
                 </div>
                 <div class="mt-6 border-t border-gray-500">
                   <div class="pt-5 grid grid-cols-2 gap-4">
@@ -126,27 +112,21 @@
                       target="_blank"
                       class="text-gray-300 text-base font-medium hover:underline flex inline-flex items-center"
                     >
-                      <i
-                        class="h-4 w-4 text-md mr-1 fab"
-                        :class="{
-                          'fa-instagram': network.icon === 'instagram',
-                          'fa-facebook': network.icon === 'facebook',
-                          'fa-twitter': network.icon === 'twitter',
-                          'fa-telegram': network.icon === 'telegram',
-                          'fa-discord': network.icon === 'discord',
-                        }"
-                        aria-hidden="true"
+                      <font-awesome-icon
+                        :icon="['fab',''+network.icon+'']"
+                        class="mr-1 h-4 w-4 text-md"
+                        area-hidden="true"
                       />
-                      {{ network.name }}
+                      <span>{{ network.name }}</span>
                     </a>
                   </div>
                 </div>
                 <div class="mt-6">
                   <inertia-link
-                    :href="route('sales.show')"
+                    :href="route('login')"
                     class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
                   >
-                    {{ $t('generic.join-presale') }}
+                    {{ $t('app.menu_landing.login') }}
                   </inertia-link>
                 </div>
               </div>
@@ -161,7 +141,9 @@
 <script>
 import { Popover, PopoverButton, PopoverGroup, PopoverPanel,PopoverOverlay } from '@headlessui/vue'
 import { MenuAlt3Icon, XIcon } from '@heroicons/vue/outline'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import AppLogoWhite from "@/Layouts/Partials/AppLogoWhite";
+
 export default {
     components: {
         AppLogoWhite,
@@ -169,7 +151,8 @@ export default {
         PopoverButton,
         PopoverPanel,
         XIcon,
-        MenuAlt3Icon
+        MenuAlt3Icon,
+        FontAwesomeIcon
     },
     computed: {
         social_networks(){
@@ -177,26 +160,26 @@ export default {
                 {
                     name: 'Twitter',
                     description: 'Want to join us on Twitter? Get involved on the most popular network',
-                    href: $t('app.social.twitter'),
+                    href: this.$page.props?.meta.social.twitter,
                     icon: 'twitter',
                 },
                 {
-                    name: 'Instagram',
-                    description: 'Keen to check our artworks on Instagram? Follow us on Instagram at @cryptomoons',
-                    href: $t('generic.social.instagram'),
-                    icon: 'instagram',
-                },
-                {
-                    name: 'Telegram',
-                    description: 'Need to join the community on the most secure chatting app? Lets get started',
-                    href: $t('generic.social.telegram'),
-                    icon: 'telegram',
+                    name: 'Github',
+                    description: 'Want to Contribute? Checkout our official Github Account',
+                    href: this.$page.props?.meta.social.github,
+                    icon: 'github',
                 },
                 {
                     name: 'Discord',
-                    description: 'Fan of communities? Join Crypto Moons® on Discord today and talk with hundreds of other NFT Buyers.',
-                    href: $t('generic.social.discord'),
+                    description: 'Fan of communities? Join Laravel Portugal ® on Discord today and talk with hundreds of other Developers',
+                    href: this.$page.props?.meta.social.discord,
                     icon: 'discord',
+                },
+                {
+                    name: 'Meetup',
+                    description: 'Want to meet your fellow Laravel Mates in Portugal or around the world? Worry not! Lets do it.',
+                    href: this.$page.props?.meta.social.meetup,
+                    icon: 'meetup',
                 },
             ];
         }

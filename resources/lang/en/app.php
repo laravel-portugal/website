@@ -12,6 +12,15 @@ return [
     'links-edit-title' => 'Edit Link',
     'links-edit-subtitle' => 'Something went wrong with your data? No worries, feel free to edit your link here',
 
+    'menu_landing' => [
+        'home' => 'Home',
+        'about' => 'About',
+        'links' => 'Tips & Tricks',
+        'community' => 'Community',
+        'login' => 'Sign in',
+        'register' => 'Sign up'
+    ],
+
     'menu' => [
         'dashboard' => 'Dashboard',
 

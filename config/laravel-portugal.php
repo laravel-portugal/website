@@ -1,9 +1,17 @@
 <?php
 
 return [
+    'social' => [
+        'twitter' => 'https://twitter.com/LaravelPortugal',
+        'github' => 'https://github.com/laravel-portugal',
+        'meetup' => 'https://www.meetup.com/pt-BR/Laravel-Portugal/',
+        'discord' => 'https://discord.gg/9medAV2mD5'
+    ],
+
     'crawler' => [
         'user-agent' => 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
     ],
+
     'browserShot' => [
         'args' => [
             // Required for Docker version of Puppeteer
@@ -18,6 +26,7 @@ return [
             'npm_binary' => env('BROWSER_SHOT_NPM_BINARY', '/usr/bin/npm'),
         ],
     ],
+
     'links' => [
         // Max in characters for title and description & image size
         'title_max_size' => '120',
