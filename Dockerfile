@@ -55,9 +55,8 @@ COPY ./docker/php.ini /etc/php/8.0/cli/conf.d/99-php.ini
 # SERVICES
 COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Project folder
 RUN chown -R www-data: /var/www/html
-
-EXPOSE 8000
 
 # Project and dependencies
 USER www-data
@@ -66,4 +65,6 @@ RUN composer install
 #RUN npm install ; npm run production
 RUN php artisan lasso:pull
 
+USER root
+EXPOSE 8000
 CMD ["/usr/bin/supervisord"]
