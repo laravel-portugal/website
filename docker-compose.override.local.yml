@@ -12,7 +12,7 @@ services:
       - ./:/var/www/html
 
   mysql:
-    image: mariadb:10.5.8-focal
+    image: mysql:8
     networks: [ web ]
     ports:
       - ${FORWARD_DB_PORT:-33060}:3306

@@ -41,22 +41,6 @@ RUN apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# USER
-#RUN groupadd --force -g $WWWGROUP sail
-#RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u 5000 sail
-
-#USER sail
-#USER www-data
-
-# Project and PHP dependencies
-RUN chown -R www-data: /var/www/html
-COPY --chown=www-data:www-data . .
-RUN composer install
-
-# Javascript project
-#RUN npm install ; npm run production
-RUN php artisan lasso:pull
-
 # CRON
 COPY ./docker/add_to_cron /tmp/add_to_cron
 RUN crontab /tmp/add_to_cron ; rm /tmp/add_to_cron
@@ -71,6 +55,15 @@ COPY ./docker/php.ini /etc/php/8.0/cli/conf.d/99-php.ini
 # SERVICES
 COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+RUN chown -R www-data: /var/www/html
+
 EXPOSE 8000
+
+# Project and dependencies
+USER www-data
+COPY --chown=www-data:www-data . .
+RUN composer install
+#RUN npm install ; npm run production
+RUN php artisan lasso:pull
 
 CMD ["/usr/bin/supervisord"]
