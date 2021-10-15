@@ -5,7 +5,7 @@ return [
         'twitter' => 'https://twitter.com/LaravelPortugal',
         'github' => 'https://github.com/laravel-portugal',
         'meetup' => 'https://www.meetup.com/pt-BR/Laravel-Portugal/',
-        'discord' => 'https://discord.gg/9medAV2mD5'
+        'discord' => 'https://discord.gg/9medAV2mD5',
     ],
 
     'crawler' => [

@@ -64,7 +64,7 @@ class HandleInertiaRequests extends Middleware
                 'github' => config('laravel-portugal.social.github'),
                 'meetup' => config('laravel-portugal.social.meetup'),
                 'discord' => config('laravel-portugal.social.discord'),
-            ]
+            ],
         ];
     }
 

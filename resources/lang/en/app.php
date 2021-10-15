@@ -18,7 +18,7 @@ return [
         'links' => 'Tips & Tricks',
         'community' => 'Community',
         'login' => 'Sign in',
-        'register' => 'Sign up'
+        'register' => 'Sign up',
     ],
 
     'menu' => [
