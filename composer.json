@@ -20,6 +20,7 @@
         "laravel/socialite": "^5.2.4",
         "laravel/tinker": "^2.5",
         "predis/predis": "^1.1",
+        "sammyjo20/lasso": "^1.2",
         "socialiteproviders/discord": "^4.1",
         "socialiteproviders/google": "^4.1",
         "socialiteproviders/twitter": "^4.1",
