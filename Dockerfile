@@ -63,7 +63,7 @@ USER www-data
 COPY --chown=www-data:www-data . .
 RUN composer install
 #RUN npm install ; npm run production
-RUN php artisan lasso:pull
+RUN php artisan storage:link && php artisan lasso:pull
 
 USER root
 EXPOSE 8000
