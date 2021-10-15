@@ -29,7 +29,7 @@
           v-model="form.email"
           :errors="form.errors.email"
           :label="$t('users.fields.email')"
-          :placeholder="$t('placeholders.email')"
+          :placeholder="'john@gmail.com'"
           autocomplete="email"
           autofocus
           layout="naked"
