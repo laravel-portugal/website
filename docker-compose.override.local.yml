@@ -7,6 +7,7 @@ services:
     labels:
       - traefik.http.routers.website.rule=Host(`website.laravel.pt.test`)
       - traefik.http.routers.website.tls=true
+    ports: [ "8000:80" ]
     volumes:
       - ./:/var/www/html
 
