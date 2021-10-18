@@ -2,7 +2,7 @@
 
 return [
     'nickname' => 'Ex: Your username',
-    'email' => 'Ex: john@doe.com',
+    'email' => 'Ex: john[at]doe.com',
     'name' => 'Write a name',
     'name_person' => 'Elon Musk',
     'password' => 'Type your secure password',
@@ -32,7 +32,7 @@ return [
     'biography' => 'Tell us a bit more about you',
     'social_profile' => 'https://facebook.com ou https://linked.com/xpto',
     'link' => 'https://www.url.com',
-    'job' => 'CEO @ Somwhere',
+    'job' => 'CEO [at] Somwhere',
     'amount' => 'Quantity Ex: 0,1,2',
     'subject' => 'Write here your subject',
     'city' => 'New York',

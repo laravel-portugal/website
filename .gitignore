@@ -1,6 +1,10 @@
 /node_modules
 /public/hot
 /public/storage
+public/js/*.js
+public/css/*.css
+public/**/*.txt
+public/mix-manifest.json
 /storage/*.key
 /vendor
 .env
@@ -16,7 +20,6 @@ yarn-error.log
 .phpstorm.meta.php
 _ide_helper.php
 _ide_helper_models.php
-public/js/*.js
-public/css/*.css
+
 .php-cs-fixer.cache
 .DS_Store

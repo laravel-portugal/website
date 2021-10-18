@@ -1,41 +1,90 @@
 # Laravel Portugal 🇵🇹
 
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/laravel-portugal/website/run-tests?label=tests)](https://github.com/laravel-portugal/website/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/laravel-portugal/website/Check%20&%20fix%20styling?label=code%20style)](https://github.com/laravel-portugal/website/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-portugal/website.svg?style=flat-square)](https://packagist.org/packages/laravel-portugal/website)
+[![GitHub Tests Action Status](https://github.com/laravel-portugal/website/actions/workflows/run-tests.yml/badge.svg)](https://github.com/laravel-portugal/website/actions/workflows/run-tests.yml)
+[![GitHub Code Style Action Status](https://github.com/laravel-portugal/website/actions/workflows/php-cs-fixer.yml/badge.svg)](https://github.com/laravel-portugal/website/actions/workflows/php-cs-fixer.yml)
+[![Website Deployment](https://github.com/laravel-portugal/website/actions/workflows/deploy.yml/badge.svg)](https://github.com/laravel-portugal/website/actions/workflows/deploy.yml)
 
----
 This repo will be used to develop & maintain the current website for the Laravel community in Portugal, the project is inspired
 on Laravel.io, other community repos and of course our loved contributors from the Portuguese community.
 The website aims to be a central repository for useful tips, tricks, & more content in the future aiming to help the Portuguese
 developers around the world!
----
 
-## Stack & Features
+## Features
 
 This project is currently using Laravel 8 with Jetstream + Teams scaffolding with Inertia Stack.
 You can find here some cool way to implement features or even start your next big thing, some features include:
 
 - Tailwind + Vue3 Components 🍃
 - Docker Deployment 🐳
-- Github Actions
+- Github Actions 🤖
 - Permissions with Spatie + Inertia
-- Translations with Vue i18n + Laravel
+- Translations with Vue i18n + Laravel 🈯
 - Crawling & Scrapping with Browsershot
 - Usage of Actions & Best Pratices
 - Testing using Pest 💘
 
-## Installation
+## Requirements
+- PHP 8.0.x
+- MYSQL/MariaDB
+- Chromium/Puppeteer
 
-You can install the package via composer:
+## Basic Installation & Setup
+
+This project has no special requirements besides [Browsershot](https://github.com/spatie/browsershot), take it as a vanilla Laravel + Jetstream setup
 
 ```bash
-php -r "copy('.env.example', '.env');"
+git clone https://github.com/laravel-portugal/website.git laravelpt
+cd laravelpt
+cp .env.example .env
 composer install
 php artisan key:generate
 php artisan migrate
 npm install && npm run dev
 php artisan storage:link
+php artisan:serve
+```
+
+## Using Docker
+
+It's also possible to use 🐳 Docker to setup & install the project please kindly follow the instructions:
+At this point we assume you have docker & running on your machine
+
+```bash
+git clone https://github.com/laravel-portugal/website.git laravelpt
+cd laravelpt
+cp .env.example .env
+cp docker-compose.override.local.yml docker-compose.override.yml
+docker-compose build
+docker-compose run --rm website composer install --no-interaction
+docker-compose run --rm website php artisan key:generate
+docker-compose run --rm website npm install
+docker-compose run --rm website npm run dev
+docker-compose run --rm website php artisan storage:link
+docker-compose up -d
+docker-compose exec website php artisan migrate
+```
+
+To then execute command please kindly use :
+```
+docker-compose exec website bash
+```
+
+If all goes well your new shiny website should be serving at ``http://localhost:800``, enjoy and happy coding 🎉 !
+
+## Setup Browser Shot
+
+Please kindly refer to official [Browsershot](https://github.com/spatie/browsershot) documentation for more issues
+The setup should be simple as bellow, please keep in mind updating your .env file with the Node and NPM binaries if you are using NVM or similar.
+
+
+For Mac OS
+```
+npm install puppeteer
+```
+
+Or Globally
+```
+npm install puppeteer --global
 ```
 
 ## Compile & Publish Assets
@@ -54,6 +103,8 @@ php artisan lasso:pull
 ```
 
 ## Testing
+
+Testing is done via [Pest](https://pestphp.com/)
 
 ```bash
 pest

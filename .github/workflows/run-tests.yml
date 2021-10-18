@@ -15,9 +15,9 @@ jobs:
 
       # MYSQL Service
       mysql:
-        image: mysql:5.7
+        image: mysql:8
         env:
-          MYSQL_DATABASE: inertia_db_test
+          MYSQL_DATABASE: laravelpt
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
           MYSQL_ROOT_PASSWORD: root
           MYSQL_PASSWORD: root
