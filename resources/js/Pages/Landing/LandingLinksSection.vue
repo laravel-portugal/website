@@ -15,13 +15,13 @@
         />
       </div>
       <div class="px-8 mx-auto max-w-7xl lg:px-12 xl:px-16 text-center">
-        <a
-          href="#"
+        <inertia-link
+          :href="route('links.public')"
           target="_blank"
           class="mt-3 btn px-4 py-3"
         >
           Looking for more?
-        </a>
+        </inertia-link>
       </div>
     </div>
   </section>

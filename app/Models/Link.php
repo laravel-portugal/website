@@ -104,7 +104,7 @@ final class Link extends Model
 
     public function getRedirectUrlAttribute(): ?string
     {
-        return $this->url ? route('links.redirect', $this) : '';
+        return $this->url ? route('links.public.redirect', $this) : '';
     }
 
     public static function coverPhotosDisk(): string

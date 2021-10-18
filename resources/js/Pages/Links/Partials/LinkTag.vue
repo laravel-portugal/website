@@ -1,7 +1,7 @@
 <template>
   <inertia-link
     :key="tag.id"
-    :href="tag.link"
+    :href="route('links.public',{tag: tag.slug})"
     class="hover:underline inline-flex mr-1 mb-1"
   >
     <span

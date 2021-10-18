@@ -3,10 +3,11 @@
 use App\Http\Controllers\Backend\AdminLinksController;
 use App\Http\Controllers\Frontend\CrawlerController;
 use App\Http\Controllers\Frontend\DashboardController;
-use App\Http\Controllers\Frontend\LinksController;
-use App\Http\Controllers\Frontend\LinksRedirectController;
+use App\Http\Controllers\Frontend\LinksController as UserLinksController;
 use App\Http\Controllers\Frontend\SocialLoginController;
 use App\Http\Controllers\Landing\HomeController;
+use App\Http\Controllers\Landing\LinksRedirectController;
+use App\Http\Controllers\Landing\LinksController as LandingLinksController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -30,6 +31,9 @@ Route::get('landing', function () {
     ]);
 });
 
+Route::get('/links/redirect/{link:hash}', [LinksRedirectController::class, 'redirect'])->name('links.public.redirect');
+Route::get('/links', [LandingLinksController::class, 'index'])->name('links.public');
+
 /*
 |--------------------------------------------------------------------------
 | Social Login Auth
@@ -38,22 +42,18 @@ Route::get('landing', function () {
 Route::get('login/{provider}/redirect', [SocialLoginController::class, 'redirect'])->name('social.redirect');
 Route::get('login/{provider}/callback', [SocialLoginController::class, 'callback'])->name('social.callback');
 
-/*
-|--------------------------------------------------------------------------
-| Redirects
-|--------------------------------------------------------------------------
-*/
-Route::get('/redirect/{link:hash}', [LinksRedirectController::class, 'redirect'])->name('links.redirect');
 
 /*
 |--------------------------------------------------------------------------
 | Users - Private Area Routes
 |--------------------------------------------------------------------------
 */
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/crawler', [CrawlerController::class, 'search'])->name('crawler.search');
-    Route::resource('links', LinksController::class)->middleware(['auth:sanctum', 'verified']);
+Route::prefix('dashboard')->group(function(){
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::post('/crawler', [CrawlerController::class, 'search'])->name('crawler.search');
+        Route::resource('links', UserLinksController::class)->middleware(['auth:sanctum', 'verified']);
+    });
 });
 
 /*

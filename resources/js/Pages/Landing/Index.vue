@@ -1,7 +1,7 @@
 <template>
   <landing-top-section id="top" />
   <landing-links-section id="links" />
-  <landing-discord-section id="discord" />
+  <!--  <landing-discord-section id="discord" />-->
   <app-footer />
 </template>
 
