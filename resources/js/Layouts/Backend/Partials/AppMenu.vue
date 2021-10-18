@@ -91,9 +91,9 @@
 </template>
 
 <script>
-import AppMenuLink from "@/Layouts/Partials/AppMenuLink";
-import AppMenuCollapse from "@/Layouts/Partials/AppMenuCollapse";
-import AppMenuLinkSub from "@/Layouts/Partials/AppMenuLinkSub";
+import AppMenuLink from "@/Layouts/Backend/Partials/AppMenuLink";
+import AppMenuCollapse from "@/Layouts/Backend/Partials/AppMenuCollapse";
+import AppMenuLinkSub from "@/Layouts/Backend/Partials/AppMenuLinkSub";
 import {
     FingerPrintIcon,
     LinkIcon,

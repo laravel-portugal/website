@@ -4,6 +4,8 @@
  * @param defaultValue {*} - The default value in case it doesnt find
  * @returns {*}
  */
+import {usePage} from "@inertiajs/inertia-vue3";
+
 export function queryParam(name, defaultValue = null) {
     if (typeof window !== 'undefined') {
         let params = new URLSearchParams(window.location.search);
@@ -46,4 +48,19 @@ export function truncateString(str, limit = 10, endsOn = '...') {
  */
 export function firstOf(obj) {
     return obj[Object.keys(obj)[0]];
+}
+
+/**
+ * Resolves the assets path in a laravel way
+ * @param path {String} - The Asset Path
+ * @returns {String}
+ */
+export function asset(path){
+    let prefix = process.env.MIX_ASSET_URL
+    if (!prefix) {
+        // fallback to determining ASSET_URL from Inertia Share
+        // It should work for both Vapor & Regular Hosting
+        prefix = usePage().props.value.meta.assets_url
+    }
+    return prefix + '/' + path.replace(/^\/+/, '')
 }

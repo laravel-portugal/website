@@ -1,21 +1,18 @@
 <template>
-  <landing-top-section id="top" />
-  <landing-links-section id="links" />
-  <!--  <landing-discord-section id="discord" />-->
+  <top-section id="top" />
+  <links-section id="links" />
   <app-footer />
 </template>
 
 <script>
-import AppFooter from "@/Layouts/Partials/AppFooter";
-import LandingLinksSection from "@/Pages/Landing/LandingLinksSection";
-import LandingDiscordSection from "@/Pages/Landing/LandingDiscordSection";
-import LandingTopSection from "@/Pages/Landing/LandingTopSection";
+import TopSection from "@/Pages/Frontend/Landing/TopSection";
+import LinksSection from "@/Pages/Frontend/Landing/LinksSection";
+import AppFooter from "@/Layouts/Backend/Partials/AppFooter";
 
 export default {
     components: {
-        LandingTopSection,
-        LandingDiscordSection,
-        LandingLinksSection,
+        TopSection,
+        LinksSection,
         AppFooter,
     }
 }

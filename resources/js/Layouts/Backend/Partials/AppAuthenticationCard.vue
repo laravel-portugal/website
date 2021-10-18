@@ -106,8 +106,8 @@
   </div>
 </template>
 <script>
-import AppLogoColor from "@/Layouts/Partials/AppLogoColor";
-import AppHead from "@/Layouts/Partials/AppHead";
+import AppLogoColor from "@/Layouts/Backend/Partials/AppLogoColor";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
 
 export default {
 

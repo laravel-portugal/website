@@ -2,7 +2,7 @@
   <div class="slider p-2">
     <div class="slide-track space-x-7">
       <div
-        v-for="tag in $page.props.tags.data"
+        v-for="tag in tags"
         :key="tag.id"
         class="slide"
       >
@@ -32,8 +32,11 @@
 
 <script>
 export default {
-    components: {
-
+    props: {
+        tags: {
+            type: [Object,Array],
+            required: true,
+        },
     },
 }
 </script>

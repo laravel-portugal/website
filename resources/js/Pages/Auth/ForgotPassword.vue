@@ -53,7 +53,7 @@
 </template>
 
 <script>
-import AppAuthenticationCard from '@/Layouts/Partials/AppAuthenticationCard'
+import AppAuthenticationCard from '@/Layouts/Backend/Partials/AppAuthenticationCard'
 import ButtonLoading from "@/Components/Buttons/ButtonLoading";
 import XFormContainer from "@/Components/Forms/Container";
 import XInputText from "@/Components/Inputs/Text";

@@ -14,6 +14,8 @@
 <script>
 import SkeletonCreate from "@/Models/Link/SkeletonCreate";
 import SkeletonCard from "@/Models/Link/SkeletonCard";
+import {asset} from "@/Utils/Utils";
+
 export default {
     components: {
         SkeletonCreate,
@@ -26,7 +28,7 @@ export default {
                     id: Math.random(),
                     title: 'Inertia Pretty Routes',
                     description: 'Submit your next link to help the community, please always make sure to not submit same links twice.',
-                    cover_image_url: 'img/dummy/inertia.jpg',
+                    cover_image_url: asset('img/dummy/inertia.jpg'),
                     updated_at_for_humans: '3 Hours ago',
                     tags: [
                         {
@@ -45,7 +47,7 @@ export default {
                     id: Math.random(),
                     title: 'Tailwind CSS on your projects',
                     description: 'Submit your next link to help the community, please always make sure to not submit same links twice.',
-                    cover_image_url: 'img/dummy/tailwind.jpg',
+                    cover_image_url: asset('img/dummy/tailwind.jpg'),
                     updated_at_for_humans: '7 Hours ago',
                     tags: [
                         {

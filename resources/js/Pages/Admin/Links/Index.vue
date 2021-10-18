@@ -7,7 +7,7 @@
   </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/Backend/AppLayout";
 import LinksList from "@/Pages/Admin/Links/Partials/LinksList";
 import LinksSearch from "@/Pages/Admin/Links/Partials/LinksSearch";
 

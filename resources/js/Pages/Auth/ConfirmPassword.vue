@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import AppAuthenticationCard from '@/Layouts/Partials/AppAuthenticationCard'
+import AppAuthenticationCard from '@/Layouts/Backend/Partials/AppAuthenticationCard'
 import ButtonLoading from "@/Components/Buttons/ButtonLoading";
 import {useForm} from "@inertiajs/inertia-vue3";
 import XFormContainer from "@/Components/Forms/Container";

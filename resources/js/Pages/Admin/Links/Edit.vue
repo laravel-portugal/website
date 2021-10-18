@@ -4,7 +4,7 @@
   </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/Backend/AppLayout";
 import LinkForm from "@/Models/Link/Form";
 
 export default {

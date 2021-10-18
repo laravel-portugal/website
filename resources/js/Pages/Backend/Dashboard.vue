@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import AppLayout from '@/Layouts/AppLayout.vue'
+import AppLayout from '@/Layouts/Backend/AppLayout.vue'
 import NotificationCard from "@/Components/Cards/NotificationCard";
 import {ChevronRightIcon, TerminalIcon, LinkIcon, UserCircleIcon} from '@heroicons/vue/outline'
 

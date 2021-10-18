@@ -12,6 +12,12 @@ return [
     'by' => 'By',
     'search' => 'Search',
 
+    'hero-title' => 'Laravel Portugal 🇵🇹',
+    'hero-title-part' => 'Official Community',
+    'hero-subtitle' => 'Hello & Welcome to the official Laravel Community in Portugal. Engange with other Laravel Developers with active growing community',
+    'hero-button-one' => 'Join Discord',
+    'hero-button-two' => 'Nah, show me more!',
+
     'welcome-message-title' => '👋 Hey & Welcome :name!',
     'welcome-message-text' => 'Hey :name, Thanks for joining :site_name Community website, its a pleasure to have you here. Please take a minute to find the most useful links we have prepared for you, or if you feel confident start sharing your own tips to the community!',
 
@@ -40,6 +46,8 @@ return [
 
     'links-create-skeleton-title' => 'Ready to submit your link?',
     'links-create-skeleton-text' => 'Share your bookmarks with the community by submitting useful links!',
+
+    'links-show-more' => 'Looking for more?',
 
     'links-visit' => 'Visit Link',
     'links-mark-as-published' => 'Mark as Published',

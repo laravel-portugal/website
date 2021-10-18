@@ -59,6 +59,7 @@ class HandleInertiaRequests extends Middleware
             'site_name' => config('app.name'),
             'site_url' => config('app.url'),
             'locale' => config('app.locale'),
+            'assets_url' => config('app.asset_url') ?? rtrim(asset('/'),'/'),
             'social' => [
                 'twitter' => config('laravel-portugal.social.twitter'),
                 'github' => config('laravel-portugal.social.github'),

@@ -7,7 +7,7 @@
   </div>
 </template>
 <script>
-import AppMenuProfileDropdown from "@/Layouts/Partials/AppMenuProfileDropdown";
+import AppMenuProfileDropdown from "@/Layouts/Backend/Partials/AppMenuProfileDropdown";
 
 export default {
     components: {

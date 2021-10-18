@@ -19,8 +19,8 @@
 
 <script>
 import { defineComponent } from 'vue'
-import AppHead from "@/Layouts/Partials/AppHead";
-import AppLogoColor from "@/Layouts/Partials/AppLogoColor";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
+import AppLogoColor from "@/Layouts/Backend/Partials/AppLogoColor";
 
 export default defineComponent({
     components: {

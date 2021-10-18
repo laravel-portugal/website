@@ -5,7 +5,7 @@
   </app-layout>
 </template>
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/Backend/AppLayout";
 import ListForEmptyState from "@/Pages/Backend/Links/Partials/ListForEmptyState";
 import ListWithCards from "@/Pages/Backend/Links/Partials/ListWithCards";
 

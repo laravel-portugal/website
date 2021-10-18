@@ -142,7 +142,7 @@
 import { Popover, PopoverButton, PopoverGroup, PopoverPanel,PopoverOverlay } from '@headlessui/vue'
 import { MenuAlt3Icon, XIcon } from '@heroicons/vue/outline'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import AppLogoWhite from "@/Layouts/Partials/AppLogoWhite";
+import AppLogoWhite from "@/Layouts/Backend/Partials/AppLogoWhite";
 
 export default {
     components: {

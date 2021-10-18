@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import AppLogoWhite from "@/Layouts/Partials/AppLogoWhite";
+import AppLogoWhite from "@/Layouts/Backend/Partials/AppLogoWhite";
 import {Popover, PopoverButton, PopoverGroup, PopoverPanel} from "@headlessui/vue";
 import {ChevronDownIcon} from "@heroicons/vue/solid";
 

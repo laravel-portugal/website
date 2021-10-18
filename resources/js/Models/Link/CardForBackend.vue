@@ -14,7 +14,7 @@
           v-if="link.tags.length > 0"
           class="text-sm font-medium"
         >
-          <link-tag
+          <tags
             v-for="tag in link.tags"
             :key="tag.id"
             :tag="tag"
@@ -98,11 +98,11 @@
   </div>
 </template>
 <script>
-import LinkTag from "@/Pages/Links/Partials/LinkTag";
+import Tags from "@/Models/Link/Tags";
 import {PencilIcon, ShieldCheckIcon } from '@heroicons/vue/outline';
 export default {
     components: {
-        LinkTag,
+        Tags,
         PencilIcon,
         ShieldCheckIcon,
     },

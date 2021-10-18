@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import AppLogoColor from "@/Layouts/Partials/AppLogoColor";
+import AppLogoColor from "@/Layouts/Backend/Partials/AppLogoColor";
 
 export default {
     components: {

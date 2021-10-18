@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import AppLayout from "@/Layouts/AppLayout";
+import AppLayout from "@/Layouts/Backend/AppLayout";
 import UpdateProfileInformationForm from "@/Pages/Backend/Profile/UpdateProfileInformationForm";
 import SectionBorder from "@/Components/Shared/SectionBorder";
 import UpdatePasswordForm from "@/Pages/Backend/Profile/UpdatePasswordForm";
