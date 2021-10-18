@@ -1,12 +1,14 @@
 <template>
   <div class="flex flex-col rounded-lg shadow-lg overflow-hidden">
     <div class="flex-shrink-0 border-b border-gray-100 relative">
-      <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-transparent" />
-      <img
-        class="h-32 w-full object-cover"
-        :src="link.cover_image_url"
-        :alt="link.title"
-      >
+      <inertia-link :href="route('dashboard')">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-50 to-transparent" />
+        <img
+          class="h-32 w-full object-cover"
+          :src="link.cover_image_url"
+          :alt="link.title"
+        >
+      </inertia-link>
     </div>
     <div class="flex-1 bg-white p-6 flex flex-col justify-between">
       <div class="flex-1">
@@ -20,17 +22,17 @@
             :tag="tag"
           />
         </div>
-        <a
-          href="#"
+        <inertia-link
+          :href="'#'"
           class="block mt-2"
         >
-          <p class="text-sm font-semibold text-gray-900">
+          <p class="text-sm font-semibold text-gray-900 hover:underline">
             {{ link.title }}
           </p>
           <p class="mt-3 text-xs text-gray-500">
             {{ link.description }}
           </p>
-        </a>
+        </inertia-link>
       </div>
       <div class="mt-2 flex items-center">
         <div
@@ -38,18 +40,18 @@
           class="flex-shrink-0"
         >
           <a :href="link.user_id">
-            <span class="sr-only">{{ link.user.name }}</span>
+            <span class="sr-only">{{ link.author.name }}</span>
             <img
-              v-if="link.user.profile_photo_url"
+              v-if="link.author.profile_photo_url"
               class="h-10 w-10 rounded-full"
-              :src="link.user.profile_photo_url"
-              :alt="link.user.name"
+              :src="link.author.profile_photo_url"
+              :alt="link.author.name"
             >
             <span
               v-else
               class="inline-flex items-center justify-center rounded-full h-10 w-10 rounded-full bg-indigo-100"
             >
-              <span class="text-sm font-light leading-none text-indigo-800">{{ $page.props.user.name_letters }}</span>
+              <span class="text-sm font-light leading-none text-indigo-800">{{ link.author.name_letters }}</span>
             </span>
           </a>
         </div>
@@ -62,7 +64,7 @@
               :href="link.user_id"
               class="hover:underline"
             >
-              {{ link.user.name }}
+              {{ link.author.name }}
             </a>
           </p>
           <div class="flex space-x-1 text-sm text-gray-500">
@@ -114,7 +116,7 @@ export default {
         showAuthor: {
             type: [Boolean],
             required: false,
-            default: false
+            default: true
         },
         showButtons: {
             type: [Boolean],

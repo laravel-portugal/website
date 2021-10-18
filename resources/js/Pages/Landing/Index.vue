@@ -1,40 +1,22 @@
 <template>
-  <div class="relative">
-    <div class="absolute inset-0">
-      <video
-        autoplay
-        loop
-        muted
-        class="w-full h-full object-cover"
-      >
-        <source
-          class="w-full"
-          src="img/videos/hero.mp4"
-          type="video/mp4"
-        >
-        <source
-          class="w-full"
-          src="img/videos/hero.mp4"
-          type="video/webm"
-        >
-        <img
-          class="h-full w-full object-cover"
-          src="img/headers/home.jpg"
-          title="Your browser does not support the <video> tag"
-          alt="Laravel Portugal"
-        >
-      </video>
-      <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-primary-500 to-yellow-200 mix-blend-multiply" />
-    </div>
-    <landing-header />
-    <landing-hero />
-  </div>
+  <landing-top-section id="top" />
+  <landing-links-section id="links" />
+  <landing-discord-section id="discord" />
+  <app-footer />
 </template>
 
 <script>
-import LandingHeader from "@/Pages/Landing/LandingHeader";
-import LandingHero from "@/Pages/Landing/LandingHero";
+import AppFooter from "@/Layouts/Partials/AppFooter";
+import LandingLinksSection from "@/Pages/Landing/LandingLinksSection";
+import LandingDiscordSection from "@/Pages/Landing/LandingDiscordSection";
+import LandingTopSection from "@/Pages/Landing/LandingTopSection";
+
 export default {
-    components: {LandingHero, LandingHeader}
+    components: {
+        LandingTopSection,
+        LandingDiscordSection,
+        LandingLinksSection,
+        AppFooter,
+    }
 }
 </script>

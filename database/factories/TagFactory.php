@@ -27,6 +27,7 @@ class TagFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
+            'description' => $this->faker->realTextBetween(50,100)
         ];
     }
 }

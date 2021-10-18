@@ -1,0 +1,37 @@
+@layer components{
+    @mixin white-gradient {
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-250px * 8)) }
+    }
+
+    .slider::before{
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+        content: "";
+        @apply absolute left-0 top-0 w-[200px] h-[100px] z-10
+    }
+
+    .slider::after{
+        background: linear-gradient(to right,  rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%);
+        content: "";
+        transform: rotateZ(180deg);
+        @apply absolute right-0 top-0 w-[200px] h-[100px] z-10
+    }
+
+    .slider .slide-track{
+        -webkit-animation: scroll 30s linear infinite;
+        -moz-animation: scroll 30s linear infinite;
+        -ms-animation: scroll 30s linear infinite;
+        -o-animation: scroll 30s linear infinite;
+        animation: scroll 30s linear infinite;
+        width: calc(250px * 16);
+        display: flex;
+    }
+
+    .slider {
+        @apply w-full relative overflow-hidden m-auto bg-transparent h-[100px];
+    }
+}

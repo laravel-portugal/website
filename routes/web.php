@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\DashboardController;
 use App\Http\Controllers\Frontend\LinksController;
 use App\Http\Controllers\Frontend\LinksRedirectController;
 use App\Http\Controllers\Frontend\SocialLoginController;
+use App\Http\Controllers\Landing\HomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,9 +19,7 @@ use Inertia\Inertia;
 
 Route::view('/', 'welcome-pre-2021');
 
-Route::get('/lander', function () {
-    return Inertia::render('Landing/Index');
-});
+Route::get('/lander',[HomeController::class,'index']);
 
 Route::get('landing', function () {
     return Inertia::render('Welcome', [

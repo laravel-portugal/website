@@ -59,6 +59,24 @@ php artisan lasso:pull
 pest
 ```
 
+## Quick Todos 🥵
+
+- [ ] Move Standard Queries to Query Builders to avoid code duplication
+- [ ] Ensure the DTOS are excluding non-user data from the update
+- [ ] Write more unit tests
+- [ ] Create Administration Area to Manage Tags
+- [ ] Delete Tags & Links & Perform their needed cleanup
+- [ ] Create Administration to Manage Users
+- [ ] Add Contributors Avatars Automatically to Homepage
+- [ ] Move more static Text to Translation Keys
+- [ ] Translate to Portuguese :()
+- [ ] Create Landing Page to Search Links
+- [ ] Create Public Author Page
+- [ ] Create Public Tags Page ( FilterBy )
+- [ ] Create Redirects & Test them
+- [ ] Implement Websockets
+- [ ] Queue all Updates/Actions
+ 
 ## Credits
 This project is a merge of a previous [Laravel Portugal Api](https://github.com/laravel-portugal/api)
 and [Laravel Portugal Frontend project](https://github.com/laravel-portugal/frontend-2020), that then were

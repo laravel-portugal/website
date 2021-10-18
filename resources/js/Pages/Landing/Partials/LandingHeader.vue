@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import NavigationMobile from "@/Pages/Landing/NavigationMobile";
-import NavigationDesktop from "@/Pages/Landing/NavigationDesktop";
+import NavigationMobile from "@/Pages/Landing/Partials/NavigationMobile";
+import NavigationDesktop from "@/Pages/Landing/Partials/NavigationDesktop";
 
 export default {
     components: {

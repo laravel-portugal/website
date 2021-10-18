@@ -18,6 +18,7 @@ class CreateTagsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->string('description');
             $table->string('color')->default(TagColorType::indigo());
             $table->timestamps();
         });
