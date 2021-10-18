@@ -127,6 +127,7 @@ pest
 - [ ] Create Redirects & Test them
 - [ ] Implement Websockets
 - [ ] Queue all Updates/Actions
+- [ ] Check Page Title for App Layout for future SSR implementations
  
 ## Credits
 This project is a merge of a previous [Laravel Portugal Api](https://github.com/laravel-portugal/api)
@@ -142,6 +143,7 @@ merged into the current repo. Many thanks to all contributors!
 - [Pedro Martins](https://github.com/igerslike)
 - [Pedro Vasconcelos](https://github.com/pedro-vasconcelos)
 - [Tiago Fernandes](https://github.com/tiagof)
+- [Framein - Video Editing](https://framein.pt)
 
 ## Support
 

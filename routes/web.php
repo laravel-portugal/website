@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\Backend\AdminLinksController;
-use App\Http\Controllers\Frontend\CrawlerController;
-use App\Http\Controllers\Frontend\DashboardController;
-use App\Http\Controllers\Frontend\LinksController as UserLinksController;
-use App\Http\Controllers\Frontend\SocialLoginController;
-use App\Http\Controllers\Landing\HomeController;
-use App\Http\Controllers\Landing\LinksController as LandingLinksController;
-use App\Http\Controllers\Landing\LinksRedirectController;
+use App\Http\Controllers\Admin\AdminLinksController;
+use App\Http\Controllers\Backend\CrawlerController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\LinksController as UserLinksController;
+use App\Http\Controllers\Backend\SocialLoginController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\LinksRedirectController;
+use App\Http\Controllers\Frontend\LinksController as LandingLinksController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -41,6 +41,7 @@ Route::get('/links', [LandingLinksController::class, 'index'])->name('links.publ
 */
 Route::get('login/{provider}/redirect', [SocialLoginController::class, 'redirect'])->name('social.redirect');
 Route::get('login/{provider}/callback', [SocialLoginController::class, 'callback'])->name('social.callback');
+
 
 /*
 |--------------------------------------------------------------------------

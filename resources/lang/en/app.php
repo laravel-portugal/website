@@ -5,12 +5,69 @@ return [
     'disable' => 'Disable',
     'open' => 'Open',
     'confirm' => 'Confirm :name',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'options' => 'Options',
+    'clear-search' => 'Reset Search & Query',
+    'by' => 'By',
+    'search' => 'Search',
+
+    'welcome-message-title' => '👋 Hey & Welcome :name!',
+    'welcome-message-text' => 'Hey :name, Thanks for joining :site_name Community website, its a pleasure to have you here. Please take a minute to find the most useful links we have prepared for you, or if you feel confident start sharing your own tips to the community!',
+
+    'tour-title' => 'Let\'s get started',
+    'tour-subtitle' => 'Here are a few things to get started helping the community & yourself.',
+
+    'tour-step-one' => 'Share your Tips & Tricks via Links',
+    'tour-step-one-text' => 'Your links will help the community to learn great stuff as you do!',
+
+    'tour-step-two' => 'Laravel Documentation',
+    'tour-step-two-text' => 'Yes, before you submit anything else, please check if its covered by the documentation',
+
+    'tour-step-three' => 'Tweak your profile',
+    'tour-step-three-text' => 'Tweak your profile and show yourself to the community',
+
+    'tour-whats-next' => 'or Engage with the community on discord here',
+
+    'search-no-records-found' => '🧐 Oops. We couldn\'t find any records.',
+    'search-no-records-found-text' => 'This may happen if you have any filters or query search applied that could not match the criteria. Please try clear them up.',
 
     'links-create-title' => 'Submit a Link',
     'links-create-subtitle' => 'Here you can submit your Link to the Laravel Portugal community',
 
     'links-edit-title' => 'Edit Link',
     'links-edit-subtitle' => 'Something went wrong with your data? No worries, feel free to edit your link here',
+
+    'links-create-skeleton-title' => 'Ready to submit your link?',
+    'links-create-skeleton-text' => 'Share your bookmarks with the community by submitting useful links!',
+
+    'links-visit' => 'Visit Link',
+    'links-mark-as-published' => 'Mark as Published',
+    'links-mark-as-waiting-approval' => 'Mark as Waiting Approval',
+    'links-mark-as-rejected' => 'Mark as Rejected',
+
+    'link_status' => [
+        'published' => 'Published',
+        'waiting_approval' => 'Waiting Approval',
+        'rejected' => 'Rejected',
+    ],
+
+    'link_filters' => [
+        'default' => 'Default',
+        'published' => 'Published',
+        'rejected' => 'Rejected',
+        'waiting-approval' => 'Waiting Approval',
+        'recently-updated' => 'Recently Updated',
+        'recently-created' => 'Recently Created',
+    ],
+
+    'links' => [
+        'url' => 'URL',
+        'description' => 'Description',
+        'cover' => 'Cover Photo',
+        'tags' => 'Tags',
+        'title' => 'Title',
+    ],
 
     'menu_landing' => [
         'home' => 'Home',
@@ -41,20 +98,6 @@ return [
 
         'admin' => 'Administration',
         'admin-links' => 'Manage Links',
-    ],
-
-    'link_status' => [
-        'published' => 'Published',
-        'waiting_approval' => 'Waiting Approval',
-        'rejected' => 'Rejected',
-    ],
-
-    'links' => [
-        'url' => 'URL',
-        'description' => 'Description',
-        'cover' => 'Cover Photo',
-        'tags' => 'Tags',
-        'title' => 'Title',
     ],
 
     'pagination' => [

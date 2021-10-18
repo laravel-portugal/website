@@ -1,16 +1,24 @@
 <template>
   <app-layout title="Links">
-    <links-list :links="$page.props.links" />
+    <list-for-empty-state v-if="!hasLinks" />
+    <list-with-cards v-else />
   </app-layout>
 </template>
 <script>
 import AppLayout from "@/Layouts/AppLayout";
-import LinksList from "@/Pages/Backend/Links/Partials/LinksList";
+import ListForEmptyState from "@/Pages/Backend/Links/Partials/ListForEmptyState";
+import ListWithCards from "@/Pages/Backend/Links/Partials/ListWithCards";
 
 export default {
     components: {
+        ListForEmptyState,
+        ListWithCards,
         AppLayout,
-        LinksList
     },
+    computed:{
+        hasLinks(){
+            return this.$page.props?.links?.data.length > 0
+        }
+    }
 }
 </script>

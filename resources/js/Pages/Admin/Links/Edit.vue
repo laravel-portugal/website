@@ -1,6 +1,6 @@
 <template>
   <app-layout title="Links">
-    <link-form :link="link" />
+    <link-form :link="$page.props.link" />
   </app-layout>
 </template>
 <script>
@@ -11,11 +11,6 @@ export default {
     components: {
         LinkForm,
         AppLayout,
-    },
-    computed:{
-        link(){
-            return this.$page.props.link;
-        }
     }
 }
 </script>
