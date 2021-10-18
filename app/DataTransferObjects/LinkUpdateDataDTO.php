@@ -36,7 +36,7 @@ class LinkUpdateDataDTO extends DataTransferObject
     public static function fromArray(array $data, ?Link $link = null): static
     {
         // Convert the Link to Array & Exclude the files
-        $linkData = \Arr::except($link?->toArray() ?? [],['cover_image']);
+        $linkData = \Arr::except($link?->toArray() ?? [], ['cover_image']);
         $data = collect($linkData)->merge($data);
 
         return new static([
