@@ -1,6 +1,10 @@
 <template>
-  <div class="absolute inset-x-0 left-0 w-full overflow-hidden leading-none">
+  <div
+    class="absolute inset-x-0 left-0 w-full overflow-hidden leading-none"
+    aria-hidden="true"
+  >
     <svg
+      aria-hidden="true"
       data-name="wave"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 1200 120"

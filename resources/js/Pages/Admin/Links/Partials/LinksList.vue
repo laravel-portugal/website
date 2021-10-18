@@ -41,6 +41,7 @@
   </div>
   <!-- Pagination -->
   <x-pagination-simple
+    class="border-gray-200 border-t"
     :links="links.links"
     :meta="links.meta"
   />

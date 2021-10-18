@@ -94,14 +94,13 @@ export default {
         return {
             searchQuery: queryParam('q', ''),
             smartFilter: queryParam('smart_filter', 'default'),
+            author: queryParam('author', ''),
+            tag: queryParam('tag', ''),
             currentSmartFilter: [],
             canSearch: true,
         }
     },
     computed:{
-        links(){
-            return this.$page.props.links.data
-        },
         smartFilterOptions() {
             return [
                 {key: 'default', label: this.$t('app.link_filters.default')},
@@ -129,6 +128,8 @@ export default {
             this.applyDefaultSorting();
             this.searchQuery = '';
             this.smartFilter = '';
+            this.author = '';
+            this.tag = '';
             this.search('');
         },
         applySmartFilter(filter) {
@@ -142,8 +143,17 @@ export default {
             if (searchQuery && searchQuery?.length >= 2) {
                 params.q = searchQuery || '';
             }
+
             if (this.smartFilter !== '') {
                 params.smart_filter = this.smartFilter;
+            }
+
+            if (this.author !== '') {
+                params.author = this.author;
+            }
+
+            if (this.tag !== '') {
+                params.tag = this.tag;
             }
 
             this.$inertia.get(

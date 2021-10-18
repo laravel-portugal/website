@@ -1,5 +1,5 @@
 <template>
-  <div class="px-4 py-3 flex items-center justify-between border-gray-200 border-t sm:px-6 dark:border-gray-700">
+  <div class="px-4 py-3 flex items-center justify-between sm:px-6">
     <div class="flex-1 flex justify-between sm:hidden">
       <a
         :class="{'cursor-not-allowed': links.previous === null}"

@@ -9,11 +9,44 @@ use Illuminate\Http\Request;
 
 class LinkQueryBuilder extends Builder
 {
-    public function applySearchAndSmartFilter(Request $request): LinkQueryBuilder
+
+    public function published(): LinkQueryBuilder
     {
+        return $this->where('status',LinkStatusType::published()->value);
+    }
+
+    public function waitingApproval(): LinkQueryBuilder
+    {
+        return $this->where('status',LinkStatusType::waiting_approval()->value);
+    }
+
+    public function rejected(): LinkQueryBuilder
+    {
+        return $this->where('status',LinkStatusType::rejected()->value);
+    }
+
+    public function applySearchAndSmartFilter(Request $request,array $except = []): LinkQueryBuilder
+    {
+        // Ensure we filter it down
+        $smartFilter = $request->get('smart_filter', '');
+        if(collect($except)->has($smartFilter)){
+            $smartFilter = '';
+        }
+
         return $this
             ->applySearch($request->get('q', ''))
-            ->applySmartFilters($request->get('smart_filter', ''));
+            ->applySmartFilters($smartFilter);
+    }
+
+    public function applySearchAndSmartFilterRestricted(Request $request): LinkQueryBuilder
+    {
+        // Remove
+        return $this
+            ->applySearchAndSmartFilter($request,[
+                'status-published',
+                'status-rejected',
+                'status-waiting-approval',
+            ]);
     }
 
     public function applySearch(string $searchQuery = ''): LinkQueryBuilder
@@ -48,21 +81,21 @@ class LinkQueryBuilder extends Builder
         // Published with oldest
         if ('status-published' === $name) {
             return $this
-                ->where('status', LinkStatusType::published()->value)
+                ->published()
                 ->latest();
         }
 
         // Rejected with oldest
         if ('status-rejected' === $name) {
             return $this
-                ->where('status', LinkStatusType::rejected()->value)
+                ->rejected()
                 ->latest();
         }
 
         // Published with oldest
         if ('status-waiting-approval' === $name) {
             return $this
-                ->where('status', LinkStatusType::waiting_approval()->value)
+                ->waitingApproval()
                 ->oldest();
         }
 
