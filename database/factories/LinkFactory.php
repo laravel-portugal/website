@@ -8,8 +8,6 @@ use App\Models\User;
 use App\Types\LinkStatusType;
 use Hashids\Hashids;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Http\File;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -37,7 +35,7 @@ class LinkFactory extends Factory
             'description' => $this->faker->text(50),
             'status' => $this->faker->randomKey(LinkStatusType::toArray()),
             //'cover_image' => $this->faker->image('public/dummy')
-            'cover_image' => Storage::disk(Link::coverPhotosDisk())->putFile(Link::coverPhotosFolder(), $this->faker->file(resource_path('/img/dummy')))
+            'cover_image' => Storage::disk(Link::coverPhotosDisk())->putFile(Link::coverPhotosFolder(), $this->faker->file(resource_path('/img/dummy'))),
 //            'cover_image' => $this->faker->image(
 //                //Storage::disk(Link::coverPhotosDisk())->path(Link::coverPhotosFolder()),
 //                storage_path(Link::coverPhotosFolder()),

@@ -13,9 +13,9 @@ class HomeController extends Controller
 {
     public function index(Request $request): Response
     {
-        return Inertia::render('Landing/Index',[
+        return Inertia::render('Landing/Index', [
             'tags' => Tag::query()->take(20)->paginate(),
-            'links' => Link::query()->with('author','tags')->take(8)->latest()->get()
+            'links' => Link::query()->with('author', 'tags')->take(8)->latest()->get(),
         ]);
     }
 }
