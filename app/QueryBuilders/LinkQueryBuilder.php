@@ -9,27 +9,26 @@ use Illuminate\Http\Request;
 
 class LinkQueryBuilder extends Builder
 {
-
     public function published(): LinkQueryBuilder
     {
-        return $this->where('status',LinkStatusType::published()->value);
+        return $this->where('status', LinkStatusType::published()->value);
     }
 
     public function waitingApproval(): LinkQueryBuilder
     {
-        return $this->where('status',LinkStatusType::waiting_approval()->value);
+        return $this->where('status', LinkStatusType::waiting_approval()->value);
     }
 
     public function rejected(): LinkQueryBuilder
     {
-        return $this->where('status',LinkStatusType::rejected()->value);
+        return $this->where('status', LinkStatusType::rejected()->value);
     }
 
-    public function applySearchAndSmartFilter(Request $request,array $except = []): LinkQueryBuilder
+    public function applySearchAndSmartFilter(Request $request, array $except = []): LinkQueryBuilder
     {
         // Ensure we filter it down
         $smartFilter = $request->get('smart_filter', '');
-        if(collect($except)->has($smartFilter)){
+        if (collect($except)->has($smartFilter)) {
             $smartFilter = '';
         }
 
@@ -42,7 +41,7 @@ class LinkQueryBuilder extends Builder
     {
         // Remove
         return $this
-            ->applySearchAndSmartFilter($request,[
+            ->applySearchAndSmartFilter($request, [
                 'status-published',
                 'status-rejected',
                 'status-waiting-approval',
