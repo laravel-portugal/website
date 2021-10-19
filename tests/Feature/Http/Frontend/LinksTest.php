@@ -30,7 +30,7 @@ it('can create new links', function () {
 
 it('can increment hits when visiting a link', function () {
     $link = Link::factory()->create();
-    $this->get(route('links.public.redirect',$link));
+    $this->get(route('links.public.redirect', $link));
     $this->assertSame($link->fresh()->hits, 1);
 });
 
