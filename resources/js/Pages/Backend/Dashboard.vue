@@ -3,7 +3,7 @@
     <notification-card
       class="pb-5"
       :title="$t('app.welcome-message-title',{name: $page.props.user.name})"
-      :content="$t('app.welcome-message-title',{name: $page.props.meta.site_name})"
+      :content="$t('app.welcome-message-text',{name: $page.props.meta.site_name})"
     />
 
     <div class="bg-white shadow-lg rounded-lg sm:rounded-lg py-5 px-6 mx-auto">

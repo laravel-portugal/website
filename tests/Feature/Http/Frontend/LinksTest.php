@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Link;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
@@ -25,6 +26,12 @@ it('can create new links', function () {
         'url' => 'https://laravel.com',
         'title' => 'This is a test link',
     ]);
+});
+
+it('can increment hits when visiting a link', function () {
+    $link = Link::factory()->create();
+    $this->get(route('links.public.redirect',$link));
+    $this->assertSame($link->fresh()->hits, 1);
 });
 
 it('cannot update if status is waiting approval', function () {

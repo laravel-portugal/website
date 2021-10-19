@@ -18,7 +18,7 @@ return [
     'hero-button-one' => 'Join Discord',
     'hero-button-two' => 'Nah, show me more!',
 
-    'welcome-message-title' => '👋 Hey & Welcome :name!',
+    'welcome-message-title' => '👋 Welcome :name!',
     'welcome-message-text' => 'Hey :name, Thanks for joining :site_name Community website, its a pleasure to have you here. Please take a minute to find the most useful links we have prepared for you, or if you feel confident start sharing your own tips to the community!',
 
     'tour-title' => 'Let\'s get started',

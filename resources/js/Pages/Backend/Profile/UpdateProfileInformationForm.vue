@@ -1,14 +1,14 @@
 <template>
   <form @submit.prevent="submit()">
     <x-card
-      :subtitle="'Aqui podes editar a informação de perfil'"
-      :title="'Perfil'"
+      :subtitle="$t('users.profile-subtitle')"
+      :title="$t('users.profile-title')"
     >
       <x-form-container>
         <x-profile-photo
           v-model="form.photo"
           :errors="form.errors.photo"
-          :label="'Fotografia'"
+          :label="$t('users.fields.profile_photo_url')"
           :photo="$page.props.user.profile_photo_url"
           name="profile_photo_url"
         />
@@ -16,8 +16,8 @@
         <x-input-text
           v-model="form.name"
           :errors="form.errors.name"
-          :label="'Nome'"
-          :placeholder="'Jorge Canoas'"
+          :label="$t('users.fields.name')"
+          :placeholder="$t('placeholders.name')"
           autocomplete="name"
           autofocus
           name="name"
@@ -27,7 +27,7 @@
         <x-input-text
           v-model="form.email"
           :errors="form.errors.email"
-          :label="'E-mail'"
+          :label="$t('users.fields.email')"
           :placeholder="'canoas@gmail.com'"
           autocomplete="email"
           name="email"

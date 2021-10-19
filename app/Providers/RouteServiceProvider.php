@@ -47,6 +47,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
 
+            Route::namespace($this->namespace)
+                ->group(base_path('routes/jetstream.php'));
+
             // Debug & Local Routes
             if ($this->app->environment('local')) {
                 Route::middleware('web')

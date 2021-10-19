@@ -119,7 +119,7 @@ pest
 - [ ] Delete Tags & Links & Perform their needed cleanup
 - [ ] Create Administration to Manage Users
 - [ ] Add Contributors Avatars Automatically to Homepage
-- [ ] Move more static Text to Translation Keys
+- [x] Move more static Text to Translation Keys
 - [ ] Translate to Portuguese :()
 - [ ] Create Landing Page to Search Links
 - [ ] Create Public Author Page
@@ -128,6 +128,7 @@ pest
 - [ ] Implement Websockets
 - [ ] Queue all Updates/Actions
 - [ ] Check Page Title for App Layout for future SSR implementations
+- [ ] Add SEO Stuff to Landing Page & Pre-render
  
 ## Credits
 This project is a merge of a previous [Laravel Portugal Api](https://github.com/laravel-portugal/api)
