@@ -6,16 +6,18 @@
         :disabled="links.previous !== null"
         class="pagination-button"
         @click.prevent="navigate(links.previous)"
-        v-html="$t('app.pagination.previous')"
-      />
+      >
+        {{ $t('app.pagination.previous') }}
+      </a>
       <a
         :class="{'cursor-not-allowed': links.next === null}"
         :disabled="links.next !== null"
         :href="links.next"
         class="pagination-button ml-3"
         @click.prevent="navigate(links.next)"
-        v-html="$t('app.pagination.next')"
-      />
+      >
+        {{ $t('app.pagination.next') }}
+      </a>
     </div>
     <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
       <div>

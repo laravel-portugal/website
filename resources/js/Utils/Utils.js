@@ -1,11 +1,11 @@
+import {usePage} from "@inertiajs/inertia-vue3";
+
 /**
  * Get a query param from the URI
  * @param name {String} - Query Parameter
  * @param defaultValue {*} - The default value in case it doesnt find
  * @returns {*}
  */
-import {usePage} from "@inertiajs/inertia-vue3";
-
 export function queryParam(name, defaultValue = null) {
     if (typeof window !== 'undefined') {
         let params = new URLSearchParams(window.location.search);
@@ -16,6 +16,35 @@ export function queryParam(name, defaultValue = null) {
         return param;
     }
     return defaultValue;
+}
+
+/**
+ * Get all the quert params
+ * @param merge {Object} - Filter and remove nulls and empty
+ * @param filter {Boolean} - Filter and remove nulls and empty
+ * @returns {Object}
+ */
+export function queryParams(merge = {},filter = true){
+    let search = location.search.substring(1);
+
+    // No search query return only the merge if any
+    if(!search || search === ''){
+        return merge
+    }
+
+    // Attempt to json parse
+    let params = JSON.parse('{"' + search.replace(/&/g, '","').replace(/=/g,'":"') + '"}', function(key, value) { return key===""?value:decodeURIComponent(value) })
+
+    // If we should filter
+    if(filter){
+        params = Object.fromEntries(Object.entries(params).filter(([_, v]) => v != null && v !== ''));
+    }
+
+    // Return both merged
+    return {
+        ...params,
+        ...merge
+    };
 }
 
 /**

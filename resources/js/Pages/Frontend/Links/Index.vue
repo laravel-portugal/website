@@ -3,7 +3,10 @@
     <!-- Searchbar On Top -->
     <template #hero>
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-        <links-search />
+        <links-search
+          :filters="searchFilters"
+          :search-route="route('links.public')"
+        />
       </div>
     </template>
     <!-- Main Container -->
@@ -43,6 +46,13 @@ export default {
         links(){
             return this.$page.props.links;
         },
+        searchFilters() {
+            return [
+                {key: 'default', label: this.$t('app.link_filters.default')},
+                {key: 'updated-asc', label: this.$t('app.link_filters.recently-updated')},
+                {key: 'created-desc', label: this.$t('app.link_filters.recently-created')},
+            ];
+        }
     }
 }
 </script>

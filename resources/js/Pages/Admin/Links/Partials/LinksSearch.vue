@@ -38,7 +38,7 @@
               aria-hidden="true"
               class="h-5 w-5 text-gray-400"
             />
-            <span class="ml-2">{{ currentSmartFilter.label }}</span>
+            <span class="ml-2">{{ currentFilter.label }}</span>
             <chevron-down-icon
               class="h-5 w-5 ml-2.5 text-gray-400"
             />
@@ -47,8 +47,8 @@
 
         <template #default>
           <div
-            v-for="(sorting) in smartFilterOptions"
-            :key="sorting.key"
+            v-for="(aFilter) in filters"
+            :key="aFilter.key"
             class="py-1"
           >
             <a
@@ -57,9 +57,9 @@
               }"
               class="dropdown-item cursor-pointer"
               role="menuitem"
-              @click.prevent="applySmartFilter(sorting)"
+              @click.prevent="applyFilter(aFilter)"
             >
-              {{ sorting.label }}
+              {{ aFilter.label }}
             </a>
           </div>
         </template>
@@ -73,7 +73,7 @@ import XInputText from "@/Components/Inputs/Text";
 import XDropdown from "@/Components/Menus/Dropdown";
 import ButtonPrimary from "@/Components/Buttons/ButtonPrimary";
 import debounce from "lodash/debounce";
-import {firstOf,queryParam} from "@/Utils/Utils";
+import {firstOf,queryParam, queryParams, queryReset} from "@/Utils/Utils";
 import find from 'lodash/find';
 import {
     SearchIcon,
@@ -90,27 +90,32 @@ export default {
         SortAscendingIcon,
         ChevronDownIcon
     },
+    props: {
+        filters: {
+            type: [Object],
+            required: true,
+        },
+        searchRoute: {
+            type: [URL],
+            required: true,
+        },
+    },
     data() {
         return {
             searchQuery: queryParam('q', ''),
-            smartFilter: queryParam('smart_filter', 'default'),
-            author: queryParam('author', ''),
-            tag: queryParam('tag', ''),
-            currentSmartFilter: [],
+            filter: queryParam('filter', ''),
             canSearch: true,
         }
     },
     computed:{
-        smartFilterOptions() {
-            return [
-                {key: 'default', label: this.$t('app.link_filters.default')},
-                {key: 'status-published', label: this.$t('app.link_filters.published')},
-                {key: 'status-rejected', label: this.$t('app.link_filters.rejected')},
-                {key: 'status-waiting-approval', label: this.$t('app.link_filters.waiting-approval')},
-                {key: 'updated-asc', label: this.$t('app.link_filters.recently-updated')},
-                {key: 'created-desc', label: this.$t('app.link_filters.recently-created')},
-            ];
-        }
+        currentFilter(){
+            return find(
+                this.filters,
+                {
+                    key: queryParam('filter', '')
+                }
+            ) || firstOf(this.filters);
+        },
     },
     watch: {
         'searchQuery': {
@@ -120,45 +125,15 @@ export default {
             }
         }
     },
-    mounted() {
-        this.currentSmartFilter = find(this.smartFilterOptions, {'key': this.smartFilter});
-    },
     methods: {
-        performReset() {
-            this.applyDefaultSorting();
-            this.searchQuery = '';
-            this.smartFilter = '';
-            this.author = '';
-            this.tag = '';
-            this.search('');
-        },
-        applySmartFilter(filter) {
-            this.smartFilter = filter.key;
-            this.currentSmartFilter = filter;
+        applyFilter(filter) {
+            this.filter = filter.key;
             this.search(this.searchQuery);
         },
-        search: debounce(function(searchQuery){
-            let params = {};
-
-            if (searchQuery && searchQuery?.length >= 2) {
-                params.q = searchQuery || '';
-            }
-
-            if (this.smartFilter !== '') {
-                params.smart_filter = this.smartFilter;
-            }
-
-            if (this.author !== '') {
-                params.author = this.author;
-            }
-
-            if (this.tag !== '') {
-                params.tag = this.tag;
-            }
-
+        search: debounce(function(query){
             this.$inertia.get(
-                this.route('admin.links.index'),
-                params,
+                this.searchRoute,
+                queryParams({q: query, filter: this.filter}),
                 {
                     preserveScroll: true,
                     preserveState: true,
@@ -172,24 +147,6 @@ export default {
                 }
             );
         },700),
-        applySearchQuery() {
-            this.searchQuery = '';
-            let query = queryParam('q', '');
-            if (query.length >= 2) {
-                this.searchQuery = query;
-                this.search();
-            }
-        },
-        applyDefaultSorting() {
-            this.currentSmartFilter = firstOf(this.smartFilterOptions);
-            let smartFilter = queryParam('smart_filter', '');
-            if (smartFilter.length >= 2) {
-                this.currentSmartFilter = find(this.smartFilterOptions, {'key': smartFilter});
-                if (this.currentSmartFilter) {
-                    this.smartFilter = this.currentSmartFilter.key;
-                }
-            }
-        }
     }
 }
 </script>
