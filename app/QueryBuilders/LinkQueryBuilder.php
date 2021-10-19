@@ -9,27 +9,26 @@ use Illuminate\Http\Request;
 
 class LinkQueryBuilder extends Builder
 {
-
     public function published(): LinkQueryBuilder
     {
-        return $this->where('status',LinkStatusType::published()->value);
+        return $this->where('status', LinkStatusType::published()->value);
     }
 
     public function waitingApproval(): LinkQueryBuilder
     {
-        return $this->where('status',LinkStatusType::waiting_approval()->value);
+        return $this->where('status', LinkStatusType::waiting_approval()->value);
     }
 
     public function rejected(): LinkQueryBuilder
     {
-        return $this->where('status',LinkStatusType::rejected()->value);
+        return $this->where('status', LinkStatusType::rejected()->value);
     }
 
-    public function applySearchAndSmartFilter(Request $request,array $except = []): LinkQueryBuilder
+    public function applySearchAndSmartFilter(Request $request, array $except = []): LinkQueryBuilder
     {
         // Ensure we filter it down
         $smartFilter = $request->input('filter', '');
-        if(collect($except)->has($smartFilter)){
+        if (collect($except)->has($smartFilter)) {
             $smartFilter = '';
         }
 
@@ -44,31 +43,35 @@ class LinkQueryBuilder extends Builder
     {
         // Remove
         return $this
-            ->applySearchAndSmartFilter($request,[
+            ->applySearchAndSmartFilter($request, [
                 'status-published',
                 'status-rejected',
                 'status-waiting-approval',
             ]);
     }
 
-    public function applyAuthor(string $authorSlug = ''){
+    public function applyAuthor(string $authorSlug = '')
+    {
         $shouldSearch = null !== $authorSlug && strlen($authorSlug) > 0;
+
         return $this->when($shouldSearch, function ($query) use ($authorSlug) {
             /* @var Builder|Link $query */
             //return $query->where('user_id',$authorSlug);
             // TODO: Revisit this
-            return $query->whereHas('author', function(Builder $author) use($authorSlug){
-                $author->where('id',$authorSlug);
+            return $query->whereHas('author', function (Builder $author) use ($authorSlug) {
+                $author->where('id', $authorSlug);
             });
         });
     }
 
-    public function applyTag(string $tagSlug = ''){
+    public function applyTag(string $tagSlug = '')
+    {
         $shouldSearch = null !== $tagSlug && strlen($tagSlug) > 0;
+
         return $this->when($shouldSearch, function ($query) use ($tagSlug) {
             /* @var Builder|Link $query */
-            $query->whereHas('tags',function(Builder $tagsQuery) use($tagSlug){
-                $tagsQuery->where('slug',$tagSlug);
+            $query->whereHas('tags', function (Builder $tagsQuery) use ($tagSlug) {
+                $tagsQuery->where('slug', $tagSlug);
             });
         });
     }
