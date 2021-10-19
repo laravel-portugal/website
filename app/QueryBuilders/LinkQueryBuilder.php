@@ -47,7 +47,7 @@ class LinkQueryBuilder extends Builder
                 'status-published',
                 'status-rejected',
                 'status-waiting-approval',
-                'deleted'
+                'deleted',
             ]);
     }
 

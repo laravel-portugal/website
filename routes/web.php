@@ -45,9 +45,7 @@ Route::get('login/{provider}/redirect', [SocialLoginController::class, 'redirect
 
 Route::get('login/{provider}/callback', [SocialLoginController::class, 'callback'])
     ->name('social.callback')
-    ->where('provider', implode('|', config('laravel-portugal.oauth-providers')));;
-
-
+    ->where('provider', implode('|', config('laravel-portugal.oauth-providers')));
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +71,7 @@ Route::prefix('admin')
     ->middleware(['role:admin', 'auth:sanctum', 'verified'])
     ->group(function () {
         Route::get('/', function () { dd('im admin'); })->name('dashboard');
-        Route::resource('links', AdminLinksController::class)->only(['index','edit','update','destroy']);
+        Route::resource('links', AdminLinksController::class)->only(['index', 'edit', 'update', 'destroy']);
         Route::put('links/{link}/restore', [AdminLinksController::class, 'restore'])->withTrashed()->name('links.restore');
         Route::get('links/{link}/status/{status}', [AdminLinksController::class, 'markAs'])->name('links.status');
     });

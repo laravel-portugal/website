@@ -49,9 +49,9 @@ class AdminLinksController extends Controller
 
     public function destroy(Link $link): RedirectResponse
     {
-       $link->delete();
+        $link->delete();
 
-       return redirect()->route('admin.links.index');
+        return redirect()->route('admin.links.index');
     }
 
     public function restore(Link $link): RedirectResponse

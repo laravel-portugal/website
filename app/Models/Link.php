@@ -120,6 +120,7 @@ final class Link extends Model
     public function incrementHit(): Link
     {
         $this->increment('hits');
+
         return $this;
     }
 }
