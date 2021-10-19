@@ -116,14 +116,14 @@ pest
 - [ ] Ensure the DTOS are excluding non-user data from the update
 - [ ] Write more unit tests
 - [ ] Create Administration Area to Manage Tags
-- [ ] Delete Tags & Links & Perform their needed cleanup
+- [x] Delete Tags & Links & Perform their needed cleanup
 - [ ] Create Administration to Manage Users
 - [ ] Add Contributors Avatars Automatically to Homepage
 - [x] Move more static Text to Translation Keys
 - [ ] Translate to Portuguese :()
-- [ ] Create Landing Page to Search Links
-- [ ] Create Public Author Page
-- [ ] Create Public Tags Page ( FilterBy )
+- [x] Create Landing Page to Search Links
+- [x] Create Public Author Page
+- [x] Create Public Tags Page ( FilterBy )
 - [ ] Create Redirects & Test them
 - [ ] Implement Websockets
 - [ ] Queue all Updates/Actions
