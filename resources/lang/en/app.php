@@ -7,6 +7,8 @@ return [
     'confirm' => 'Confirm :name',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'restore' => 'Restore',
+    'deleted' => 'Deleted',
     'options' => 'Options',
     'clear-search' => 'Reset Search & Query',
     'by' => 'By',
@@ -67,6 +69,7 @@ return [
         'waiting-approval' => 'Waiting Approval',
         'recently-updated' => 'Recently Updated',
         'recently-created' => 'Recently Created',
+        'deleted' => 'Deleted Links',
     ],
 
     'links' => [
@@ -75,6 +78,7 @@ return [
         'cover' => 'Cover Photo',
         'tags' => 'Tags',
         'title' => 'Title',
+        'status' => 'Status',
     ],
 
     'menu_landing' => [

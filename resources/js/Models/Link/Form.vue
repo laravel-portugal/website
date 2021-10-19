@@ -6,11 +6,21 @@
     >
       <template #actions>
         <div
-          v-if="editing && !link.deleted_at"
+          v-if="editing"
           class="inline-flex"
         >
           <inertia-link
-            :href="route('links.destroy',{link: link})"
+            v-if="link.deleted_at === null"
+            :href="deleteRoute"
+            as="button"
+            class="btn"
+            method="delete"
+          >
+            {{ $t('app.delete') }}
+          </inertia-link>
+          <inertia-link
+            v-if="link.deleted_at !== null"
+            :href="restoreRoute"
             as="button"
             class="btn"
             method="delete"
@@ -117,6 +127,16 @@
             />
           </div>
         </div>
+
+        <!-- Status -->
+        <x-select
+          v-if="$can('moderate-links') || $hasRole('admin') || $hasRole('moderator')"
+          v-model="form.status"
+          :label="$t('app.links.status')"
+          :options="$page.props.guidelines.links.status_options"
+          name="status"
+          :show-empty="true"
+        />
       </x-form-container>
 
       <template #footer>
@@ -145,9 +165,11 @@ import debounce from 'lodash/debounce'
 import map from 'lodash/map'
 import {RefreshIcon} from "@heroicons/vue/solid";
 import XFormErrors from "@/Components/Forms/Errors";
+import XSelect from "@/Components/Inputs/Select";
 
 export default {
     components: {
+        XSelect,
         XFormErrors,
         XCoverPhoto,
         XInputCheckbox,
@@ -164,6 +186,26 @@ export default {
             type: [Object, Array],
             required: true,
         },
+        deleteRoute: {
+            type: [URL, String],
+            required: false,
+            default: (props) => props.link.id ? route('links.destroy',{link: props.link}) : ''
+        },
+        restoreRoute: {
+            type: [URL, String],
+            required: false,
+            default: (props) => props.link.id ? route('links.restore',{link: props.link}) : ''
+        },
+        updateRoute: {
+            type: [URL, String],
+            required: false,
+            default: (props) => props.link.id ? route('links.update',{link: props.link}) : ''
+        },
+        storeRoute: {
+            type: [URL, String],
+            required: false,
+            default: () => route('links.store')
+        }
     },
     data() {
         return {
@@ -175,6 +217,7 @@ export default {
                 description: this.link.description,
                 tags: this.link.tags ? map(this.link.tags,'id') : [],
                 cover_image: null, // Always new, either its a new image or its a URL
+                status: this.link.status ?? this.$page.props.guidelines.links.status.waiting_approval
             }),
             isCrawling: false, // Store when its crawling
             coverPreview: null, // Raw data for preview
@@ -221,11 +264,11 @@ export default {
         submit() {
             if (this.editing) {
                 this.form._method = 'PUT'; // This wasted my whole day, thanks!
-                this.form.post(route('links.update', {link: this.link}), {
+                this.form.post(this.updateRoute, {
                     preserveScroll: true,
                 });
             } else {
-                this.form.post(route('links.store'), {
+                this.form.post(this.storeRoute, {
                     onSuccess: () => {
                         this.form.reset();
                         this.reset();

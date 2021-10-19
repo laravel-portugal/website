@@ -38,10 +38,22 @@
           </div>
           <div class="mt-4 flex-shrink-0 sm:mt-0 sm:ml-5">
             <div class="flex overflow-hidden">
+              <!-- Badge of the status -->
               <status-badge :status="link.status" />
+              <!-- Deleted Label -->
+              <span
+                v-if="link.deleted_at !== null"
+                class="ml-1 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800"
+              >
+                <trash-icon
+                  class="h-3 w-3 mr-1"
+                />
+                <span>{{ $t('app.deleted') }}</span>
+              </span>
             </div>
           </div>
         </div>
+        <!-- Right side Area for Options -->
         <div class="ml-5 flex-shrink-0">
           <actions
             :link="link"
@@ -54,7 +66,7 @@
 </template>
 
 <script>
-import {UsersIcon, ClockIcon} from "@heroicons/vue/outline";
+import {UsersIcon, ClockIcon,TrashIcon} from "@heroicons/vue/outline";
 import StatusBadge from "@/Models/Link/StatusBadge";
 import Actions from "@/Models/Link/Actions";
 
@@ -63,7 +75,8 @@ export default {
         Actions,
         StatusBadge,
         UsersIcon,
-        ClockIcon
+        ClockIcon,
+        TrashIcon
     },
     props: {
         link: {

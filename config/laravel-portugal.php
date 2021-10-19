@@ -49,4 +49,10 @@ return [
             'quality' => 90,
         ],
     ],
+
+    'oauth-providers' => [
+        'discord',
+        'github',
+        'twitter',
+    ],
 ];

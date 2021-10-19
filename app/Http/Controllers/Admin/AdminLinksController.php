@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Actions\LinkUpdateAction;
 use App\DataTransferObjects\LinkUpdateDataDTO;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateLinkRequestForAdmin;
 use App\Models\Link;
+use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -24,9 +26,39 @@ class AdminLinksController extends Controller
             'links' => Link::query()
                 ->with('author', 'tags')
                 ->applySearchAndSmartFilter($request)
+                ->withTrashed()
                 ->latest('updated_at')
                 ->paginate(10),
         ]);
+    }
+
+    public function edit(Request $request, Link $link): Response
+    {
+        return Inertia::render('Admin/Links/Edit', [
+            'link' => $link->loadMissing('tags'),
+            'tags' => Tag::query()->take(10)->get(),
+        ]);
+    }
+
+    public function update(UpdateLinkRequestForAdmin $request, Link $link): RedirectResponse
+    {
+        LinkUpdateAction::execute($link, LinkUpdateDataDTO::fromRequest($request));
+
+        return redirect()->route('admin.links.index');
+    }
+
+    public function destroy(Link $link): RedirectResponse
+    {
+       $link->delete();
+
+       return redirect()->route('admin.links.index');
+    }
+
+    public function restore(Link $link): RedirectResponse
+    {
+        $link->restore();
+
+        return redirect()->route('admin.links.index');
     }
 
     public function markAs(Request $request, Link $link, $status): RedirectResponse

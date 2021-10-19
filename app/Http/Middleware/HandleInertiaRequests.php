@@ -77,6 +77,7 @@ class HandleInertiaRequests extends Middleware
         return [
             'links' => [
                 'status' => LinkStatusType::toGuideLine(),
+                'status_options' => LinkStatusType::toArray(),
             ],
         ];
     }

@@ -13,7 +13,7 @@
 
     <template #default>
       <div class="dropdown-label truncate">
-        {{ link.title }}
+        {{ truncateString(link.title,20) }}
       </div>
       <div class="py-1">
         <a
@@ -26,11 +26,11 @@
         </a>
         <!-- Edit -->
         <inertia-link
-          href="#"
+          :href="route('admin.links.edit',{link: link})"
           class="dropdown-item cursor-pointer"
           role="menuitem"
         >
-          <span>Edit</span>
+          <span>{{ $t('app.edit') }}</span>
         </inertia-link>
         <!-- Actual Actions to move status -->
         <inertia-link
@@ -59,11 +59,25 @@
         </inertia-link>
         <!-- Delete -->
         <inertia-link
-          href="#"
-          class="dropdown-item cursor-pointer truncate"
+          v-if="link.deleted_at === null"
+          :href="route('admin.links.destroy',{link: link})"
+          as="button"
+          method="delete"
+          class="dropdown-item cursor-pointer truncate w-full text-left"
           role="menuitem"
         >
           <span>{{ $t('app.delete') }}</span>
+        </inertia-link>
+        <!-- Restore as a button so it doesnt throw warnings -->
+        <inertia-link
+          v-if="link.deleted_at !== null"
+          as="button"
+          method="put"
+          :href="route('admin.links.restore',{link: link})"
+          class="dropdown-item cursor-pointer truncate w-full text-left"
+          role="menuitem"
+        >
+          <span>{{ $t('app.restore') }}</span>
         </inertia-link>
       </div>
     </template>
@@ -73,6 +87,8 @@
 <script>
 import XDropdownPopper from "@/Components/Menus/DropdownPopper";
 import {DotsVerticalIcon} from "@heroicons/vue/outline";
+import { truncateString } from "@/Utils/Utils";
+
 export default {
     components: {
         XDropdownPopper,
@@ -88,6 +104,9 @@ export default {
             default: false,
             required: false
         }
+    },
+    methods:{
+        truncateString: truncateString
     },
 }
 </script>

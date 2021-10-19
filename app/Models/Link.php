@@ -117,11 +117,9 @@ final class Link extends Model
         return config('laravel-portugal.links.storage.path');
     }
 
-    public function incrementHit(bool $save = true): Link
+    public function incrementHit(): Link
     {
         $this->increment('hits');
-        $save && $this->save();
-
         return $this;
     }
 }

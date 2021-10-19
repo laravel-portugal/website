@@ -96,7 +96,7 @@ export default {
             required: true,
         },
         searchRoute: {
-            type: [URL],
+            type: [URL,String],
             required: true,
         },
     },

@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminLinksController;
+use App\Http\Controllers\Admin\AdminLinksController as AdminLinksController;
 use App\Http\Controllers\Backend\CrawlerController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LinksController as UserLinksController;
@@ -39,8 +39,15 @@ Route::get('/links', [LandingLinksController::class, 'index'])->name('links.publ
 | Social Login Auth
 |--------------------------------------------------------------------------
 */
-Route::get('login/{provider}/redirect', [SocialLoginController::class, 'redirect'])->name('social.redirect');
-Route::get('login/{provider}/callback', [SocialLoginController::class, 'callback'])->name('social.callback');
+Route::get('login/{provider}/redirect', [SocialLoginController::class, 'redirect'])
+    ->name('social.redirect')
+    ->where('provider', implode('|', config('laravel-portugal.oauth-providers')));
+
+Route::get('login/{provider}/callback', [SocialLoginController::class, 'callback'])
+    ->name('social.callback')
+    ->where('provider', implode('|', config('laravel-portugal.oauth-providers')));;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +59,7 @@ Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::post('/crawler', [CrawlerController::class, 'search'])->name('crawler.search');
         Route::resource('links', UserLinksController::class)->middleware(['auth:sanctum', 'verified']);
+        Route::put('links/{link}/restore', [UserLinksController::class, 'restore'])->withTrashed()->name('links.restore');
     });
 });
 
@@ -65,6 +73,7 @@ Route::prefix('admin')
     ->middleware(['role:admin', 'auth:sanctum', 'verified'])
     ->group(function () {
         Route::get('/', function () { dd('im admin'); })->name('dashboard');
-        Route::resource('links', AdminLinksController::class);
+        Route::resource('links', AdminLinksController::class)->only(['index','edit','update','destroy']);
+        Route::put('links/{link}/restore', [AdminLinksController::class, 'restore'])->withTrashed()->name('links.restore');
         Route::get('links/{link}/status/{status}', [AdminLinksController::class, 'markAs'])->name('links.status');
     });

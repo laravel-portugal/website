@@ -25,7 +25,7 @@ class LinkUpdateDataDTO extends DataTransferObject
      */
     public static function fromRequest(Request $request): LinkUpdateDataDTO
     {
-        return static::fromArray($request->all());
+        return static::fromArray($request->validated());
     }
 
     /**

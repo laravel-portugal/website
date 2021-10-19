@@ -47,6 +47,7 @@ class LinkQueryBuilder extends Builder
                 'status-published',
                 'status-rejected',
                 'status-waiting-approval',
+                'deleted'
             ]);
     }
 
@@ -56,8 +57,6 @@ class LinkQueryBuilder extends Builder
 
         return $this->when($shouldSearch, function ($query) use ($authorSlug) {
             /* @var Builder|Link $query */
-            //return $query->where('user_id',$authorSlug);
-            // TODO: Revisit this
             return $query->whereHas('author', function (Builder $author) use ($authorSlug) {
                 $author->where('id', $authorSlug);
             });
@@ -95,6 +94,7 @@ class LinkQueryBuilder extends Builder
             'status-waiting-approval',
             'updated-asc',
             'created-desc',
+            'deleted',
         ];
 
         $isValidSorting = in_array($name, $availableSorting);
@@ -134,6 +134,11 @@ class LinkQueryBuilder extends Builder
         // Published with oldest
         if ('created-desc' === $name) {
             return $this->latest('created_at');
+        }
+
+        // Published with oldest
+        if ('deleted' === $name) {
+            return $this->whereNotNull('deleted_at');
         }
 
         return $this;

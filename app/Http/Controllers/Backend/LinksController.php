@@ -11,6 +11,7 @@ use App\Http\Requests\StoreLinkRequest;
 use App\Http\Requests\UpdateLinkRequest;
 use App\Models\Link;
 use App\Models\Tag;
+use App\Types\LinkStatusType;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -68,7 +69,21 @@ class LinksController extends Controller
 
     public function destroy(Link $link): RedirectResponse
     {
+        // Mark as Waiting Approval
+        LinkUpdateAction::execute(
+            $link,
+            LinkUpdateDataDTO::fromStatus($link, LinkStatusType::waiting_approval())
+        );
+
+        // Then delete
         $link->delete();
+
+        return redirect()->route('links.index');
+    }
+
+    public function restore(Link $link): RedirectResponse
+    {
+        $link->restore();
 
         return redirect()->route('links.index');
     }

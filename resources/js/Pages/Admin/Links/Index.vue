@@ -32,6 +32,7 @@ export default {
                 {key: 'status-waiting-approval', label: this.$t('app.link_filters.waiting-approval')},
                 {key: 'updated-asc', label: this.$t('app.link_filters.recently-updated')},
                 {key: 'created-desc', label: this.$t('app.link_filters.recently-created')},
+                {key: 'deleted', label: this.$t('app.link_filters.deleted')},
             ];
         }
     }

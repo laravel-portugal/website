@@ -12,7 +12,6 @@ class LinksRedirectController extends Controller
     public function redirect(Request $request, Link $link)
     {
         $link->incrementHit();
-
         return redirect()->away($link->url);
     }
 }

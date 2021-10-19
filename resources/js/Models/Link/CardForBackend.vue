@@ -91,7 +91,7 @@
           class="btn w-full text-center cursor-not-allowed"
         >
           <shield-check-icon class="h-4 w-4 mr-1 text-gray-500" />
-          <span>{{ $t('app.edit') }}</span>
+          <span>{{ $t('app.link_status.waiting_approval') }}</span>
         </button>
       </div>
     </div>
