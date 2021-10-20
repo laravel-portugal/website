@@ -25,7 +25,7 @@ class UpdateLinkRequest extends StoreLinkRequest
                 'required',
                 Rule::unique('links')->ignore($this->input('id')),
             ],
-            'status' => ['exclude']
+            'status' => ['exclude'],
         ]);
     }
 }
