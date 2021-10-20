@@ -17,7 +17,7 @@
           ref="search"
           v-model="searchQuery"
           class="block w-full rounded-none rounded-l-md pl-10"
-          :placeholder="'Search for links here'"
+          :placeholder="$t('placeholders.search-for-links')"
           type="search"
           :disabled="!canSearch"
           :class="{'cursor-not-allowed': !canSearch}"

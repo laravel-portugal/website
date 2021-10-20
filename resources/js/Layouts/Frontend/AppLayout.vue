@@ -1,13 +1,16 @@
 <template>
   <app-head :title="title || $page.props.title" />
-  <section class="relative w-full h-72">
+  <section class="relative w-full h-80">
     <app-header-video-background />
     <app-header />
     <div class="z-20">
       <slot name="hero" />
     </div>
+    <curve
+      class="text-white z-0 lg:bottom-[-10px] bottom-0"
+    />
   </section>
-  <curve class="text-white mt-[-10%] z-0 lg:bottom-[-10px]" />
+
   <main>
     <div class="-mt-28 pb-8 z-30">
       <slot />
