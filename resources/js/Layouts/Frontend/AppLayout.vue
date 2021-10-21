@@ -24,7 +24,7 @@ import AppHead from "@/Layouts/Backend/Partials/AppHead";
 import AppHeaderVideoBackground from "@/Layouts/Frontend/Partials/AppHeaderVideoBackground";
 import AppHeader from "@/Layouts/Frontend/Partials/AppHeader";
 import Curve from "@/Components/Shared/Curve";
-import AppFooter from "@/Layouts/Backend/Partials/AppFooter";
+import AppFooter from "@/Layouts/Frontend/Partials/AppFooter";
 
 export default {
     components: {

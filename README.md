@@ -120,7 +120,7 @@ pest
 - [ ] Create Administration to Manage Users
 - [ ] Add Contributors Avatars Automatically to Homepage
 - [x] Move more static Text to Translation Keys
-- [ ] Translate to Portuguese :()
+- [x] Translate to Portuguese :()
 - [x] Create Landing Page to Search Links
 - [x] Create Public Author Page
 - [x] Create Public Tags Page ( FilterBy )
@@ -129,6 +129,8 @@ pest
 - [ ] Queue all Updates/Actions
 - [ ] Check Page Title for App Layout for future SSR implementations
 - [ ] Add SEO Stuff to Landing Page & Pre-render
+- [ ] Implement Translations diff & Checker https://github.com/ARCANEDEV/LaravelLang
+- [ ] Add Empty States to Links
  
 ## Credits
 This project is a merge of a previous [Laravel Portugal Api](https://github.com/laravel-portugal/api)
