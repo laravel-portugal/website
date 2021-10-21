@@ -58,7 +58,7 @@ COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # Project folder
 RUN chown -R www-data: /var/www/html
 # Fix npm error: Your cache folder contains root-owned files, due to a bug in npm previous versions of npm which has since been addressed.
-RUN sudo chown -R 33:33 "/var/www/.npm"
+RUN chown -R 33:33 "/var/www/.npm"
 
 # Project and dependencies
 USER www-data
