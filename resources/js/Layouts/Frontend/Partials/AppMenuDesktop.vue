@@ -135,8 +135,8 @@ export default {
                     icon: 'twitter',
                 },
                 {
-                    name: 'Github',
-                    description: 'Want to Contribute? Checkout our official Github Account',
+                    name: 'GitHub',
+                    description: 'Want to Contribute? Checkout our official GitHub Account',
                     href: this.$page.props?.meta.social.github,
                     icon: 'github',
                 },

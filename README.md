@@ -16,7 +16,7 @@ You can find here some cool way to implement features or even start your next bi
 
 - Tailwind + Vue3 Components 🍃
 - Docker Deployment 🐳
-- Github Actions 🤖
+- GitHub Actions 🤖
 - Permissions with Spatie + Inertia
 - Translations with Vue i18n + Laravel 🈯
 - Crawling & Scrapping with Browsershot
