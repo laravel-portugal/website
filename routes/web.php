@@ -18,9 +18,9 @@ use Inertia\Inertia;
 |--------------------------------------------------------------------------
 */
 
-Route::view('/', 'welcome-pre-2021');
+Route::view('/lander', 'welcome-pre-2021');
 
-Route::get('/lander', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
 
 Route::get('landing', function () {
     return Inertia::render('Welcome', [
