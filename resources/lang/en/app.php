@@ -17,12 +17,12 @@ return [
 
     'hero-title' => 'Laravel Portugal 🇵🇹',
     'hero-title-part' => 'Official Community',
-    'hero-subtitle' => 'Hello & Welcome to the official Laravel Community in Portugal. Engange with other Laravel Developers with active growing community',
+    'hero-subtitle' => 'Hello & Welcome to the official Laravel Community in Portugal. Engage with other Laravel Developers with active growing community',
     'hero-button-one' => 'Join Discord',
     'hero-button-two' => 'Nah, show me more!',
 
     'welcome-message-title' => '👋 Welcome :name!',
-    'welcome-message-text' => 'Hey :name, Thanks for joining :site_name Community website, its a pleasure to have you here. Please take a minute to find the most useful links we have prepared for you, or if you feel confident start sharing your own tips to the community!',
+    'welcome-message-text' => 'Hey :name, Thanks for joining :site_name Community website, it\'s a pleasure to have you here. Please take a minute to find the most useful links we have prepared for you, or if you feel confident start sharing your own tips to the community!',
 
     'tour-title' => 'Let\'s get started',
     'tour-subtitle' => 'Here are a few things to get started helping the community & yourself.',
@@ -31,7 +31,7 @@ return [
     'tour-step-one-text' => 'Your links will help the community to learn great stuff as you do!',
 
     'tour-step-two' => 'Laravel Documentation',
-    'tour-step-two-text' => 'Yes, before you submit anything else, please check if its covered by the documentation',
+    'tour-step-two-text' => 'Yes, before you submit anything else, please check if it\'s covered by the documentation',
 
     'tour-step-three' => 'Tweak your profile',
     'tour-step-three-text' => 'Tweak your profile and show yourself to the community',
@@ -142,7 +142,7 @@ return [
     ],
 
     'helpers' => [
-        'link-url' => 'Paste your Link URL, please make sure its a valid link and its really useful. Links will be reviewed before they are published.',
+        'link-url' => 'Paste your Link URL, please make sure it\'s a valid link and it\'s really useful. Links will be reviewed before they are published.',
         'link-cover' => 'Here you can upload your own cover or just go forward with the open provided by the OpenGraph',
         'link-title' => 'Provide a clear title of what this link is all about.',
     ],
