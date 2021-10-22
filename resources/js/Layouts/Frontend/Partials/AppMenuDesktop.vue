@@ -15,23 +15,23 @@
           class="hidden md:flex space-x-10"
         >
           <component
-            :is="$page.component === 'Landing/Index' ? 'a' : 'InertiaLink'"
+            :is="$page.component === 'Frontend/Landing/Index' ? 'a' : 'InertiaLink'"
             href="/#hero"
             class="text-base font-medium text-gray-100 hover:text-gray-300"
           >
             {{ $t('app.menu_landing.home') }}
           </component>
 
-          <component
-            :is="$page.component === 'Landing/Index' ? 'a' : 'InertiaLink'"
-            href="/#about"
-            class="text-base font-medium text-gray-100 hover:text-gray-300"
-          >
-            {{ $t('app.menu_landing.about') }}
-          </component>
+          <!--          <component-->
+          <!--            :is="$page.component === 'Frontend/Landing/Index' ? 'a' : 'InertiaLink'"-->
+          <!--            href="/#about"-->
+          <!--            class="text-base font-medium text-gray-100 hover:text-gray-300"-->
+          <!--          >-->
+          <!--            {{ $t('app.menu_landing.about') }}-->
+          <!--          </component>-->
 
           <component
-            :is="$page.component === 'Landing/Index' ? 'a' : 'InertiaLink'"
+            :is="$page.component === 'Frontend/Landing/Index' ? 'a' : 'InertiaLink'"
             href="/#links"
             class="text-base font-medium text-gray-100 hover:text-gray-300"
           >
@@ -65,9 +65,11 @@
                     style="border-radius:10px"
                   >
                     <a
-                      v-for="network in social_networks"
+                      v-for="network in socialNetworks"
                       :key="network.name"
-                      :href="network.href"
+                      :href="network.link"
+                      target="_blank"
+                      rel="nofollow"
                       class="-m-3 p-3 block rounded-md hover:bg-primary-500 group"
                     >
                       <div class="title flex inline-flex items-center justify-center">
@@ -77,12 +79,12 @@
                           area-hidden="true"
                         />
                         <p class="text-base font-medium text-gray-300 group-hover:text-white">
-                          {{ network.name }}
+                          {{ $t(network.name) }}
                         </p>
                       </div>
 
                       <p class="mt-1 text-sm text-gray-500 group-hover:text-gray-300">
-                        {{ network.description }}
+                        {{ $t(network.description) }}
                       </p>
                     </a>
                   </div>
@@ -115,6 +117,7 @@
 import AppLogoWhite from "@/Layouts/Backend/Partials/AppLogoWhite";
 import {Popover, PopoverButton, PopoverGroup, PopoverPanel} from "@headlessui/vue";
 import {ChevronDownIcon} from "@heroicons/vue/solid";
+import {socialNetworks} from "@/Utils/useSocialNetworks";
 
 export default {
     components: {
@@ -126,34 +129,9 @@ export default {
         ChevronDownIcon,
     },
     computed:{
-        social_networks(){
-            return [
-                {
-                    name: 'Twitter',
-                    description: 'Want to join us on Twitter? Get involved on the most popular network',
-                    href: this.$page.props?.meta.social.twitter,
-                    icon: 'twitter',
-                },
-                {
-                    name: 'Github',
-                    description: 'Want to Contribute? Checkout our official Github Account',
-                    href: this.$page.props?.meta.social.github,
-                    icon: 'github',
-                },
-                {
-                    name: 'Discord',
-                    description: 'Fan of communities? Join Laravel Portugal ® on Discord today and talk with hundreds of other Developers',
-                    href: this.$page.props?.meta.social.discord,
-                    icon: 'discord',
-                },
-                {
-                    name: 'Meetup',
-                    description: 'Want to meet your fellow Laravel Mates in Portugal or around the world? Worry not! Lets do it.',
-                    href: this.$page.props?.meta.social.meetup,
-                    icon: 'meetup',
-                },
-            ];
-        }
+        socialNetworks(){
+            return socialNetworks.value;
+        },
     }
 }
 </script>
