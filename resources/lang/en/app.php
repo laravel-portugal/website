@@ -7,6 +7,7 @@ return [
     'confirm' => 'Confirm :name',
     'edit' => 'Edit',
     'delete' => 'Delete',
+    'delete-force' => 'Force Delete',
     'restore' => 'Restore',
     'deleted' => 'Deleted',
     'options' => 'Options',
@@ -40,7 +41,6 @@ return [
 
     'search-no-records-found' => '🧐 Oops. We couldn\'t find any records.',
     'search-no-records-found-text' => 'This may happen if you have any filters or query search applied that could not match the criteria. Please try clear them up.',
-
     'links-landing-title' => 'Explore Links',
     'links-landing-text' => 'Want to explore or even fix a bug? Find useful links & bookmarks from the Laravel Portugal community',
 
@@ -59,6 +59,15 @@ return [
     'links-mark-as-published' => 'Mark as Published',
     'links-mark-as-waiting-approval' => 'Mark as Waiting Approval',
     'links-mark-as-rejected' => 'Mark as Rejected',
+
+    'tags-create-title' => 'Create Tag',
+    'tags-create-subtitle' => 'Create a new Tag, tags can be used for Links, Blog Posts 6 Threads',
+
+    'tags-edit-title' => 'Edit Tag',
+    'tags-edit-subtitle' => 'Edit your tag description, slug & many more.',
+
+    'tags-create-skeleton-title' => 'Need to add more tags?',
+    'tags-create-skeleton-text' => 'Worry not, if you need to add more Tags please click here',
 
     'social_networks' => [
         'youtube-title' => 'Youtube',
@@ -102,6 +111,26 @@ return [
         'status' => 'Status',
     ],
 
+    'tags' => [
+        'name' => 'Name',
+        'title' => 'Title',
+        'description' => 'Description',
+        'links_count' => 'Nrº of Links',
+        'color' => 'Label Color',
+        'slug' => 'Slug'
+    ],
+
+    'tag_colors' => [
+        'indigo' => 'Indigo',
+        'red' => 'Red',
+        'blue' => 'Blue',
+        'purple' => 'Purple',
+        'yellow' => 'Yellow',
+        'primary' => 'Primary',
+        'pink' => 'Pink',
+        'gray' => 'Gray',
+    ],
+
     'menu_landing' => [
         'home' => 'Home',
         'about' => 'About',
@@ -120,6 +149,9 @@ return [
         'links-create' => 'Create',
         'links-edit' => 'Edit :identifier',
 
+        'tags-create' => 'Create Tag',
+        'tags-edit' => 'Edit :identifier',
+
         'profile' => 'Profile',
         'useful-links' => 'Useful Links',
         'logout' => 'Logout',
@@ -133,6 +165,7 @@ return [
 
         'admin' => 'Administration',
         'admin-links' => 'Manage Links',
+        'admin-tags' => 'Manage Tags'
     ],
 
     'pagination' => [

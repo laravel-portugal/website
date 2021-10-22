@@ -46,4 +46,5 @@ return [
     'url' => 'https://laravel-news.com',
     'link_description' => 'Uma pequena descrição sobre este link.',
     'search-for-links' => 'Procura aqui os teus Links! Ex: Laravel',
+    'tag_description' => 'Uma descrição para esta Tag',
 ];

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Actions\LinkDeleteAction;
 use App\Actions\LinkUpdateAction;
 use App\DataTransferObjects\LinkUpdateDataDTO;
 use App\Http\Controllers\Controller;
@@ -49,8 +50,14 @@ class AdminLinksController extends Controller
 
     public function destroy(Link $link): RedirectResponse
     {
-        $link->delete();
+        LinkDeleteAction::execute($link);
 
+        return redirect()->route('admin.links.index');
+    }
+
+    public function destroyForce(Link $link): RedirectResponse
+    {
+        LinkDeleteAction::execute($link,true);
         return redirect()->route('admin.links.index');
     }
 

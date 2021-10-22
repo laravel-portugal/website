@@ -7,6 +7,7 @@ return [
     'confirm' => 'Confirmar :name',
     'edit' => 'Editar',
     'delete' => 'Apagar',
+    'delete-force' => 'Apagar Permanente',
     'restore' => 'Restaurar',
     'deleted' => 'Apagado',
     'options' => 'Opções',
@@ -60,6 +61,15 @@ return [
     'links-mark-as-waiting-approval' => 'Marcar como Pendente',
     'links-mark-as-rejected' => 'Marcar como Rejeitado',
 
+    'tags-create-title' => 'Criar Tag',
+    'tags-create-subtitle' => 'As Tags podem ser utilizadas para Links, Posts, e muito mais.',
+
+    'tags-edit-title' => 'Editar Tag',
+    'tags-edit-subtitle' => 'Aqui poderás editar a Tag.',
+
+    'tags-create-skeleton-title' => 'Precisas de adicionar Tags?',
+    'tags-create-skeleton-text' => 'Aqui poderás criar novas tags para adicionar a Links, Posts e etc.',
+
     'social_networks' => [
         'youtube-title' => 'Youtube',
         'youtube-text' => 'Queres aprender mais sobre Laravel? Nada melhor que um bom video ou mesmo Podcast no Youtube',
@@ -102,6 +112,26 @@ return [
         'status' => 'Estado',
     ],
 
+    'tags' => [
+        'name' => 'Nome',
+        'title' => 'Titulo',
+        'description' => 'Descrição',
+        'links_count' => 'Nrº de Links',
+        'color' => 'Cor da Label',
+        'slug' => 'Slug'
+    ],
+
+    'tag_colors' => [
+        'indigo' => 'Indigo',
+        'red' => 'Vermelho',
+        'blue' => 'Azul',
+        'purple' => 'Roxo',
+        'yellow' => 'Amarelo',
+        'primary' => 'Primária',
+        'pink' => 'Rosa',
+        'gray' => 'Cinza',
+    ],
+
     'menu_landing' => [
         'home' => 'Home',
         'about' => 'Sobre',
@@ -120,6 +150,9 @@ return [
         'links-create' => 'Criar',
         'links-edit' => 'Editar :identifier',
 
+        'tags-create' => 'Criar Tag',
+        'tags-edit' => 'Editar :identifier',
+
         'profile' => 'Perfil',
         'useful-links' => 'Links Ùteis',
         'logout' => 'Sair',
@@ -133,6 +166,7 @@ return [
 
         'admin' => 'Administração',
         'admin-links' => 'Gerir Links',
+        'admin-tags' => 'Gerir Tags'
     ],
 
     'pagination' => [

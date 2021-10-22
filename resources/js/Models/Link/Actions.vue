@@ -68,6 +68,17 @@
         >
           <span>{{ $t('app.delete') }}</span>
         </inertia-link>
+        <!-- Delete Forces -->
+        <inertia-link
+          v-if="link.deleted_at !== null"
+          :href="route('admin.links.destroy-forced',{link: link})"
+          as="button"
+          method="delete"
+          class="dropdown-item cursor-pointer truncate w-full text-left"
+          role="menuitem"
+        >
+          <span>{{ $t('app.delete-force') }}</span>
+        </inertia-link>
         <!-- Restore as a button so it doesnt throw warnings -->
         <inertia-link
           v-if="link.deleted_at !== null"

@@ -27,7 +27,7 @@
 
       <!-- Admin Menu -->
       <app-menu-collapse
-        v-if="$hasRole('admin')"
+        v-if="$hasRole('admin') || $hasRole('moderator')"
         :active="isActiveIfStartsWith('admin.')"
       >
         <template #trigger>
@@ -41,6 +41,14 @@
         >
           <link-icon class="h-4 w-4 text-gray-400 mr-1" />
           <span>{{ $t('app.menu.admin-links') }}</span>
+        </app-menu-link-sub>
+
+        <app-menu-link-sub
+          :active="isActiveIfStartsWith('admin.tags.')"
+          :href="route('admin.tags.index')"
+        >
+          <tag-icon class="h-4 w-4 text-gray-400 mr-1" />
+          <span>{{ $t('app.menu.admin-tags') }}</span>
         </app-menu-link-sub>
       </app-menu-collapse>
 
@@ -98,7 +106,8 @@ import {
     FingerPrintIcon,
     LinkIcon,
     HomeIcon,
-    ExternalLinkIcon
+    ExternalLinkIcon,
+    TagIcon,
 } from "@heroicons/vue/outline";
 
 export default {
@@ -109,7 +118,8 @@ export default {
         FingerPrintIcon,
         LinkIcon,
         HomeIcon,
-        ExternalLinkIcon
+        ExternalLinkIcon,
+        TagIcon
     },
     props: {
         url: {

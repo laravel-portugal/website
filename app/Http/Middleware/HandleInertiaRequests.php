@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Types\LinkStatusType;
+use App\Types\TagColorType;
 use Breadcrumbs;
 use Exception;
 use Illuminate\Http\Request;
@@ -67,6 +68,11 @@ class HandleInertiaRequests extends Middleware
                 'discord' => config('laravel-portugal.social.discord'),
                 'youtube' => config('laravel-portugal.social.youtube'),
             ],
+            'social_auth' => [
+                'google' => config('services.google.enable'),
+                'discord' => config('services.discord.enable'),
+                'twitter' => config('services.twitter.enable'),
+            ],
         ];
     }
 
@@ -80,6 +86,9 @@ class HandleInertiaRequests extends Middleware
                 'status' => LinkStatusType::toGuideLine(),
                 'status_options' => LinkStatusType::toArray(),
             ],
+            'tags' => [
+                'color_options' => TagColorType::toArray(),
+            ]
         ];
     }
 
