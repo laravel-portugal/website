@@ -14,6 +14,8 @@
         "hashids/hashids": "^4.1.0",
         "inertiajs/inertia-laravel": "^0.4.3",
         "intervention/image": "^2.7",
+        "jackiedo/dotenv-editor": "^1.2",
+        "larabug/larabug": "^2.4",
         "laravel/framework": "^8.54",
         "laravel/jetstream": "^2.4",
         "laravel/sanctum": "^2.11",
