@@ -41,7 +41,9 @@ jobs:
             docker-compose exec -T website php artisan config:cache
             docker-compose exec -T website php artisan view:cache
             docker-compose exec -T website php artisan route:cache
-            docker-compose exec -T website php artisan migrate
+            docker-compose exec -T website php artisan migrate --no-interaction --force
+            docker-compose exec -T website php artisan dotenv:set-key LB_KEY ${{ secrets.LARABUG_KEY }}
+            docker-compose exec -T website php artisan dotenv:set-key LB_PROJECT_KEY ${{ secrets.LARABUG_PROJECT_KEY }}
           host: ${{ secrets.DEPLOY_HOST }}
           user: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_USER_PRIVATE_KEY }}
