@@ -16,7 +16,7 @@ return [
     'sent' => 'Acabamos de enviar um Link para trocares a password!',
     'throttled' => 'Aguarda um momento antes de tentares de novo.',
     'token' => 'Este link de trocar a password já não é válido.',
-    'user' => "Este endereço de e-mail não existe na base de dados.",
+    'user' => 'Este endereço de e-mail não existe na base de dados.',
 
     /*
     |--------------------------------------------------------------------------

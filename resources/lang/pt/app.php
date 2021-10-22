@@ -61,7 +61,6 @@ return [
     'links-mark-as-rejected' => 'Marcar como Rejeitado',
 
     'social_networks' => [
-
         'youtube-title' => 'Youtube',
         'youtube-text' => 'Queres aprender mais sobre Laravel? Nada melhor que um bom video ou mesmo Podcast no Youtube',
 
@@ -111,7 +110,7 @@ return [
         'login' => 'Entrar',
         'register' => 'Registar',
         'tos' => 'Termos e Condições',
-        'privacy' => 'Política de Privacidade'
+        'privacy' => 'Política de Privacidade',
     ],
 
     'menu' => [

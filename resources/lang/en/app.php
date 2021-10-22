@@ -61,7 +61,6 @@ return [
     'links-mark-as-rejected' => 'Mark as Rejected',
 
     'social_networks' => [
-
         'youtube-title' => 'Youtube',
         'youtube-text' => 'Want to learn more about Laravel? Watch our Tutorials, Podcasts & many more on youtube.',
 
@@ -111,7 +110,7 @@ return [
         'login' => 'Sign in',
         'register' => 'Sign up',
         'tos' => 'Terms of Service',
-        'privacy' => 'Privacy Policy'
+        'privacy' => 'Privacy Policy',
     ],
 
     'menu' => [
