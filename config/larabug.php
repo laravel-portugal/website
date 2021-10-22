@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Login key
@@ -107,7 +106,7 @@ return [
         '*cvv*',
         '*iban*',
         '*name*',
-        '*email*'
+        '*email*',
     ],
 
     /*
@@ -141,5 +140,4 @@ return [
     |
     */
     'verify_ssl' => env('LB_VERIFY_SSL', true),
-
 ];
