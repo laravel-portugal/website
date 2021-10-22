@@ -50,10 +50,12 @@ class DatabaseSeeder extends Seeder
 
     protected function createAdmin()
     {
-        /* @var User $user */
-        User::factory()->state([
-            'name' => 'The Boss',
-            'email' => 'admin@admin.com',
-        ])->create()->assignRole('admin');
+        if(!User::whereEmail('admin@admin.com')){
+            /* @var User $user */
+            User::factory()->state([
+                'name' => 'The Boss',
+                'email' => 'admin@admin.com',
+            ])->create()->assignRole('admin');
+        }
     }
 }

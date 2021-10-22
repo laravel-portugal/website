@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Actions\LinkDeleteAction;
 use App\Actions\LinkStoreAction;
 use App\Actions\LinkUpdateAction;
 use App\DataTransferObjects\LinkStoreDataDTO;
@@ -75,8 +76,7 @@ class LinksController extends Controller
             LinkUpdateDataDTO::fromStatus($link, LinkStatusType::waiting_approval())
         );
 
-        // Then delete
-        $link->delete();
+        LinkDeleteAction::execute($link);
 
         return redirect()->route('links.index');
     }

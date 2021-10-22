@@ -51,9 +51,8 @@ class LinkPolicy
             null === $link->deleted_at;
     }
 
-    public function forceDelete(User $user, Link $link)
+    public function destroyForce(User $user, Link $link)
     {
-        return $user->id === $link->user_id &&
-            false === $link->deleted_at;
+        return $user->can(PermissionsType::moderate_links()->value) && $link->deleted_at !== null;
     }
 }
