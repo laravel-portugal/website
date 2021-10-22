@@ -71,45 +71,58 @@
                     as="div"
                     class="text-gray-300 text-base font-medium hover:underline"
                   >
-                    <inertia-link href="/">
+                    <component
+                      :is="$page.component === 'Frontend/Landing/Index' ? 'a' : 'InertiaLink'"
+                      href="/#top"
+                      class="text-base font-medium text-gray-100 hover:text-gray-300"
+                    >
                       {{ $t('app.menu_landing.home') }}
-                    </inertia-link>
+                    </component>
                   </PopoverButton>
+
+                  <!--                  <PopoverButton-->
+                  <!--                    as="div"-->
+                  <!--                    class="text-gray-300 text-base font-medium hover:underline"-->
+                  <!--                  >-->
+                  <!--                    <component-->
+                  <!--                      :is="$page.component === 'Frontend/Landing/Index' ? 'a' : 'InertiaLink'"-->
+                  <!--                      href="/#about"-->
+                  <!--                      class="text-base font-medium text-gray-100 hover:text-gray-300"-->
+                  <!--                    >-->
+                  <!--                      {{ $t('app.menu_landing.about') }}-->
+                  <!--                    </component>-->
+                  <!--                  </PopoverButton>-->
 
                   <PopoverButton
                     as="div"
                     class="text-gray-300 text-base font-medium hover:underline"
                   >
-                    <inertia-link href="/#about">
-                      {{ $t('app.menu_landing.about') }}
-                    </inertia-link>
-                  </PopoverButton>
-
-                  <PopoverButton
-                    as="div"
-                    class="text-gray-300 text-base font-medium hover:underline"
-                  >
-                    <inertia-link href="/#links">
+                    <component
+                      :is="$page.component === 'Frontend/Landing/Index' ? 'a' : 'InertiaLink'"
+                      href="/#links"
+                      class="text-base font-medium text-gray-100 hover:text-gray-300"
+                    >
                       {{ $t('app.menu_landing.links') }}
-                    </inertia-link>
+                    </component>
                   </PopoverButton>
 
-                  <PopoverButton
-                    as="div"
-                    class="text-gray-300 text-base font-medium hover:underline"
-                  >
-                    <inertia-link href="/#community">
-                      {{ $t('app.menu_landing.community') }}
-                    </inertia-link>
-                  </PopoverButton>
+                  <!--                  <PopoverButton-->
+                  <!--                    as="div"-->
+                  <!--                    class="text-gray-300 text-base font-medium hover:underline"-->
+                  <!--                  >-->
+                  <!--                    <inertia-link href="/#community">-->
+                  <!--                      {{ $t('app.menu_landing.community') }}-->
+                  <!--                    </inertia-link>-->
+                  <!--                  </PopoverButton>-->
                 </div>
                 <div class="mt-6 border-t border-gray-500">
                   <div class="pt-5 grid grid-cols-2 gap-4">
                     <a
-                      v-for="network in social_networks"
+                      v-for="network in socialNetworks"
                       :key="network.name"
-                      :href="network.href"
+                      :href="network.link"
                       target="_blank"
+                      rel="nofollow"
                       class="text-gray-300 text-base font-medium hover:underline flex inline-flex items-center"
                     >
                       <font-awesome-icon
@@ -117,7 +130,9 @@
                         class="mr-1 h-4 w-4 text-md"
                         area-hidden="true"
                       />
-                      <span>{{ network.name }}</span>
+                      <span>
+                        {{ $t(network.name) }}
+                      </span>
                     </a>
                   </div>
                 </div>
@@ -143,6 +158,7 @@ import { Popover, PopoverButton, PopoverGroup, PopoverPanel,PopoverOverlay } fro
 import { MenuAlt3Icon, XIcon } from '@heroicons/vue/outline'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import AppLogoWhite from "@/Layouts/Backend/Partials/AppLogoWhite";
+import {socialNetworks} from "@/Utils/useSocialNetworks";
 
 export default {
     components: {
@@ -155,34 +171,9 @@ export default {
         FontAwesomeIcon
     },
     computed: {
-        social_networks(){
-            return [
-                {
-                    name: 'Twitter',
-                    description: 'Want to join us on Twitter? Get involved on the most popular network',
-                    href: this.$page.props?.meta.social.twitter,
-                    icon: 'twitter',
-                },
-                {
-                    name: 'Github',
-                    description: 'Want to Contribute? Checkout our official Github Account',
-                    href: this.$page.props?.meta.social.github,
-                    icon: 'github',
-                },
-                {
-                    name: 'Discord',
-                    description: 'Fan of communities? Join Laravel Portugal ® on Discord today and talk with hundreds of other Developers',
-                    href: this.$page.props?.meta.social.discord,
-                    icon: 'discord',
-                },
-                {
-                    name: 'Meetup',
-                    description: 'Want to meet your fellow Laravel Mates in Portugal or around the world? Worry not! Lets do it.',
-                    href: this.$page.props?.meta.social.meetup,
-                    icon: 'meetup',
-                },
-            ];
-        }
+        socialNetworks(){
+            return socialNetworks.value;
+        },
     },
 }
 </script>

@@ -94,7 +94,7 @@ export default{
                 },
                 {
                     name: this.$t('app.tour-step-two'),
-                    description: this.$t('app.tour-two-text'),
+                    description: this.$t('app.tour-step-two-text'),
                     href: 'https://laravel.com',
                     iconColor: 'bg-green-500',
                     icon: TerminalIcon,
@@ -102,7 +102,7 @@ export default{
                 },
                 {
                     name: this.$t('app.tour-step-three'),
-                    description: this.$t('app.tour-three-text'),
+                    description: this.$t('app.tour-step-three-text'),
                     href: route('profile.show'),
                     iconColor: 'bg-yellow-500',
                     icon: UserCircleIcon,

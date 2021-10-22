@@ -6,6 +6,7 @@ return [
         'github' => 'https://github.com/laravel-portugal',
         'meetup' => 'https://www.meetup.com/pt-BR/Laravel-Portugal/',
         'discord' => 'https://discord.gg/9medAV2mD5',
+        'youtube' => 'https://www.youtube.com/channel/UCIbMW1h5VReAQAwJGi_zT3w',
     ],
 
     'crawler' => [

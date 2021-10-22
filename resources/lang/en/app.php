@@ -13,6 +13,7 @@ return [
     'clear-search' => 'Reset Search & Query',
     'by' => 'By',
     'search' => 'Search',
+    'copyright' => '&copy; :year :site_name. All rights reserved.',
 
     'hero-title' => 'Laravel Portugal 🇵🇹',
     'hero-title-part' => 'Official Community',
@@ -40,6 +41,9 @@ return [
     'search-no-records-found' => '🧐 Oops. We couldn\'t find any records.',
     'search-no-records-found-text' => 'This may happen if you have any filters or query search applied that could not match the criteria. Please try clear them up.',
 
+    'links-landing-title' => 'Explore Links',
+    'links-landing-text' => 'Want to explore or even fix a bug? Find useful links & bookmarks from the Laravel Portugal community',
+
     'links-create-title' => 'Submit a Link',
     'links-create-subtitle' => 'Here you can submit your Link to the Laravel Portugal community',
 
@@ -55,6 +59,24 @@ return [
     'links-mark-as-published' => 'Mark as Published',
     'links-mark-as-waiting-approval' => 'Mark as Waiting Approval',
     'links-mark-as-rejected' => 'Mark as Rejected',
+
+    'social_networks' => [
+
+        'youtube-title' => 'Youtube',
+        'youtube-text' => 'Want to learn more about Laravel? Watch our Tutorials, Podcasts & many more on youtube.',
+
+        'twitter-title' => 'Twitter',
+        'twitter-text' => 'Follow Laravel Portugal on Twitter & engage on the most developer friendly social-network!',
+
+        'github-title' => 'Github',
+        'github-text' => 'Want to Contribute for this website & other community projects? Let\'s get it started!',
+
+        'discord-title' => 'Discord',
+        'discord-text' => 'Fan of a real-time communication? Worry not, enjoy chatting with the Portuguese Crew.',
+
+        'meetup-title' => 'Meetup',
+        'meetup-text' => 'Organize a conference or a online meeting, or even check the past events on Meetup.',
+    ],
 
     'link_status' => [
         'published' => 'Published',
@@ -84,10 +106,12 @@ return [
     'menu_landing' => [
         'home' => 'Home',
         'about' => 'About',
-        'links' => 'Tips & Tricks',
+        'links' => 'Links',
         'community' => 'Community',
         'login' => 'Sign in',
         'register' => 'Sign up',
+        'tos' => 'Terms of Service',
+        'privacy' => 'Privacy Policy'
     ],
 
     'menu' => [
