@@ -88,7 +88,7 @@ class HandleInertiaRequests extends Middleware
             ],
             'tags' => [
                 'color_options' => TagColorType::toArray(),
-            ]
+            ],
         ];
     }
 

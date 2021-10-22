@@ -37,21 +37,21 @@ return [
     */
 
     'google' => [
-        'enable' => env('GOOGLE_LOGIN_ENABLE',false),
+        'enable' => env('GOOGLE_LOGIN_ENABLE', false),
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
         'redirect' => env('GOOGLE_REDIRECT_URI'),
     ],
 
     'twitter' => [
-        'enable' => env('TWITTER_LOGIN_ENABLE',false),
+        'enable' => env('TWITTER_LOGIN_ENABLE', false),
         'client_id' => env('TWITTER_API_KEY'),
         'client_secret' => env('TWITTER_API_SECRET_KEY'),
         'redirect' => env('TWITTER_REDIRECT_URI'),
     ],
 
     'discord' => [
-        'enable' => env('DISCORD_LOGIN_ENABLE',false),
+        'enable' => env('DISCORD_LOGIN_ENABLE', false),
         'client_id' => env('DISCORD_CLIENT_ID'),
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
         'redirect' => env('DISCORD_REDIRECT_URI'),

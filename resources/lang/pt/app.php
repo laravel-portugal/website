@@ -118,7 +118,7 @@ return [
         'description' => 'Descrição',
         'links_count' => 'Nrº de Links',
         'color' => 'Cor da Label',
-        'slug' => 'Slug'
+        'slug' => 'Slug',
     ],
 
     'tag_colors' => [
@@ -166,7 +166,7 @@ return [
 
         'admin' => 'Administração',
         'admin-links' => 'Gerir Links',
-        'admin-tags' => 'Gerir Tags'
+        'admin-tags' => 'Gerir Tags',
     ],
 
     'pagination' => [

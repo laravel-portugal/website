@@ -48,6 +48,6 @@ class TagPolicy
 
     public function destroyForce(User $user, Tag $tag)
     {
-        return $user->can(PermissionsType::moderate_tags()->value) && $tag->deleted_at !== null;
+        return $user->can(PermissionsType::moderate_tags()->value) && null !== $tag->deleted_at;
     }
 }

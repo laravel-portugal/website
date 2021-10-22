@@ -13,14 +13,13 @@ class AddTagsMissingSoftDeletes extends Migration
      */
     public function up()
     {
-        Schema::table('tags', function (Blueprint $table){
+        Schema::table('tags', function (Blueprint $table) {
             $table->softDeletes();
         });
 
-        Schema::table('user_social_accounts', function (Blueprint $table){
+        Schema::table('user_social_accounts', function (Blueprint $table) {
             $table->softDeletes();
         });
-
     }
 
     /**
@@ -30,11 +29,11 @@ class AddTagsMissingSoftDeletes extends Migration
      */
     public function down()
     {
-        Schema::table('tags', function (Blueprint $table){
+        Schema::table('tags', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
 
-        Schema::table('user_social_accounts', function (Blueprint $table){
+        Schema::table('user_social_accounts', function (Blueprint $table) {
             $table->dropSoftDeletes();
         });
     }

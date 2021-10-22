@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
 
     protected function createAdmin()
     {
-        if(!User::whereEmail('admin@admin.com')){
+        if (! User::whereEmail('admin@admin.com')) {
             /* @var User $user */
             User::factory()->state([
                 'name' => 'The Boss',

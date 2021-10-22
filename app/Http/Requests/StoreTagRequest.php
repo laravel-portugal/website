@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Types\LinkStatusType;
 use App\Types\TagColorType;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;

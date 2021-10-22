@@ -9,13 +9,15 @@ class LinkDeleteAction
 {
     public static function execute(Link $link, bool $force = false): ?bool
     {
-        if($force){
+        if ($force) {
             // Remove the photo
-            if($link->cover_image){
+            if ($link->cover_image) {
                 Storage::disk(Link::coverPhotosDisk())->delete($link->cover_image);
             }
+
             return $link->forceDelete();
         }
+
         return $link->delete();
     }
 }

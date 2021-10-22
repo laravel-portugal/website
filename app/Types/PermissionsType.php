@@ -18,7 +18,7 @@ final class PermissionsType extends BaseType
             'create_links' => 'create-links',
             'delete_links' => 'delete-links',
             'moderate_links' => 'moderate-links',
-            'moderate_tags' => 'moderate-tags'
+            'moderate_tags' => 'moderate-tags',
         ];
     }
 
@@ -29,7 +29,7 @@ final class PermissionsType extends BaseType
             'create_links' => 'Create Links',
             'delete_links' => 'Delete Links',
             'moderate_links' => 'Moderate Links',
-            'moderate-tags' => 'Moderate Tags'
+            'moderate-tags' => 'Moderate Tags',
         ];
     }
 }

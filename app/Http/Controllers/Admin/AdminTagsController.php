@@ -71,7 +71,7 @@ class AdminTagsController extends Controller
 
     public function destroyForce(Tag $tag): RedirectResponse
     {
-        TagDeleteAction::execute($tag,true);
+        TagDeleteAction::execute($tag, true);
 
         return redirect()->route('admin.tags.index');
     }

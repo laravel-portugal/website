@@ -57,7 +57,8 @@ class AdminLinksController extends Controller
 
     public function destroyForce(Link $link): RedirectResponse
     {
-        LinkDeleteAction::execute($link,true);
+        LinkDeleteAction::execute($link, true);
+
         return redirect()->route('admin.links.index');
     }
 

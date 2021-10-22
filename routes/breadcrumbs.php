@@ -62,7 +62,7 @@ Breadcrumbs::for('admin.links.index', function (BreadcrumbTrail $trail) {
 // Links - Edit
 Breadcrumbs::for('admin.links.edit', function (BreadcrumbTrail $trail, Link $link) {
     $trail->parent('admin.links.index');
-    $trail->push(trans('app.menu.links-edit', ['identifier' => \Str::limit($link->title,30)]), route('admin.links.edit',$link));
+    $trail->push(trans('app.menu.links-edit', ['identifier' => \Str::limit($link->title, 30)]), route('admin.links.edit', $link));
 });
 
 /*
@@ -80,7 +80,7 @@ Breadcrumbs::for('admin.tags.index', function (BreadcrumbTrail $trail) {
 // Tags - Edit
 Breadcrumbs::for('admin.tags.edit', function (BreadcrumbTrail $trail, Tag $tag) {
     $trail->parent('admin.tags.index');
-    $trail->push(trans('app.menu.tags-edit', ['identifier' => $tag->name]), route('admin.tags.edit',$tag));
+    $trail->push(trans('app.menu.tags-edit', ['identifier' => $tag->name]), route('admin.tags.edit', $tag));
 });
 
 // Tags - Create

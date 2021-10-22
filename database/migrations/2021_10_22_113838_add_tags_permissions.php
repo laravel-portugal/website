@@ -1,10 +1,10 @@
 <?php
 
+use App\Types\PermissionsType;
+use App\Types\RolesType;
 use Illuminate\Database\Migrations\Migration;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use App\Types\PermissionsType;
-use App\Types\RolesType;
 
 class AddTagsPermissions extends Migration
 {
@@ -27,7 +27,7 @@ class AddTagsPermissions extends Migration
      */
     public function down()
     {
-        Permission::query()->where('name',PermissionsType::moderate_tags()->value)->delete();
+        Permission::query()->where('name', PermissionsType::moderate_tags()->value)->delete();
         $moderator = Role::findByName(RolesType::moderator());
         $moderator?->revokePermissionTo(PermissionsType::moderate_tags()->value);
     }

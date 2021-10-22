@@ -53,6 +53,6 @@ class LinkPolicy
 
     public function destroyForce(User $user, Link $link)
     {
-        return $user->can(PermissionsType::moderate_links()->value) && $link->deleted_at !== null;
+        return $user->can(PermissionsType::moderate_links()->value) && null !== $link->deleted_at;
     }
 }
