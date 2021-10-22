@@ -2,8 +2,8 @@
   <section class="relative w-full">
     <div class="max-w-7xl mx-auto mt-10">
       <page-heading
-        title="Explore Links"
-        subtitle="Want to follow along? Check our roadmap, and what we have planned for you folks on the next weeks/month. We should be as transparent as possible"
+        :title="$t('app.links-landing-title')"
+        :subtitle="$t('app.links-landing-text')"
       />
       <!-- Tags Slider-->
       <tags-slider-animation :tags="tags" />
