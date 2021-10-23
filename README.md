@@ -113,9 +113,9 @@ pest
 ## Quick Todos 🥵
 
 - [ ] Move Standard Queries to Query Builders to avoid code duplication
-- [ ] Ensure the DTOS are excluding non-user data from the update
+- [x] Ensure the DTOS are excluding non-user data from the update
 - [ ] Write more unit tests
-- [ ] Create Administration Area to Manage Tags
+- [x] Create Administration Area to Manage Tags
 - [x] Delete Tags & Links & Perform their needed cleanup
 - [ ] Create Administration to Manage Users
 - [ ] Add Contributors Avatars Automatically to Homepage
@@ -131,6 +131,7 @@ pest
 - [ ] Add SEO Stuff to Landing Page & Pre-render
 - [ ] Implement Translations diff & Checker https://github.com/ARCANEDEV/LaravelLang
 - [ ] Add Empty States to Links
+- [ ] Conditional Inertia Sharing for Guidelines based on middleware
  
 ## Credits
 This project is a merge of a previous [Laravel Portugal Api](https://github.com/laravel-portugal/api)

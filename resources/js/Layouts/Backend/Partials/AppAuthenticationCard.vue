@@ -2,9 +2,11 @@
   <app-head :title="$page.props.title" />
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <slot name="logo">
-        <app-logo-color class="mx-auto h-12 w-auto" />
-      </slot>
+      <inertia-link :href="route('landing')">
+        <slot name="logo">
+          <app-logo-color class="mx-auto h-12 w-auto" />
+        </slot>
+      </inertia-link>
 
       <div>
         <slot name="after-logo" />
@@ -20,7 +22,10 @@
           class="mt-6"
         >
           <slot name="footer">
-            <div class="relative">
+            <div
+              v-if="hasSocialNetworksConfigured"
+              class="relative"
+            >
               <div class="absolute inset-0 flex items-center">
                 <div class="w-full border-t border-gray-300 dark:border-gray-600" />
               </div>
@@ -31,7 +36,10 @@
               </div>
             </div>
 
-            <div class="mt-6 grid grid-cols-3 gap-3">
+            <div
+              v-if="hasSocialNetworksConfigured"
+              class="mt-6 grid grid-cols-3 gap-3"
+            >
               <div>
                 <a
                   :href="route('social.redirect',{provider: 'twitter'})"
@@ -126,6 +134,13 @@ export default {
             default: true,
             required: false
         },
+    },
+    computed: {
+        hasSocialNetworksConfigured(){
+            return this.$page.props.meta.social_auth.twitter === true ||
+                this.$page.props.meta.social_auth.google === true ||
+                this.$page.props.meta.social_auth.discord === true
+        }
     },
 }
 </script>

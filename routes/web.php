@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminLinksController as AdminLinksController;
+use App\Http\Controllers\Admin\AdminTagsController as AdminTagsController;
 use App\Http\Controllers\Backend\CrawlerController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LinksController as UserLinksController;
@@ -20,7 +21,7 @@ use Inertia\Inertia;
 
 Route::view('/lander', 'welcome-pre-2021');
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('landing');
 
 Route::get('landing', function () {
     return Inertia::render('Welcome', [
@@ -70,8 +71,13 @@ Route::prefix('admin')
     ->as('admin.')
     ->middleware(['role:admin', 'auth:sanctum', 'verified'])
     ->group(function () {
-        Route::get('/', function () { dd('im admin'); })->name('dashboard');
         Route::resource('links', AdminLinksController::class)->only(['index', 'edit', 'update', 'destroy']);
+
         Route::put('links/{link}/restore', [AdminLinksController::class, 'restore'])->withTrashed()->name('links.restore');
+        Route::delete('links/{link}/delete-force', [AdminLinksController::class, 'destroyForce'])->withTrashed()->name('links.destroy-forced');
         Route::get('links/{link}/status/{status}', [AdminLinksController::class, 'markAs'])->name('links.status');
+
+        Route::resource('tags', AdminTagsController::class);
+        Route::put('tags/{tag}/restore', [AdminTagsController::class, 'restore'])->withTrashed()->name('tags.restore');
+        Route::delete('tags/{tag}/delete-force', [AdminTagsController::class, 'destroyForce'])->withTrashed()->name('tags.destroy-forced');
     });

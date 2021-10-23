@@ -129,34 +129,9 @@ export default {
         ChevronDownIcon,
     },
     computed:{
-        social_networks(){
-            return [
-                {
-                    name: 'Twitter',
-                    description: 'Want to join us on Twitter? Get involved on the most popular network',
-                    href: this.$page.props?.meta.social.twitter,
-                    icon: 'twitter',
-                },
-                {
-                    name: 'GitHub',
-                    description: 'Want to Contribute? Checkout our official GitHub Account',
-                    href: this.$page.props?.meta.social.github,
-                    icon: 'github',
-                },
-                {
-                    name: 'Discord',
-                    description: 'Fan of communities? Join Laravel Portugal ® on Discord today and talk with hundreds of other Developers',
-                    href: this.$page.props?.meta.social.discord,
-                    icon: 'discord',
-                },
-                {
-                    name: 'Meetup',
-                    description: 'Want to meet your fellow Laravel Mates in Portugal or around the world? Worry not! Lets do it.',
-                    href: this.$page.props?.meta.social.meetup,
-                    icon: 'meetup',
-                },
-            ];
-        }
+        socialNetworks(){
+            return socialNetworks.value;
+        },
     }
 }
 </script>
