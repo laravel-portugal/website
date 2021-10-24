@@ -1,4 +1,5 @@
 <template>
+  <app-head :title="$t('app.menu_landing.login')" />
   <app-authentication-card>
     <template #after-logo>
       <p class="mt-4 text-center text-sm text-gray-600 dark:text-gray-400 max-w">
@@ -97,9 +98,11 @@ import XInputText from "@/Components/Inputs/Text";
 import XInputPassword from "@/Components/Inputs/Password";
 import XInputCheckbox from "@/Components/Inputs/Checkbox";
 import XFormContainer from "@/Components/Forms/Container";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
 
 export default {
     components: {
+        AppHead,
         XFormContainer,
         XInputCheckbox,
         XInputPassword,

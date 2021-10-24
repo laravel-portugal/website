@@ -121,13 +121,6 @@ export default {
         ExternalLinkIcon,
         TagIcon
     },
-    props: {
-        url: {
-            type: String,
-            required: false,
-            default: '',
-        }
-    },
     methods: {
         isActive(...routes) {
             return routes.some(route => this.route().current(route));

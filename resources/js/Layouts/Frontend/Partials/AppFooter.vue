@@ -57,10 +57,10 @@ export default {
             return [
                 { name: this.$t('app.menu_landing.home'), href: '#top' },
                 { name: this.$t('app.menu_landing.links'), href: '#links' },
-                { name: this.$t('app.menu_landing.login'), href: route('login') },
-                { name: this.$t('app.menu_landing.register'), href: route('register') },
-                { name: this.$t('app.menu_landing.tos'), href: route('terms.show') },
-                { name: this.$t('app.menu_landing.privacy'), href: route('policy.show') },
+                { name: this.$t('app.menu_landing.login'), href: this.route('login') },
+                { name: this.$t('app.menu_landing.register'), href: this.route('register') },
+                { name: this.$t('app.menu_landing.tos'), href: this.route('terms.show') },
+                { name: this.$t('app.menu_landing.privacy'), href: this.route('policy.show') },
             ];
         }
     },

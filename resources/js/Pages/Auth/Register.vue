@@ -1,4 +1,5 @@
 <template>
+  <app-head :title="$t('app.menu_landing.register')" />
   <app-authentication-card>
     <template #after-logo>
       <p class="mt-4 text-center text-sm text-gray-600 dark:text-gray-400 max-w">
@@ -100,9 +101,11 @@ import XInputPassword from "@/Components/Inputs/Password";
 import XInputCheckbox from "@/Components/Inputs/Checkbox";
 import {useForm} from "@inertiajs/inertia-vue3";
 import XFormErrorsGroup from "@/Components/Forms/ErrorsGroup";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
 
 export default {
     components: {
+        AppHead,
         XFormErrorsGroup,
         XInputCheckbox,
         XInputPassword,

@@ -29,17 +29,17 @@ export default {
             [this.$page.props.guidelines.links.status.rejected]: {
                 class: 'bg-red-100 text-red-800',
                 icon: XIcon,
-                label: 'Rejected'
+                label: this.$t('app.link_status.rejected')
             },
             [this.$page.props.guidelines.links.status.published]: {
                 class: 'bg-green-100 text-green-800',
                 icon: CheckIcon,
-                label: 'Published'
+                label: this.$t('app.link_status.published')
             },
             [this.$page.props.guidelines.links.status.waiting_approval]: {
                 class: 'bg-yellow-100 text-yellow-800',
                 icon: ShieldCheckIcon,
-                label: 'Waiting Approval'
+                label: this.$t('app.link_status.waiting-approval')
             },
             }[this.status]
         }

@@ -1,10 +1,11 @@
 <template>
-  <app-layout title="Links">
+  <app-layout :title="$t('app.menu.tags-edit',{identifier: link.id})">
     <link-form
       :link="link"
       :update-route="route('admin.links.update',{link: link})"
       :delete-route="route('admin.links.destroy',{link: link})"
       :restore-route="route('admin.links.restore',{link: link})"
+      :store-route="route('links.store')"
     />
   </app-layout>
 </template>

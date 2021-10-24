@@ -1,5 +1,5 @@
 <template>
-  <AppHead title="Terms of Service" />
+  <app-head :title="$t('app.menu_landing.tos')" />
 
   <div class="font-sans text-gray-900 antialiased">
     <div class="pt-4 bg-gray-100">

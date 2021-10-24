@@ -7,7 +7,7 @@ import {usePage} from "@inertiajs/inertia-vue3";
  * @returns {*}
  */
 export function queryParam(name, defaultValue = null) {
-    if (typeof window !== 'undefined') {
+    if (notSSR()) {
         let params = new URLSearchParams(window.location.search);
         let param = params.get(name);
         if (!param || param === '' || param === null || typeof param === 'undefined') {
@@ -51,7 +51,7 @@ export function queryParams(merge = {},filter = true){
  * Reset the page Query string and pushes the state
  */
 export function queryReset() {
-    if (typeof window !== 'undefined') {
+    if (notSSR()) {
         window.history.pushState({}, document.title, window.location.origin + window.location.pathname);
     }
 }
@@ -77,6 +77,14 @@ export function truncateString(str, limit = 10, endsOn = '...') {
  */
 export function firstOf(obj) {
     return obj[Object.keys(obj)[0]];
+}
+
+export function notSSR() {
+    return typeof window !== 'undefined' && typeof document !== 'undefined'
+}
+
+export function isSSR(){
+    return typeof window === 'undefined' || typeof document === 'undefined'
 }
 
 /**

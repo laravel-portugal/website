@@ -1,5 +1,5 @@
 <template>
-  <app-layout title="Links">
+  <app-layout :title="$t('app.menu.admin-links')">
     <!-- Search Bar -->
     <links-search
       :filters="searchFilters"

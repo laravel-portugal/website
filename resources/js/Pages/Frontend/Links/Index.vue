@@ -1,5 +1,5 @@
 <template>
-  <app-layout>
+  <app-layout :title="$t('app.menu_landing.links')">
     <!-- Searchbar On Top -->
     <template #hero>
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">

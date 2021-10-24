@@ -44,3 +44,7 @@ test:
 
 expose:
 	expose share https://laravelpt.localhost --subdomain=laravelpt
+
+render-start:
+	node public/js/start.js
+

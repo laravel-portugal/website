@@ -1,5 +1,5 @@
 <template>
-  <app-layout>
+  <app-layout :title="$t('app.menu.user-profile')">
     <div>
       <update-profile-information-form :user="$page.props.user" />
 

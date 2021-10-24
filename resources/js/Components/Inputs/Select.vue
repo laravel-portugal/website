@@ -6,7 +6,7 @@
         name="label"
       >
         <x-form-label
-          :for="name"
+          :label-for="name"
           :value="label"
           @click="onClickLabel"
         />

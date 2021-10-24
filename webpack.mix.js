@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
 const path = require('path');
+require('laravel-mix-merge-manifest');
 
 /*
  |--------------------------------------------------------------------------
@@ -43,7 +44,8 @@ mix
         require('tailwindcss'),
     ])
     .webpackConfig(require('./webpack.config'))
-    .copy('resources/img','public/img');
+    .copy('resources/img','public/img')
+    .mergeManifest();
 
 if (mix.inProduction()) {
     mix.version();
