@@ -49,7 +49,7 @@ class HandleInertiaRequests extends Middleware
             'guidelines' => $request->user() ? $this->shareGuideLines() : [],
             'breadcrumbs' => $request->user() ? $this->sharesPageBreadcrumbs() : [],
             'meta' => $this->shareMeta(),
-            'ziggy' => (new Ziggy)->toArray()
+            'ziggy' => (new Ziggy())->toArray(),
         ]);
     }
 

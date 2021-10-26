@@ -186,5 +186,5 @@ return [
     'seo' => [
         'frontend-landing-title' => 'Comunidade Portuguesa da Laravel',
         'frontend-landing-description' => 'Bem-vindos à comunidade Portuguesa da Laravel. Junta-te a mais de 500+ programadores de Laravel em Portugal',
-    ]
+    ],
 ];

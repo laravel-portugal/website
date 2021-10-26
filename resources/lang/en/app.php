@@ -185,5 +185,5 @@ return [
     'seo' => [
         'frontend-landing-title' => 'Portuguese Laravel Community',
         'frontend-landing-description' => 'Welcome to the Laravel Portuguese Community. Join 500+ programmers doing surfing with Laravel Daily',
-    ]
+    ],
 ];
