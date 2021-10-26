@@ -4,7 +4,6 @@ import {renderToString } from '@vue/server-renderer'
 import {createInertiaApp} from '@inertiajs/inertia-vue3'
 import {setupServer} from "@/Utils/Setup/SetupServer";
 
-
 const server = express()
 server.use(express.json())
 server.post('/render', async (request, response, next) => {

@@ -1,8 +1,10 @@
 @php
     try {
         $ssr = Http::post('http://localhost:9000/render', $page)->throw()->json();
+        ray($ssr);
     } catch (Exception $e) {
         $ssr = null;
+        ray('no SSR');
     }
 @endphp
 <!DOCTYPE html>

@@ -7,7 +7,7 @@
         "watch-poll": "mix watch -- --watch-options-poll=1000",
         "hot": "mix watch --hot",
         "prod": "npm run production",
-        "prod-ssr": "mix --production && mix --production --mix-config=webpack.ssr.mix.js",
+        "prod-ssr": "mix --production && mix --production --mix-config=webpack.server.mix.js",
         "production": "mix --production"
     },
     "devDependencies": {
