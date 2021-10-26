@@ -140,6 +140,8 @@ return [
         'register' => 'Sign up',
         'tos' => 'Terms of Service',
         'privacy' => 'Privacy Policy',
+        'reset-password' => 'Password Reset',
+        'verify-email' => 'Verify E-Mail',
     ],
 
     'menu' => [
@@ -179,4 +181,9 @@ return [
         'link-cover' => 'Here you can upload your own cover or just go forward with the open provided by the OpenGraph',
         'link-title' => 'Provide a clear title of what this link is all about.',
     ],
+
+    'seo' => [
+        'frontend-landing-title' => 'Portuguese Laravel Community',
+        'frontend-landing-description' => 'Welcome to the Laravel Portuguese Community. Join 500+ programmers doing surfing with Laravel Daily',
+    ]
 ];

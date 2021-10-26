@@ -1,6 +1,6 @@
 <template>
   <label
-    :for="this.for"
+    :for="labelFor"
     class="block font-medium text-sm text-gray-700 dark:text-white mb-2"
   >
     <span v-if="value">{{ value }}</span>
@@ -17,7 +17,7 @@ export default {
             default: '',
             required: false
         },
-        for: {
+        labelFor: {
             type: [String],
             default: '',
             required: false

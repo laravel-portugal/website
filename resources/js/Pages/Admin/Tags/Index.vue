@@ -1,11 +1,5 @@
 <template>
-  <app-layout title="Links">
-    <!-- Search Bar -->
-    <!--    <tags-search-->
-    <!--      :filters="[]"-->
-    <!--      :search-route="route('admin.tags.index')"-->
-    <!--    />-->
-    <!-- List -->
+  <app-layout :title="$t('app.menu.admin-tags')">
     <skeleton class="mb-5" />
     <tags-list :tags="tags" />
   </app-layout>

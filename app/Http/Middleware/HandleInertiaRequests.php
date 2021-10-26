@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Inertia\Middleware;
+use Tightenco\Ziggy\Ziggy;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -45,9 +46,10 @@ class HandleInertiaRequests extends Middleware
         return array_merge(parent::share($request), [
             'user' => optional($request->user())->toInertiaShare(),
             'authorization' => $this->shareAuthorizationErrors(),
-            'guidelines' => $this->shareGuideLines(),
-            'breadcrumbs' => $this->sharesPageBreadcrumbs(),
+            'guidelines' => $request->user() ? $this->shareGuideLines() : [],
+            'breadcrumbs' => $request->user() ? $this->sharesPageBreadcrumbs() : [],
             'meta' => $this->shareMeta(),
+            'ziggy' => (new Ziggy)->toArray()
         ]);
     }
 

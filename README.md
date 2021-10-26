@@ -132,6 +132,7 @@ pest
 - [ ] Implement Translations diff & Checker https://github.com/ARCANEDEV/LaravelLang
 - [ ] Add Empty States to Links
 - [ ] Conditional Inertia Sharing for Guidelines based on middleware
+- [ ] Check this : https://github.com/tailwindlabs/headlessui/issues/840
  
 ## Credits
 This project is a merge of a previous [Laravel Portugal Api](https://github.com/laravel-portugal/api)

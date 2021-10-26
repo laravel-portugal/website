@@ -1,5 +1,5 @@
 <template>
-  <AppHead title="Terms of Service" />
+  <AppHead :title="$t('app.menu_landing.privacy')" />
 
   <div class="font-sans text-gray-900 antialiased">
     <div class="pt-4 bg-gray-100">

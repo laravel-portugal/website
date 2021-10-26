@@ -1,5 +1,5 @@
 <template>
-  <app-layout title="Dashboard">
+  <app-layout :title="$t('app.menu.dashboard')">
     <notification-card
       class="pb-5"
       :title="$t('app.welcome-message-title',{name: $page.props.user.name})"
@@ -87,7 +87,7 @@ export default{
                 {
                     name: this.$t('app.tour-step-one'),
                     description: this.$t('app.tour-step-one-text'),
-                    href: route('links.create'),
+                    href: this.route('links.create'),
                     iconColor: 'bg-red-500',
                     icon: LinkIcon,
                     wrapper: 'inertia-link',
@@ -103,7 +103,7 @@ export default{
                 {
                     name: this.$t('app.tour-step-three'),
                     description: this.$t('app.tour-step-three-text'),
-                    href: route('profile.show'),
+                    href: this.route('profile.show'),
                     iconColor: 'bg-yellow-500',
                     icon: UserCircleIcon,
                     wrapper: 'inertia-link',

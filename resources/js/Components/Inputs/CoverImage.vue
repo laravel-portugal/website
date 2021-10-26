@@ -6,7 +6,7 @@
         name="label"
       >
         <x-form-label
-          :for="name"
+          :label-for="name"
           :value="label"
           @click.prevent="selectNewPhoto"
         />
@@ -130,7 +130,6 @@ export default {
     },
     props: {
         photoPreviewRaw: {
-            type: [String,Object,File],
             default: null,
         },
         photoPreviewUrl: {

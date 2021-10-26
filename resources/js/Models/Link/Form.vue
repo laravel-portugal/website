@@ -6,11 +6,11 @@
     >
       <template #actions>
         <div
-          v-if="editing"
+          v-if="deleteRoute && editing"
           class="inline-flex"
         >
           <inertia-link
-            v-if="link.deleted_at === null"
+            v-if="deleteRoute && link.deleted_at === null"
             :href="deleteRoute"
             as="button"
             class="btn"
@@ -19,7 +19,7 @@
             {{ $t('app.delete') }}
           </inertia-link>
           <inertia-link
-            v-if="link.deleted_at !== null"
+            v-if="deleteRoute && link.deleted_at !== null"
             :href="restoreRoute"
             as="button"
             class="btn"
@@ -189,22 +189,21 @@ export default {
         deleteRoute: {
             type: [URL, String],
             required: false,
-            default: (props) => props.link.id ? route('links.destroy',{link: props.link}) : ''
+            default: null,
         },
         restoreRoute: {
             type: [URL, String],
             required: false,
-            default: (props) => props.link.id ? route('links.restore',{link: props.link}) : ''
+            default: null,
         },
         updateRoute: {
             type: [URL, String],
             required: false,
-            default: (props) => props.link.id ? route('links.update',{link: props.link}) : ''
+            default: null,
         },
         storeRoute: {
             type: [URL, String],
-            required: false,
-            default: () => route('links.store')
+            required: true,
         }
     },
     data() {
@@ -239,14 +238,14 @@ export default {
          **/
         hydrateWithOpenGraph: debounce(function(){
             // Yeah, go count it. xD
-            if(this.form.url.length < 8 || this.isCrawling){
+            if(this.form.url.length < 8 || this.form.title !== '' || this.isCrawling){
                 return;
             }
 
             this.isCrawling = true;
             this
                 .axios
-                .post(route('crawler.search'), {url: this.form.url})
+                .post(this.route('crawler.search'), {url: this.form.url})
                 .then((response) => {
                     if (response.status === 200 && response.data?.success) {
                         this.form.title = response.data.title;

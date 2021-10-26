@@ -6,11 +6,11 @@
     >
       <template #actions>
         <div
-          v-if="editing"
+          v-if="deleteRoute && editing"
           class="inline-flex"
         >
           <inertia-link
-            v-if="tag.deleted_at === null"
+            v-if="deleteRoute && tag.deleted_at === null"
             :href="deleteRoute"
             as="button"
             class="btn"
@@ -19,7 +19,7 @@
             {{ $t('app.delete') }}
           </inertia-link>
           <inertia-link
-            v-if="tag.deleted_at !== null"
+            v-if="deleteRoute && tag.deleted_at !== null"
             :href="restoreRoute"
             as="button"
             class="btn"
@@ -113,22 +113,21 @@ export default {
         deleteRoute: {
             type: [URL, String],
             required: false,
-            default: (props) => props.tag.id ? route('admin.tags.destroy',{tag: props.tag}) : ''
+            default: null
         },
         restoreRoute: {
             type: [URL, String],
             required: false,
-            default: (props) => props.tag.id ? route('admin.tags.restore',{tag: props.tag}) : ''
+            default: null
         },
         updateRoute: {
             type: [URL, String],
             required: false,
-            default: (props) => props.tag.id ? route('admin.tags.update',{tag: props.tag}) : ''
+            default: null
         },
         storeRoute: {
             type: [URL, String],
-            required: false,
-            default: () => route('admin.tags.store')
+            required: true,
         }
     },
     data() {

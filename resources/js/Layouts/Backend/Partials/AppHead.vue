@@ -1,5 +1,5 @@
 <template>
-  <inertia-head :title="title ? `${title} - Laravel Portugal` : 'Laravel Portugal Alt'">
+  <inertia-head :title="title">
     <slot />
   </inertia-head>
 </template>
@@ -13,7 +13,7 @@ export default {
     props: {
         title: {
             type: [String, Number],
-            default: 'Home'
+            default: ''
         }
     }
 }

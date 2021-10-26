@@ -1,5 +1,5 @@
 <template>
-  <app-layout title="Links">
+  <app-layout :title="$t('app.menu.links')">
     <list-for-empty-state v-if="!hasLinks" />
     <list-with-cards v-else />
   </app-layout>

@@ -1,6 +1,7 @@
-const mix = require('laravel-mix');
-require('laravel-mix-merge-manifest');
-const path = require("path");
+const path = require('path')
+const mix = require('laravel-mix')
+const webpackNodeExternals = require('webpack-node-externals')
+require('laravel-mix-merge-manifest')
 
 mix.extend('translations', new class {
     webpackRules() {
@@ -24,22 +25,17 @@ mix.extend('translations', new class {
 });
 
 
+mix.alias({
+    ziggy: path.resolve('vendor/tightenco/ziggy/dist'),
+});
 
 mix
-    .js('resources/js/app.js', 'public/js')
-    .vue()
-    .postCss('resources/css/app.pcss', 'public/css', [
-        require('postcss-import'),
-        require('postcss-nesting'),
-        require('tailwindcss'),
-    ])
-    .webpackConfig(require('./webpack.config'))
-    .copy('resources/img','public/img')
     .translations()
-    .mergeManifest();
-
-if (mix.inProduction()) {
-    mix.version();
-}
-
-
+    .js('resources/js/start.js', 'public/js')
+    .vue({ version: 3 })
+    .alias({ '@': path.resolve('resources/js') })
+    .webpackConfig({
+        target: 'node',
+        externals: [webpackNodeExternals()],
+    })
+    .mergeManifest()

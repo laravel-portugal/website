@@ -54,7 +54,7 @@ export default {
     methods: {
         deleteUser(secret) {
             this.form.password = secret;
-            this.form.delete(route('current-user.destroy'), {
+            this.form.delete(this.route('current-user.destroy'), {
                 errorBag: 'deleteUser',
                 preserveScroll: true,
                 onFinish: () => {

@@ -141,6 +141,8 @@ return [
         'register' => 'Registar',
         'tos' => 'Termos e Condições',
         'privacy' => 'Política de Privacidade',
+        'reset-password' => 'Alterar Password',
+        'verify-email' => 'Verificar E-mail',
     ],
 
     'menu' => [
@@ -180,4 +182,9 @@ return [
         'link-cover' => 'Aqui poderás escolher uma imagem personalizada ou então deixar em branco e utilizar a automática',
         'link-title' => 'Introduz um título simples e claro sobre este Link.',
     ],
+
+    'seo' => [
+        'frontend-landing-title' => 'Comunidade Portuguesa da Laravel',
+        'frontend-landing-description' => 'Bem-vindos à comunidade Portuguesa da Laravel. Junta-te a mais de 500+ programadores de Laravel em Portugal',
+    ]
 ];

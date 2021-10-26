@@ -85,6 +85,7 @@
 <script>
 import XModalBackdrop from "./Backdrop";
 import XModalFooter from "@/Components/Modals/Footer";
+import {notSSR} from "@/Utils/Utils";
 
 export default {
     name: 'XModal',
@@ -146,9 +147,13 @@ export default {
             immediate: false,
             handler(value) {
                 if(value){
-                    document.documentElement.style.overflow = 'hidden'
+                    if(notSSR()) {
+                        document.documentElement.style.overflow = 'hidden'
+                    }
                 }else{
-                    document.documentElement.style.overflow = 'auto'
+                    if(notSSR()) {
+                        document.documentElement.style.overflow = 'auto'
+                    }
                 }
             }
         },

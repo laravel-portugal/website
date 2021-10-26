@@ -1,4 +1,5 @@
 <template>
+  <app-head :title="$t('app.menu_landing.reset-password')" />
   <app-authentication-card
     :with-heading="false"
     :with-social-footer="false"
@@ -67,9 +68,11 @@ import XFormContainer from "@/Components/Forms/Container";
 import XInputText from "@/Components/Inputs/Text";
 import {useForm} from "@inertiajs/inertia-vue3";
 import XFormErrorsGroup from "@/Components/Forms/ErrorsGroup";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
 
 export default {
     components: {
+        AppHead,
         XFormErrorsGroup,
         XInputText,
         XFormContainer,

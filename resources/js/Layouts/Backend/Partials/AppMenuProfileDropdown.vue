@@ -62,6 +62,7 @@
 
 <script>
 import XDropdown from "@/Components/Menus/Dropdown";
+import {notSSR} from "@/Utils/Utils";
 
 export default {
     components: {
@@ -77,7 +78,9 @@ export default {
         },
         logout() {
             this.axios.post('/logout').then(response => {
-                window.location = '/';
+                if (notSSR()) {
+                    window.location = '/';
+                }
             })
         },
     },

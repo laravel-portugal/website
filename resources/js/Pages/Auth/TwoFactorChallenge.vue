@@ -1,4 +1,5 @@
 <template>
+  <app-head :title="$t('app.menu_landing.login')" />
   <app-authentication-card
     :with-heading="false"
     :with-social-footer="false"
@@ -88,9 +89,11 @@ import XInputText from "@/Components/Inputs/Text";
 import XFormContainer from "@/Components/Forms/Container";
 import {useForm} from "@inertiajs/inertia-vue3";
 import XFormErrorsGroup from "@/Components/Forms/ErrorsGroup";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
 
 export default {
     components: {
+        AppHead,
         XFormErrorsGroup,
         XFormContainer,
         XInputText,

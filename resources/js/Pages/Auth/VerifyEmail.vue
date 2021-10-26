@@ -1,4 +1,5 @@
 <template>
+  <app-head :title="$t('app.menu_landing.verify-email')" />
   <app-authentication-card :with-social-footer="false">
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
       {{ $t('auth.verify-email-text') }}
@@ -38,9 +39,11 @@
 import AppAuthenticationCard from '@/Layouts/Backend/Partials/AppAuthenticationCard'
 import ButtonLoading from "@/Components/Buttons/ButtonLoading";
 import {useForm} from "@inertiajs/inertia-vue3";
+import AppHead from "@/Layouts/Backend/Partials/AppHead";
 
 export default {
     components: {
+        AppHead,
         ButtonLoading,
         AppAuthenticationCard,
     },

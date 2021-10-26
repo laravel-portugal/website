@@ -78,7 +78,7 @@ export default {
     },
     methods: {
         submit() {
-            this.form.post(route('user-profile-information.update'), {
+            this.form.post(this.route('user-profile-information.update'), {
                 errorBag: 'updateProfileInformation',
                 preserveScroll: true,
             });

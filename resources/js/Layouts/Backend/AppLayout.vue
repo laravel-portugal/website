@@ -26,7 +26,6 @@
         <div class="block lg:hidden h-5 pointer-events-none absolute inset-x-0 z-50 bg-gradient-to-b from-gray-100 to-transparent" />
         <nav class="pt-3 px-2 space-y-1">
           <app-menu
-            :url="url"
             @hideMenu="showMenu = false"
             @hide-menu="showMenu = false"
           />
@@ -70,7 +69,7 @@
             aria-label="Sidebar"
             class="sticky top-4 divide-y divide-gray-300"
           >
-            <app-menu :url="url" />
+            <app-menu />
           </nav>
         </div>
 
@@ -139,14 +138,6 @@ export default {
     data() {
         return {
             showMenu: false,
-        }
-    },
-    computed: {
-        path() {
-            return window.location.pathname
-        },
-        url(){
-            return location.pathname.substr(1)
         }
     },
     mounted() {

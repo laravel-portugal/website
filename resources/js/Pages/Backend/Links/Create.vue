@@ -1,6 +1,9 @@
 <template>
-  <app-layout title="Links">
-    <link-form :link="link" />
+  <app-layout :title="$t('app.menu.links-create')">
+    <link-form
+      :link="link"
+      :store-route="route('links.store',{})"
+    />
   </app-layout>
 </template>
 <script>

@@ -102,7 +102,7 @@ export default {
         },
     },
 
-    created() {
+    mounted() {
         document.addEventListener('keydown', this.closeOnEscapeListener)
     },
 
