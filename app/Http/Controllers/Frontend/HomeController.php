@@ -15,7 +15,11 @@ class HomeController extends Controller
     {
         return Inertia::render('Frontend/Landing/Index', [
             'tags' => Tag::query()->take(20)->paginate(),
-            'links' => Link::query()->with('author', 'tags')->take(8)->latest()->get(),
+            'links' => Link::query()->with('author', 'tags')
+                ->take(8)
+                ->published()
+                ->latest()
+                ->get(),
         ]);
     }
 }

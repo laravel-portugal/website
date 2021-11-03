@@ -94,6 +94,16 @@
           </a>
         </div>
       </div>
+
+      <!-- Dashboard -->
+      <app-menu-link
+        class="mt-2"
+        :active="false"
+        :href="route('landing')"
+      >
+        <arrow-left-icon class="h-4 w-4 text-gray-400 mr-1" />
+        <span>{{ $t('app.menu.back-to-landing') }}</span>
+      </app-menu-link>
     </div>
   </div>
 </template>
@@ -108,6 +118,7 @@ import {
     HomeIcon,
     ExternalLinkIcon,
     TagIcon,
+    ArrowLeftIcon,
 } from "@heroicons/vue/outline";
 
 export default {
@@ -119,7 +130,8 @@ export default {
         LinkIcon,
         HomeIcon,
         ExternalLinkIcon,
-        TagIcon
+        TagIcon,
+        ArrowLeftIcon
     },
     methods: {
         isActive(...routes) {

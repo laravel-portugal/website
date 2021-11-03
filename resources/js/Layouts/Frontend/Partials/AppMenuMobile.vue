@@ -138,10 +138,18 @@
                 </div>
                 <div class="mt-6">
                   <inertia-link
+                    v-if="!$page.props.user"
                     :href="route('login')"
                     class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
                   >
                     {{ $t('app.menu_landing.login') }}
+                  </inertia-link>
+                  <inertia-link
+                    v-if="$page.props.user"
+                    :href="route('dashboard')"
+                    class="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
+                  >
+                    {{ $t('app.menu.dashboard') }}
                   </inertia-link>
                 </div>
               </div>

@@ -95,7 +95,7 @@ export default{
                 {
                     name: this.$t('app.tour-step-two'),
                     description: this.$t('app.tour-step-two-text'),
-                    href: 'https://laravel.com',
+                    href: 'https://laravel.com/docs/8.x',
                     iconColor: 'bg-green-500',
                     icon: TerminalIcon,
                     wrapper: 'a',
