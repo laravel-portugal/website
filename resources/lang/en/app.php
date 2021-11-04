@@ -145,7 +145,6 @@ return [
     ],
 
     'menu' => [
-
         'back-to-landing' => 'Voltar à Landing',
 
         'dashboard' => 'Dashboard',
