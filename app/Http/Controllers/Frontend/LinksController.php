@@ -14,8 +14,8 @@ class LinksController extends Controller
     {
         return Inertia::render('Frontend/Links/Index', [
             'links' => Link::query()
-                ->applySearchAndSmartFilterRestricted($request)
                 ->published()
+                ->applySearchAndSmartFilterRestricted($request)
                 ->with('author', 'tags')
                 ->latest()
                 ->paginate(),

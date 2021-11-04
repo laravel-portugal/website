@@ -96,16 +96,25 @@
         <!-- Items on the right -->
         <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
           <inertia-link
+            v-if="!$page.props.user"
             :href="route('login')"
             class="whitespace-nowrap text-base font-medium font-medium text-gray-100 hover:text-gray-300"
           >
             {{ $t('app.menu_landing.login') }}
           </inertia-link>
           <inertia-link
+            v-if="!$page.props.user"
             :href="route('register')"
             class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-white rounded-md shadow-sm text-base font-medium text-white hover:bg-white hover:bg-opacity-10"
           >
             {{ $t('app.menu_landing.register') }}
+          </inertia-link>
+          <inertia-link
+            v-if="$page.props.user"
+            :href="route('register')"
+            class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-white rounded-md shadow-sm text-base font-medium text-white hover:bg-white hover:bg-opacity-10"
+          >
+            {{ $t('app.menu.dashboard') }}
           </inertia-link>
         </div>
       </div>

@@ -148,6 +148,8 @@ return [
     'menu' => [
         'dashboard' => 'Dashboard',
 
+        'back-to-landing' => 'Back to Landing',
+
         'links' => 'Os teus Links',
         'links-create' => 'Criar',
         'links-edit' => 'Editar :identifier',
