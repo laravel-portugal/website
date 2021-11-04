@@ -20,7 +20,6 @@ jobs:
           docker build -t hub.laravel.pt/website:$TAG .
           docker login -u ${{ secrets.DEPLOY_USER }} -p ${{ secrets.DEPLOY_USER_PASSWORD }} hub.laravel.pt
           docker push hub.laravel.pt/website:$TAG
-
       - name: Deploy docker files
         uses: appleboy/scp-action@master
         with:
@@ -30,7 +29,6 @@ jobs:
           key: ${{ secrets.DEPLOY_USER_PRIVATE_KEY }}
           source: "docker-compose.yml,docker-compose.override.production.yml"
           target: "~/apps/website"
-
       - name: Deploy on remote server
         uses: fifsky/ssh-action@master
         with:
