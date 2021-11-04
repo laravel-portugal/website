@@ -59,7 +59,7 @@ COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 RUN chown -R www-data: /var/www/html
 
 # Project and dependencies
-RUN sudo chown -R 33:33 "/var/www/.npm"
+RUN chown -R 33:33 "/var/www/.npm"
 USER www-data
 COPY --chown=www-data:www-data . .
 RUN composer install
