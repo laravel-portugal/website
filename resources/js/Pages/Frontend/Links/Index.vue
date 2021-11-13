@@ -10,7 +10,10 @@
       </div>
     </template>
     <!-- Main Container -->
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div
+      v-if="links.data.length"
+      class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8"
+    >
       <div class="my-10 max-w-lg mx-auto grid gap-5 lg:grid-cols-4 lg:max-w-none">
         <card-for-frontend
           v-for="link in links.data"
@@ -53,6 +56,9 @@ export default {
                 {key: 'created-desc', label: this.$t('app.link_filters.recently-created')},
             ];
         }
+    },
+    mounted(){
+      console.log(this.$page.props.links.data.length);
     }
 }
 </script>
