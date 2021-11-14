@@ -56,9 +56,6 @@ export default {
                 {key: 'created-desc', label: this.$t('app.link_filters.recently-created')},
             ];
         }
-    },
-    mounted(){
-      console.log(this.$page.props.links.data.length);
     }
 }
 </script>
