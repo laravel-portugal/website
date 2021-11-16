@@ -16,7 +16,7 @@
         "intervention/image": "^2.7",
         "jackiedo/dotenv-editor": "^1.2",
         "larabug/larabug": "^2.4",
-        "laravel/framework": "^8.54",
+        "laravel/framework": "^8.71",
         "laravel/jetstream": "^2.4",
         "laravel/sanctum": "^2.11",
         "laravel/socialite": "^5.2.4",
