@@ -84,7 +84,7 @@
           </a>
           <a
             class="group btn-menu px-2 py-2"
-            href="#"
+            :href="$page.props.meta.social.discord"
             target="_blank"
           >
             <external-link-icon class="h-4 w-4 text-gray-400 mr-1" />
