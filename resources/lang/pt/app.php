@@ -7,7 +7,7 @@ return [
     'confirm' => 'Confirmar :name',
     'edit' => 'Editar',
     'delete' => 'Apagar',
-    'delete-force' => 'Apagar Permanente',
+    'delete-force' => 'Apagar Permanentemente',
     'restore' => 'Restaurar',
     'deleted' => 'Apagado',
     'options' => 'Opções',

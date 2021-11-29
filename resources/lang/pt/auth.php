@@ -40,15 +40,15 @@ return [
     'two-factor-use-recovery' => 'Usar um código de backup',
     'two-factor-use-app' => 'Usar um código de Autenticação',
 
-    'verify-email-text' => 'Obrigado pelo teu registo. Antes de começares precisas de verificar o teu endereço de e-mail que acabamos de enviar para a tua conta. Se não recebes-te não tem problema, podes sempre pedir novamente.',
+    'verify-email-text' => 'Obrigado pelo teu registo. Antes de começares precisas de verificar o teu endereço de e-mail que acabamos de enviar para a tua conta. Se não recebeste não tem problema, podes sempre pedir novamente.',
     'verify-email-sent' => 'Um novo e-mail foi enviado para o endereço de e-mail que utilizas-te no registo',
 
     'login-remember' => 'Lembrar-me',
-    'login-social-text' => 'or continuar com',
+    'login-social-text' => 'ou continuar com',
     'login-action' => 'Entrar',
     'login-if-not' => 'Já tens uma conta? Entra aqui',
 
     'logout-action' => 'Sair',
 
-    'terms-agree' => 'I agree to the <a target="_blank" href=":terms" class="underline text-sm text-gray-600 hover:text-primary-400">Terms of Service</a> and <a target="_blank" href=":privacy" class="underline text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-400">Privacy Policy</a>',
+    'terms-agree' => 'Eu li e aceito os <a target="_blank" href=":terms" class="underline text-sm text-gray-600 hover:text-primary-400">Termos e Condições</a> e <a target="_blank" href=":privacy" class="underline text-sm text-gray-600 dark:text-gray-300 hover:text-indigo-400">Política de Privacidade</a>',
 ];
