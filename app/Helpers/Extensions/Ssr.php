@@ -45,6 +45,10 @@ final class Ssr
      */
     public function exec(array $page): array
     {
+        if (! file_exists(public_path('js/start.js'))) {
+            return [];
+        }
+
         $output = exec(sprintf(
             "node %s '%s'", public_path('js/start.js'),
             str_replace("'", "\\u0027", (string) json_encode($page))
