@@ -1,10 +1,3 @@
-@php
-    try {
-        $ssr = Http::post('http://localhost:9000/render', $page)->throw()->json();
-    } catch (Exception $e) {
-        $ssr = null;
-    }
-@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -18,13 +11,11 @@
         <!-- Scripts -->
         @routes
         <script src="{{ mix('js/app.js') }}" defer></script>
-        @foreach($ssr['head'] ?? [] as $element)
-            {!! $element !!}
-        @endforeach
+        {!! ssr($page, 'head') !!}
     </head>
     <body class="font-sans antialiased">
-        @if ($ssr)
-            {!! $ssr['body'] !!}
+        @if (ssr($page, 'body'))
+            {!! ssr($page, 'body') !!}
         @else
             @inertia
         @endif

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Helpers\Extensions\Paginator;
+use App\Helpers\Extensions\Ssr;
 use App\Models\Link;
 use App\Models\Tag;
 use App\Models\User;
@@ -20,6 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Paginator::register();
+        Ssr::register();
     }
 
     /**

@@ -6,14 +6,14 @@ import {Link} from "@inertiajs/inertia-vue3";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import route from 'ziggy'; // Yeah its being used
 
-export const setupServer = (app,plugin,request) => {
+export const setupServer = (app, plugin, page) => {
     // Register
     FontAwesomeRegister();
 
     // Specially Ziggy Setup to take Inertia Props
     const Ziggy = {
-        ...request.body.props.ziggy,
-        location: new URL(request.body.props.ziggy.url)
+        ...page.props.ziggy,
+        location: new URL(page.props.ziggy.url)
     }
 
     // Plugins

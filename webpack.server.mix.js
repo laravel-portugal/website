@@ -39,3 +39,6 @@ mix
         externals: [webpackNodeExternals()],
     })
     .mergeManifest()
+    .options({
+        legacyNodePolyfills: false,
+    });
