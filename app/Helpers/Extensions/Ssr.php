@@ -26,9 +26,9 @@ final class Ssr
     public function get(array $page, string $item = null): array|string
     {
         $key = md5(json_encode($page));
-        $data = Cache::get($key);
+        $data = Cache::get($key, []);
 
-        if (! $data || $data === []) {
+        if ($data === []) {
             Cache::add($key, $data = $this->exec($page));
         }
 
