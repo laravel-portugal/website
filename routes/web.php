@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminLinksController as AdminLinksController;
-use App\Http\Controllers\Admin\AdminTagsController as AdminTagsController;
+use App\Http\Controllers\Admin\AdminLinksController;
+use App\Http\Controllers\Admin\AdminTagsController;
 use App\Http\Controllers\Backend\CrawlerController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\LinksController as UserLinksController;
