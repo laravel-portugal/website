@@ -21,7 +21,7 @@ use function mb_strtolower;
 trait HasSearch
 {
     protected array $search_bindings = [];
-    //protected array $searchable = [];
+    // protected array $searchable = [];
 
     /**
      * Creates the search scope.

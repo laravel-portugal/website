@@ -5,7 +5,7 @@ use App\Providers\RouteServiceProvider;
 
 it('render login screen', function () {
     $response = $this->get(route('login'));
-    //$response->assertStatus(200);
+    // $response->assertStatus(200);
     $this->assertTrue(200 === $response->status(), $response->getContent());
 });
 
