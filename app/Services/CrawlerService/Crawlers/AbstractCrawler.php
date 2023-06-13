@@ -3,8 +3,6 @@
 namespace App\Services\CrawlerService\Crawlers;
 
 use App\Services\CrawlerService\Concerns\CrawlerInterface;
-use DOMDocument;
-use DOMXPath;
 use Illuminate\Support\Str;
 use JetBrains\PhpStorm\Pure;
 
@@ -51,11 +49,11 @@ abstract class AbstractCrawler implements CrawlerInterface
 
     protected function fromHTMLtoAttributes($rawHtml)
     {
-        $document = new DOMDocument();
+        $document = new \DOMDocument();
         libxml_use_internal_errors(true);
         $document->loadHTML($rawHtml);
         libxml_clear_errors();
-        $xpath = new DOMXPath($document);
+        $xpath = new \DOMXPath($document);
 
         // Image Url
         $this->imageUrl =

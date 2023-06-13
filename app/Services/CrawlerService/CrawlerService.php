@@ -2,7 +2,6 @@
 
 namespace App\Services\CrawlerService;
 
-use Arr;
 use Illuminate\Support\Facades\Cache;
 use JetBrains\PhpStorm\Pure;
 
@@ -11,7 +10,7 @@ class CrawlerService
     protected bool $cached = true;
     protected ?string $url;
 
-    public function __construct(?string $url = null, bool $cached = true)
+    public function __construct(string $url = null, bool $cached = true)
     {
         $this->url = $url;
         $this->cached = $cached;
@@ -32,7 +31,7 @@ class CrawlerService
 
         $payload = $this->_execute();
         // Ensure we only save to cache in case there is a image
-        if (! empty($payload) && null !== Arr::get($payload, 'image_data_url')) {
+        if (! empty($payload) && null !== \Arr::get($payload, 'image_data_url')) {
             Cache::remember(
                 $this->getCacheKey(),
                 now()->addHours(),

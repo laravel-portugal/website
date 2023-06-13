@@ -7,7 +7,6 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use function mb_strtolower;
 
 /**
  * Trait SearchableTrait.
@@ -26,12 +25,12 @@ trait HasSearch
     /**
      * Creates the search scope.
      */
-    public function scopeSearch(Builder $q, string $search, ?float $threshold = null, bool $entireText = false, bool $entireTextOnly = false): Builder
+    public function scopeSearch(Builder $q, string $search, float $threshold = null, bool $entireText = false, bool $entireTextOnly = false): Builder
     {
         return $this->scopeSearchRestricted($q, $search, null, $threshold, $entireText, $entireTextOnly);
     }
 
-    public function scopeSearchRestricted(Builder $q, string $search, ?float $restriction, ?float $threshold = null, bool $entireText = false, bool $entireTextOnly = false): Builder
+    public function scopeSearchRestricted(Builder $q, string $search, ?float $restriction, float $threshold = null, bool $entireText = false, bool $entireTextOnly = false): Builder
     {
         if (empty($search)) {
             return $q;
@@ -41,7 +40,7 @@ trait HasSearch
         $query->select($this->getTable().'.*');
         $this->makeJoins($query);
 
-        $search = mb_strtolower(trim($search));
+        $search = \mb_strtolower(trim($search));
         preg_match_all('/(?:")((?:\\\\.|[^\\\\"])*)(?:")|(\S+)/', $search, $matches);
         $words = $matches[1];
         for ($i = 2; $i < count($matches); $i++) {
@@ -111,7 +110,7 @@ trait HasSearch
      */
     protected function getColumns(): array
     {
-        if (array_key_exists('columns', $this?->searchable ?? [])) {
+        if (array_key_exists('columns', $this->searchable ?? [])) {
             $driver = $this->getDatabaseDriver();
             $prefix = Config::get("database.connections.$driver.prefix");
             $columns = [];
@@ -130,7 +129,7 @@ trait HasSearch
      */
     protected function getGroupBy(): array
     {
-        if (array_key_exists('groupBy', $this?->searchable ?? [])) {
+        if (array_key_exists('groupBy', $this->searchable ?? [])) {
             return $this->searchable['groupBy'];
         }
 
@@ -142,7 +141,7 @@ trait HasSearch
      */
     public function getTableColumns(): array
     {
-        return $this?->searchable['table_columns'] ?? [];
+        return $this->searchable['table_columns'] ?? [];
     }
 
     /**
@@ -150,7 +149,7 @@ trait HasSearch
      */
     protected function getJoins(): array
     {
-        return Arr::get($this?->searchable, 'joins', []) ?? [];
+        return Arr::get($this->searchable, 'joins', []) ?? [];
     }
 
     /**
@@ -184,7 +183,7 @@ trait HasSearch
 
             $query->groupBy($columns);
 
-            $joins = array_keys(($this->getJoins()));
+            $joins = array_keys($this->getJoins());
 
             foreach ($this->getColumns() as $column => $relevance) {
                 array_map(function ($join) use ($column, $query) {
@@ -301,8 +300,8 @@ trait HasSearch
      */
     protected function getRelevanceField(): string
     {
-        if ($this?->relevanceField ?? false) {
-            return $this?->relevanceField;
+        if ($this->relevanceField ?? false) {
+            return $this->relevanceField;
         }
 
         // If property $this->relevanceField is not setted, return the default

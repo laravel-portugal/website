@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Link;
 use Illuminate\Http\Request;
-use function redirect;
 
 class LinksRedirectController extends Controller
 {
@@ -13,6 +12,6 @@ class LinksRedirectController extends Controller
     {
         $link->incrementHit();
 
-        return redirect()->away($link->url);
+        return \redirect()->away($link->url);
     }
 }

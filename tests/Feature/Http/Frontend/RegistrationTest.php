@@ -8,7 +8,7 @@ it('can render register screen', function () {
 });
 
 it('can register new users', function () {
-    $response = $this->post((route('register')), [
+    $response = $this->post(route('register'), [
         'name' => 'Test User',
         'email' => 'test@example.com',
         'password' => 'password',

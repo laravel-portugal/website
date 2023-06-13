@@ -84,22 +84,22 @@ final class Link extends Model
 
     public function getCreatedAtForHumansAttribute(): ?string
     {
-        return $this?->created_at?->diffForHumans();
+        return $this->created_at?->diffForHumans();
     }
 
     public function getUpdatedAtForHumansAttribute(): ?string
     {
-        return $this?->updated_at?->diffForHumans();
+        return $this->updated_at?->diffForHumans();
     }
 
     public function getDeletedAtForHumansAttribute(): ?string
     {
-        return $this?->deleted_at?->diffForHumans();
+        return $this->deleted_at?->diffForHumans();
     }
 
     public function getApprovedAtForHumansAttribute(): ?string
     {
-        return $this?->approved_at?->diffForHumans();
+        return $this->approved_at?->diffForHumans();
     }
 
     public function getRedirectUrlAttribute(): ?string

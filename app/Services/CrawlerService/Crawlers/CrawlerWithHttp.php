@@ -3,7 +3,6 @@
 namespace App\Services\CrawlerService\Crawlers;
 
 use App\Services\CrawlerService\CrawlerResponse;
-use Http;
 
 class CrawlerWithHttp extends AbstractCrawler
 {
@@ -12,7 +11,7 @@ class CrawlerWithHttp extends AbstractCrawler
     public function request(string $url): CrawlerResponse
     {
         // Otherwise, perform the request and remember then setup
-        $this->content = Http::withHeaders([
+        $this->content = \Http::withHeaders([
             'Cache-Control: no-cache',
             sprintf('User-Agent: %s', config('laravel-portugal.crawler.user-agent')),
         ])

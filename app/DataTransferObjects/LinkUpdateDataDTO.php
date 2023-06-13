@@ -33,7 +33,7 @@ class LinkUpdateDataDTO extends DataTransferObject
      *
      * @throws UnknownProperties
      */
-    public static function fromArray(array $data, ?Link $link = null): static
+    public static function fromArray(array $data, Link $link = null): static
     {
         // Convert the Link to Array & Exclude the files
         $linkData = \Arr::except($link?->toArray() ?? [], ['cover_image']);

@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Actions\UserAuthWithSocialAccountAction;
 use App\Http\Controllers\Controller;
-use Auth;
 use Illuminate\Http\RedirectResponse;
-use function redirect;
-use function route;
 
 class SocialLoginController extends Controller
 {
@@ -15,10 +12,10 @@ class SocialLoginController extends Controller
     {
         try {
             return \Socialite::driver($provider)
-                ->with(['redirect_uri' => route('social.callback', ['provider' => $provider])])
+                ->with(['redirect_uri' => \route('social.callback', ['provider' => $provider])])
                 ->redirect();
         } catch (\Exception $e) {
-            return redirect()->route('login');
+            return \redirect()->route('login');
         }
     }
 
@@ -26,18 +23,18 @@ class SocialLoginController extends Controller
     {
         try {
             $providerUser = \Socialite::driver($provider)
-                ->with(['redirect_uri' => route('social.callback', ['provider' => $provider])])
+                ->with(['redirect_uri' => \route('social.callback', ['provider' => $provider])])
                 ->user();
 
             if ($user = UserAuthWithSocialAccountAction::execute($provider, $providerUser)) {
-                Auth::login($user);
+                \Auth::login($user);
 
-                return redirect()->route('dashboard');
+                return \redirect()->route('dashboard');
             }
         } catch (\Exception $e) {
-            return redirect()->route('login');
+            return \redirect()->route('login');
         }
 
-        return redirect()->route('login');
+        return \redirect()->route('login');
     }
 }

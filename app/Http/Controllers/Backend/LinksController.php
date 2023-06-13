@@ -17,7 +17,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
-use function redirect;
 
 class LinksController extends Controller
 {
@@ -50,7 +49,7 @@ class LinksController extends Controller
     {
         LinkStoreAction::execute($request->user(), LinkStoreDataDTO::fromRequest($request));
 
-        return redirect()->route('links.index');
+        return \redirect()->route('links.index');
     }
 
     public function edit(Request $request, Link $link): Response
@@ -65,7 +64,7 @@ class LinksController extends Controller
     {
         LinkUpdateAction::execute($link, LinkUpdateDataDTO::fromRequest($request));
 
-        return redirect()->route('links.index');
+        return \redirect()->route('links.index');
     }
 
     public function destroy(Link $link): RedirectResponse
@@ -78,13 +77,13 @@ class LinksController extends Controller
 
         LinkDeleteAction::execute($link);
 
-        return redirect()->route('links.index');
+        return \redirect()->route('links.index');
     }
 
     public function restore(Link $link): RedirectResponse
     {
         $link->restore();
 
-        return redirect()->route('links.index');
+        return \redirect()->route('links.index');
     }
 }

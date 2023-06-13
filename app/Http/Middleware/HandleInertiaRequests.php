@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use App\Types\LinkStatusType;
 use App\Types\TagColorType;
 use Breadcrumbs;
-use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Inertia\Middleware;
@@ -108,8 +107,8 @@ class HandleInertiaRequests extends Middleware
     protected function sharesPageBreadcrumbs(): array|Collection
     {
         try {
-            return Breadcrumbs::generate();
-        } catch (Exception $e) {
+            return \Breadcrumbs::generate();
+        } catch (\Exception $e) {
             return [];
         }
     }

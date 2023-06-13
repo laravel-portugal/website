@@ -91,9 +91,9 @@ if (! function_exists('is_valid_url_to_call_internally')) {
     function is_valid_url_to_call_internally(string $url): bool
     {
         if (
-            Str::contains($url, 'localhost') ||
-            Str::contains($url, '127.0.0.1') ||
-            Str::contains($url, '::1')
+            Str::contains($url, 'localhost')
+            || Str::contains($url, '127.0.0.1')
+            || Str::contains($url, '::1')
         ) {
             return false;
         }

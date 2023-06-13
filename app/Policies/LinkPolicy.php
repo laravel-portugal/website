@@ -34,21 +34,21 @@ class LinkPolicy
 
     public function update(User $user, Link $link)
     {
-        return $user->id === $link->user_id &&
-            $user->can(PermissionsType::edit_links()->value) &&
-            $link->status->notOneOfTheFollowing(LinkStatusType::waiting_approval());
+        return $user->id === $link->user_id
+            && $user->can(PermissionsType::edit_links()->value)
+            && $link->status->notOneOfTheFollowing(LinkStatusType::waiting_approval());
     }
 
     public function delete(User $user, Link $link)
     {
-        return $user->id === $link->user_id &&
-            $link->status->notOneOfTheFollowing(LinkStatusType::waiting_approval());
+        return $user->id === $link->user_id
+            && $link->status->notOneOfTheFollowing(LinkStatusType::waiting_approval());
     }
 
     public function restore(User $user, Link $link)
     {
-        return $user->id === $link->user_id &&
-            null === $link->deleted_at;
+        return $user->id === $link->user_id
+            && null === $link->deleted_at;
     }
 
     public function destroyForce(User $user, Link $link)
