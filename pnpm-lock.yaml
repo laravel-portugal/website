@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 devDependencies:
   '@tailwindcss/forms':
     specifier: ^0.5
@@ -15,7 +19,7 @@ devDependencies:
     version: 10.4.0(postcss@8.4.24)
   laravel-vite-plugin:
     specifier: ^0.7.5
-    version: 0.7.5(vite@4.0.0)
+    version: 0.7.5(vite@4.0.5)
   resolve-url-loader:
     specifier: ^3.1
     version: 3.1.0
@@ -29,8 +33,8 @@ devDependencies:
     specifier: ^3.0
     version: 3.0.0(autoprefixer@10.4.0)(postcss@8.4.24)
   vite:
-    specifier: ^4.0.0
-    version: 4.0.0(sass@1.3.0)
+    specifier: ^4.0.5
+    version: 4.0.5(sass@1.3.0)
 
 packages:
 
@@ -676,6 +680,7 @@ packages:
 
   /bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
+    requiresBuild: true
     dependencies:
       file-uri-to-path: 1.0.0
     dev: true
@@ -1473,6 +1478,7 @@ packages:
 
   /file-uri-to-path@1.0.0:
     resolution: {integrity: sha512-0Zt+s3L7Vf1biwWZ29aARiVYLx7iMGnEUl9x33fbB/j3jR81u/O2LbqK+Bm1CDSNDKVtJ/YjwY7TUd5SkeLQLw==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -1956,15 +1962,15 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /laravel-vite-plugin@0.7.5(vite@4.0.0):
+  /laravel-vite-plugin@0.7.5(vite@4.0.5):
     resolution: {integrity: sha512-BrrjFhbpJpQkG3a0DQ68x6Vk1glwQPF5A2HywY9w5te7Dp/AmEIj71f9/m/wS44/HFXTUVd2IUhD+zGjevgPfw==}
     engines: {node: '>=14'}
     peerDependencies:
       vite: ^3.0.0 || ^4.0.0
     dependencies:
       picocolors: 1.0.0
-      vite: 4.0.0(sass@1.3.0)
-      vite-plugin-full-reload: 1.0.5(vite@4.0.0)
+      vite: 4.0.5(sass@1.3.0)
+      vite-plugin-full-reload: 1.0.5(vite@4.0.5)
     dev: true
 
   /lilconfig@2.1.0:
@@ -2185,6 +2191,7 @@ packages:
 
   /nan@2.17.0:
     resolution: {integrity: sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -3289,18 +3296,18 @@ packages:
       inherits: 2.0.3
     dev: true
 
-  /vite-plugin-full-reload@1.0.5(vite@4.0.0):
+  /vite-plugin-full-reload@1.0.5(vite@4.0.5):
     resolution: {integrity: sha512-kVZFDFWr0DxiHn6MuDVTQf7gnWIdETGlZh0hvTiMXzRN80vgF4PKbONSq8U1d0WtHsKaFODTQgJeakLacoPZEQ==}
     peerDependencies:
       vite: ^2 || ^3 || ^4
     dependencies:
       picocolors: 1.0.0
       picomatch: 2.3.1
-      vite: 4.0.0(sass@1.3.0)
+      vite: 4.0.5(sass@1.3.0)
     dev: true
 
-  /vite@4.0.0(sass@1.3.0):
-    resolution: {integrity: sha512-ynad+4kYs8Jcnn8J7SacS9vAbk7eMy0xWg6E7bAhS1s79TK+D7tVFGXVZ55S7RNLRROU1rxoKlvZ/qjaB41DGA==}
+  /vite@4.0.5(sass@1.3.0):
+    resolution: {integrity: sha512-7m87RC+caiAxG+8j3jObveRLqaWA/neAdCat6JAZwMkSWqFHOvg8MYe5fAQxVBRAuKAQ1S6XDh3CBQuLNbY33w==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
